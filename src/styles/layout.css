@@ -1,5 +1,5 @@
 .link {
-  @apply text-gray-500 hover:text-black cursor-pointer;
+  @apply text-gray-500 hover:text-black cursor-pointer px-2 py-3;
 }
 
 .btn {
