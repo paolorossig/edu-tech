@@ -11,7 +11,7 @@ function Dashboard() {
       <Sidebar links={links} buttons={buttons} />
       <main className="flex flex-col flex-auto min-h-screen relative z-10">
         <Header />
-        <div className="m-4">
+        <div className="my-4 ml-8">
           <Outlet />
         </div>
       </main>
