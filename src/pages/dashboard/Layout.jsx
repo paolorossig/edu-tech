@@ -3,7 +3,7 @@ import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
 import { alumnosNavConfig } from './layoutConfig'
 
-function Dashboard() {
+function Layout() {
   const { links, buttons } = alumnosNavConfig()
 
   return (
@@ -11,7 +11,7 @@ function Dashboard() {
       <Sidebar links={links} buttons={buttons} />
       <main className="flex flex-col z-10 w-full">
         <Header />
-        <div className="my-4 ml-8">
+        <div className="my-4 mx-8">
           <Outlet />
         </div>
       </main>
@@ -19,4 +19,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default Layout
