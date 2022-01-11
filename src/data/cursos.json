@@ -1,0 +1,49 @@
+{
+  "cursos": [
+    {
+      "name": "Javascript: async - await",
+      "tag": "Web Development",
+      "url": "https://devsdata.com/wp-content/uploads/2020/08/acync_await-1.png"
+    },
+    {
+      "name": "React: Hooks",
+      "tag": "Web Development",
+      "url": "https://user-images.githubusercontent.com/47307889/116921331-826bbe80-ac5c-11eb-9f48-d8fbde144b04.png"
+    },
+    {
+      "name": "Docker: Images",
+      "tag": "DevOps",
+      "url": "https://laravelnews.imgix.net/images/docker.png?ixlib=php-3.3.1"
+    }
+  ],
+  "contenido": [
+    {
+      "id": 1,
+      "title": "Introducción",
+      "length": "3 min",
+      "exercises": 2,
+      "completed": 2
+    },
+    {
+      "id": 2,
+      "title": "Callback Hell",
+      "length": "8 min",
+      "exercises": 5,
+      "completed": 3
+    },
+    {
+      "id": 3,
+      "title": "Aync-await implementation",
+      "length": "5 min",
+      "exercises": 10,
+      "completed": 0
+    },
+    {
+      "id": 4,
+      "title": "Repaso",
+      "length": "3 min",
+      "exercises": 2,
+      "completed": 0
+    }
+  ]
+}
