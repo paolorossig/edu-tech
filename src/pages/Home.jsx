@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom'
+import LandingPage from './landing/Landing'
 function Home() {
-  return (
-    <div className="grid h-screen place-content-center text-center">
-      <h1>EduTECH Homepage</h1>
-      <Link to="/dashboard" className="btn mt-2">
-        Dashboard
-      </Link>
-    </div>
-  )
+  return <LandingPage />
 }
 
 export default Home
