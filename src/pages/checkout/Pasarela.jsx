@@ -15,8 +15,8 @@ function Pasarela() {
         <div className="flex gap-8">
           <div className="flex gap-8">
             <div>
-              {cursos_seleccionados.map((curso, index) => (
-                <CardPay element={curso} key={index} />
+              {cursos_seleccionados.map((curso) => (
+                <CardPay element={curso} key={curso.name} />
               ))}
             </div>
           </div>
