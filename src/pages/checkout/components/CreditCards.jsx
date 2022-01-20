@@ -14,11 +14,13 @@ function CreditCards({ element }) {
         <p className=" text-gray-500 text-sm font-bold">{bank}</p>
       </div>
       <div className="col-span-3 bg-white m-auto flex-col justify-center align-middle items-center text-center">
-        {selected ? (
-          <input type="radio" className="" checked />
-        ) : (
-          <input type="radio" />
-        )}
+        <input
+          id="creditcard"
+          name="creditcard"
+          type="radio"
+          className=""
+          checked={selected}
+        ></input>
         <p className=" text-blue-400 font-bold">Modificar Datos</p>
       </div>
     </div>
