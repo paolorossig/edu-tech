@@ -1,15 +1,6 @@
 function CardPay({ element }) {
-  const {
-    name,
-    mentor,
-    url,
-    precio,
-    descuento,
-    preciofinal,
-    rate,
-    valoraciones,
-    nivel
-  } = element
+  const { name, mentor, url, price, discount, finalPrice, rate, stars, level } =
+    element
   return (
     <div className="grid grid-cols-9 gap-4 bg-white rounded-3xl overflow-hidden mb-4">
       <div className="col-span-1 m-auto ml-3">
@@ -23,18 +14,18 @@ function CardPay({ element }) {
         <h2>{name}</h2>
         <p className="text-gray-500 text-sm font-bold mt-1">Por {mentor}</p>
         <p className="text-gray-500 text-sm font-bold mt-1">
-          {rate} ⭐⭐⭐⭐⭐ ({valoraciones} Valoraciones)
+          {rate} ⭐⭐⭐⭐⭐ ({stars} Valoraciones)
         </p>
-        <p className=" text-gray-500 text-sm font-bold mt-1">{nivel}</p>
+        <p className=" text-gray-500 text-sm font-bold mt-1">{level}</p>
       </div>
       <div className="col-span-2 m-auto">
         <p className="text-gray-500 text-sm font-bold mt-1">Eliminar</p>
       </div>
       <div className="col-span-2 m-auto font-bold">
-        <h3 className="text-gray-500 text-sm">S/. {preciofinal}</h3>
-        {descuento && (
+        <h3 className="text-gray-500 text-sm">S/. {finalPrice}</h3>
+        {discount && (
           <p className="text-gray-500 text-sm">
-            <del>S/. {precio}</del>
+            <del>S/. {price}</del>
           </p>
         )}
       </div>

@@ -21,22 +21,22 @@ export const cursos_seleccionados = [
     name: 'Curso de Desarrollo Web Básico',
     mentor: 'Cesar Arroyo Torres',
     url: 'https://premiumlogodesigners.com/blog/wp-content/uploads/2021/09/shutterstock_394793860-1024x784-1.jpg',
-    precio: '59.99',
-    descuento: true,
-    preciofinal: '40.00',
+    price: '59.99',
+    discount: true,
+    finalPrice: '40.00',
     rate: '5.0',
-    valoraciones: '120',
+    stars: '120',
     nivel: 'Todos los niveles'
   },
   {
     name: 'Curso de Inteligencia Artificial',
     mentor: 'Paolo Rossi',
     url: 'https://www.esciupfnews.com/wp-content/uploads/2020/12/Inteligencia-Artificial.jpg',
-    precio: '49.99',
-    descuento: false,
-    preciofinal: '49.99',
+    price: '49.99',
+    discount: false,
+    finalPrice: '49.99',
     rate: '5.0',
-    valoraciones: '242',
+    stars: '242',
     nivel: 'Todos los niveles'
   }
 ]
