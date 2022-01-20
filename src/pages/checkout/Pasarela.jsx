@@ -1,13 +1,13 @@
 import Card from '../../components/Card'
 import CardPay from './components/CardPay'
 import { cursos, cursos_seleccionados, creditcards } from './data'
-import React from 'react'
+import { useState } from 'react'
 import CreditCards from './components/CreditCards'
 import CardSecurity from './components/CardSecurity'
 import DetailPay from './components/DetailPay'
 
 function Pasarela() {
-  const [showModal, setShowModal] = React.useState(false)
+  const [showModal, setShowModal] = useState(false)
   return (
     <div className="flex flex-col gap-12">
       <div>
