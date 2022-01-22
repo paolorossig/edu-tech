@@ -7,7 +7,7 @@ import { mentores } from '../../data/mentores.json'
 
 function Inicio() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 mx-8 mt-4">
       <div>
         <h1 className="mb-8">Mis cursos</h1>
         <div className="flex gap-8">

@@ -11,9 +11,7 @@ function Layout() {
       <Sidebar links={links} buttons={buttons} />
       <main className="flex flex-col z-10 w-full ml-[280px]">
         <Header />
-        <div className="my-4 mx-8 flex-1">
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
     </div>
   )
