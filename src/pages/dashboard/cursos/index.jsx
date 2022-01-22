@@ -8,8 +8,8 @@ function Cursos() {
     <div className="mx-8 mt-4">
       <h1 className="mb-8">Cursos</h1>
       <div className="flex gap-8">
-        {cursos.map((curso, index) => (
-          <Link to={`${encodeURIComponent(curso.name)}`} key={index}>
+        {cursos.map((curso) => (
+          <Link to={`${encodeURIComponent(curso.id)}`} key={curso.id}>
             <Card element={curso} />
           </Link>
         ))}

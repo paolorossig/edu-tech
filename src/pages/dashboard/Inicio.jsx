@@ -11,8 +11,8 @@ function Inicio() {
       <div>
         <h1 className="mb-8">Mis cursos</h1>
         <div className="flex gap-8">
-          {cursos.map((curso, index) => (
-            <Link to={`cursos/${encodeURIComponent(curso.name)}`} key={index}>
+          {cursos.map((curso) => (
+            <Link to={`cursos/${encodeURIComponent(curso.id)}`} key={curso.id}>
               <Card element={curso} />
             </Link>
           ))}
@@ -21,8 +21,8 @@ function Inicio() {
       <div>
         <h1 className="mb-8">Mentores Disponibles</h1>
         <div className="flex gap-8 flex-wrap">
-          {mentores.map((mentor, index) => (
-            <Badge element={mentor} key={index} />
+          {mentores.map((mentor) => (
+            <Badge element={mentor} key={mentor.id} />
           ))}
         </div>
       </div>

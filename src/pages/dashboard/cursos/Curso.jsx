@@ -1,14 +1,15 @@
 import { useParams, Link } from 'react-router-dom'
 
-import { contenido } from '../../../data/cursos.json'
+import { contenido, cursos } from '../../../data/cursos.json'
 
 function Curso() {
   const { cursoId } = useParams()
+  const { name } = cursos.find((curso) => curso.id === cursoId)
 
   return (
     <div className="flex flex-1 flex-col overflow-hidden px-8">
       <h1 className="my-4 pb-4">
-        <Link to="/dashboard/cursos">Cursos</Link> / {cursoId}
+        <Link to="/dashboard/cursos">Cursos</Link> / {name}
       </h1>
       <div className="flex-1 p-[50px] mb-[-50px] bg-white rounded-[50px] overflow-hidden">
         <h2 className="text-gray-500">Contenido:</h2>
