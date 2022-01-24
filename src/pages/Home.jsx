@@ -1,4 +1,6 @@
 import LateralCard from '../components/LateralCard'
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 function Home() {
   const cursos = [
     {
@@ -15,6 +17,20 @@ function Home() {
       name: 'Docker: Images',
       tag: 'DevOps',
       url: 'https://laravelnews.imgix.net/images/docker.png?ixlib=php-3.3.1'
+    }
+  ]
+  const categorias = [
+    {
+      name: 'DESARROLLO WEB'
+    },
+    {
+      name: 'FRONTEND'
+    },
+    {
+      name: 'DEVOPS'
+    },
+    {
+      name: 'BACKEND'
     }
   ]
   return (
@@ -38,35 +54,63 @@ function Home() {
       <main className="flex shadow-md top-0 my-2 mx-4 p-4 items-center bg-white rounded-xl">
         <article className="w-full">
           <section>
-            <h4 className="text-center ">LOS MEJORES PUNTUADOS</h4>
+            <h3 className="text-center my-3">LOS MEJORES PUNTUADOS</h3>
+
+            <Carousel>
+              {cursos.map((curso, index) => (
+                <div key={index}>
+                  <img src={curso.url} />
+                  <p className="legend">{curso.name}1</p>
+                </div>
+              ))}
+            </Carousel>
           </section>
           <section>
-            <h4 className="text-center">LO MAS RECIENTE</h4>
-            <div className="grid grid-cols-2">
+            <h3 className="text-center my-3">LO MAS RECIENTE</h3>
+            <div className="grid grid-cols-2 gap-8">
               {cursos.map((curso, index) => (
                 <LateralCard element={curso} key={index} />
               ))}
             </div>
           </section>
           <section className="text-center">
-            <h4 className="text-center">CATEGORIAS</h4>
-            <button className="my-5 border-solid border-2 bg-black text-white m-3s p-2 rounded-xl">
-              DESARROLLO WEB
-            </button>
-            <button className="my-5 border-solid border-2 bg-black text-white m-3s p-2 rounded-xl">
-              FRONTEND
-            </button>
-            <button className="my-5 border-solid border-2 bg-black text-white m-3s p-2 rounded-xl">
-              BACKEND
-            </button>
-            <button className="my-5 border-solid border-2 bg-black text-white m-3s p-2 rounded-xl">
-              DEVOPS
-            </button>
+            <h3 className="text-center my-3">CATEGORIAS</h3>
+            <div>
+              {categorias.map((categoria, index) => (
+                <button
+                  key={index}
+                  className="my-5 border-solid border-2 bg-black text-white m-3 p-2 rounded-xl"
+                >
+                  {categoria.name}
+                </button>
+              ))}
+            </div>
           </section>
           <section>
-            <h4 className="my-3 text-center">CONTACTANOS</h4>
-            <div className="flex shadow-md top-0 sticky my-2 mx-4 p-4 items-center bg-white rounded-xl">
-              Ingresa tu correo
+            <h3 className="my-3 text-center">CONTACTANOS</h3>
+            <div className="bg-white rounded-3xl overflow-hidden grid grid-cols-2 border border-black-100 shadow-md mx-20">
+              <img
+                src="https://user-images.githubusercontent.com/47307889/116921331-826bbe80-ac5c-11eb-9f48-d8fbde144b04.png"
+                alt="Contactanos"
+                className="object-cover min-h-[176px] min-w-[320px]"
+              />
+              <div className="p-4 flex flex-col">
+                <h2 className="text-center mt-3">RECIBE MAS INFORMACION</h2>
+                <label className="mt-10 mb-2">
+                  Ingresa tu Correo Electronico:{' '}
+                </label>
+
+                <input
+                  type="text"
+                  id="eMail"
+                  name="eMail"
+                  required
+                  className="border border-black rounded-md mb-5 mx-4"
+                />
+                <button className="border-solid border-2 bg-black text-white m-3s p-2 rounded-xl mx-4">
+                  ENVIAR
+                </button>
+              </div>
             </div>
           </section>
         </article>
