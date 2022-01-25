@@ -1,0 +1,18 @@
+{
+  "creditcards": [
+    {
+      "id": 1,
+      "name": "Visa ***************************456",
+      "img": "https://logodownload.org/wp-content/uploads/2016/10/visa-logo-8.png",
+      "bank": "Banco Scotiabank",
+      "selected": true
+    },
+    {
+      "id": 2,
+      "name": "Mastercard ***********************982",
+      "img": "https://w7.pngwing.com/pngs/116/678/png-transparent-mastercard-mastercard-logo-cdr-text-orange.png",
+      "bank": "Banco BBVA",
+      "selected": false
+    }
+  ]
+}
