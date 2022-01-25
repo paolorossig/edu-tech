@@ -9,7 +9,7 @@ function Layout() {
   return (
     <div className="flex h-screen w-screen">
       <Sidebar links={links} buttons={buttons} />
-      <main className="z-10 ml-[280px] flex w-full flex-col">
+      <main className="ml-[280px] flex w-full flex-col">
         <Header />
         <Outlet />
       </main>

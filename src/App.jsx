@@ -5,7 +5,7 @@ import Layout from './pages/dashboard/Layout'
 import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
-import Pasarela from './pages/checkout/Pasarela'
+import Checkout from './pages/dashboard/Checkout'
 
 function App() {
   return (
@@ -18,9 +18,7 @@ function App() {
           <Route index element={<Cursos />} />
           <Route path=":cursoId" element={<Curso />} />
         </Route>
-      </Route>
-      <Route path="/pasarela" element={<Layout />}>
-        <Route index element={<Pasarela />} />
+        <Route path="checkout" element={<Checkout />} />
       </Route>
     </Routes>
   )
