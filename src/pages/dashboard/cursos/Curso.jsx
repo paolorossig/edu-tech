@@ -11,9 +11,9 @@ function Curso() {
       <h1 className="my-4 pb-4">
         <Link to="/dashboard/cursos">Cursos</Link> / {name}
       </h1>
-      <div className="flex-1 p-[50px] mb-[-50px] bg-white rounded-[50px] overflow-hidden">
+      <div className="mb-[-50px] flex-1 overflow-hidden rounded-[50px] bg-white p-[50px]">
         <h2 className="text-gray-500">Contenido:</h2>
-        <ul className="flex flex-col gap-8 m-8">
+        <ul className="m-8 flex flex-col gap-8">
           {contenido.map((step) => {
             const { id, title, length, completed, exercises } = step
 
@@ -27,7 +27,7 @@ function Curso() {
             return (
               <li className="flex items-center gap-8" key={id}>
                 <div
-                  className={`${bgColor} h-20 w-20 rounded-full text-white text-3xl flex justify-center items-center`}
+                  className={`${bgColor} flex h-20 w-20 items-center justify-center rounded-full text-3xl text-white`}
                 >
                   {id}
                 </div>

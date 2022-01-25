@@ -1,9 +1,9 @@
 function Header() {
   return (
-    <header className="z-20 sticky top-0 py-4 px-8 bg-gray-100">
-      <div className="flex justify-end items-center shadow-md h-20 p-4 bg-white rounded-xl">
-        <div className="flex gap-2 cursor-pointer">
-          <div className="bg-black h-10 w-10 rounded-full"></div>
+    <header className="sticky top-0 z-20 bg-gray-100 py-4 px-8">
+      <div className="flex h-20 items-center justify-end rounded-xl bg-white p-4 shadow-md">
+        <div className="flex cursor-pointer gap-2">
+          <div className="h-10 w-10 rounded-full bg-black"></div>
           <div className="flex flex-col">
             <h3>Paolo Rossi</h3>
             <h4>Alumno</h4>
