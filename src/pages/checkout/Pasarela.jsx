@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import Card from '../../components/Card'
 import CardPay from './components/CardPay'
-import { cursos, cursos_seleccionados, creditcards } from './data'
-import { useState } from 'react'
 import CreditCards from './components/CreditCards'
 import CardSecurity from './components/CardSecurity'
 import DetailPay from './components/DetailPay'
+
+import { cursos, cursos_seleccionados } from '../../data/cursos.json'
+import { creditcards } from '../../data/usuarios.json'
 
 function Pasarela() {
   const [showModal, setShowModal] = useState(false)
@@ -40,8 +42,8 @@ function Pasarela() {
       <div>
         <h1 className="mb-8">Tambien te puede interesar</h1>
         <div className="flex gap-8">
-          {cursos.map((curso, index) => (
-            <Card element={curso} key={index} />
+          {cursos.map((curso) => (
+            <Card element={curso} key={curso.id} />
           ))}
         </div>
       </div>

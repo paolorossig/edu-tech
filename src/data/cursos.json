@@ -48,5 +48,29 @@
       "exercises": 2,
       "completed": 0
     }
+  ],
+  "cursos_seleccionados": [
+    {
+      "name": "Curso de Desarrollo Web Básico",
+      "mentor": "Cesar Arroyo Torres",
+      "url": "https://premiumlogodesigners.com/blog/wp-content/uploads/2021/09/shutterstock_394793860-1024x784-1.jpg",
+      "price": "59.99",
+      "discount": true,
+      "finalPrice": "40.00",
+      "rate": "5.0",
+      "stars": "120",
+      "nivel": "Todos los niveles"
+    },
+    {
+      "name": "Curso de Inteligencia Artificial",
+      "mentor": "Paolo Rossi",
+      "url": "https://www.esciupfnews.com/wp-content/uploads/2020/12/Inteligencia-Artificial.jpg",
+      "price": "49.99",
+      "discount": false,
+      "finalPrice": "49.99",
+      "rate": "5.0",
+      "stars": "242",
+      "nivel": "Todos los niveles"
+    }
   ]
 }
