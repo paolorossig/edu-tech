@@ -24,14 +24,14 @@ function Pasarela() {
           </div>
           <div>
             <h1>Total</h1>
-            <p className="text-4xl mt-1 font-bold">S/. 89.99</p>
-            <del className="font-bold mt-0 text-xl">S/. 109.98</del>
-            <h2 className="text-gray-500 font-bold mt-2 mb-2">
+            <p className="mt-1 text-4xl font-bold">S/. 89.99</p>
+            <del className="mt-0 text-xl font-bold">S/. 109.98</del>
+            <h2 className="mt-2 mb-2 font-bold text-gray-500">
               25 % de descuento
             </h2>
             <button
               type="button"
-              className=" bg-slate-600 text-white p-3 font-bold mt-4"
+              className=" mt-4 bg-slate-600 p-3 font-bold text-white"
               onClick={() => setShowModal(true)}
             >
               Realizar Compra
@@ -49,12 +49,12 @@ function Pasarela() {
       </div>
       {showModal ? (
         <>
-          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-            <div className="relative w-auto my-8 mx-auto max-w-6xl">
+          <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
+            <div className="relative my-8 mx-auto w-auto max-w-6xl">
               {/*content*/}
-              <div className="grid grid-cols-9 gap-4 bg-white overflow-hidden mb-4">
-                <div className="col-span-6 m-autO bg-slate-200 p-4">
-                  <h1 className="text-base text-slate-600 ml-4 mb-4">
+              <div className="mb-4 grid grid-cols-9 gap-4 overflow-hidden bg-white">
+                <div className="m-autO col-span-6 bg-slate-200 p-4">
+                  <h1 className="ml-4 mb-4 text-base text-slate-600">
                     Selecciona el método de Pago
                   </h1>
                   <div className="mb-4">
@@ -62,7 +62,7 @@ function Pasarela() {
                       <CreditCards element={creditcard} key={index} />
                     ))}
                   </div>
-                  <h1 className="text-base text-slate-600 ml-4 mb-4">
+                  <h1 className="ml-4 mb-4 text-base text-slate-600">
                     Confirma para finalizar tu compra
                   </h1>
                   <div className="ml-4">
@@ -70,9 +70,9 @@ function Pasarela() {
                   </div>
                 </div>
                 <div className="col-span-3 ml-3 p-4">
-                  <h1 className="text-2xl font-bold mt-2 mb-2">EduTECH</h1>
+                  <h1 className="mt-2 mb-2 text-2xl font-bold">EduTECH</h1>
                   <button
-                    className=" bg-slate-400 float-right absolute top-5 mt-3 right-0 mr-4 rounded-full h-8 w-8"
+                    className=" absolute top-5 right-0 float-right mt-3 mr-4 h-8 w-8 rounded-full bg-slate-400"
                     onClick={() => setShowModal(false)}
                   >
                     <span className=" text-white">×</span>
@@ -98,15 +98,15 @@ function Pasarela() {
                   <br />
                   <br />
                   <br />
-                  <button className=" bg-slate-800 text-white font-semibold p-4 w-full">
+                  <button className=" w-full bg-slate-800 p-4 font-semibold text-white">
                     Pagar
                   </button>
                 </div>
               </div>
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none"></div>
+              <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none"></div>
             </div>
           </div>
-          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
         </>
       ) : null}
     </div>

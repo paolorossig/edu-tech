@@ -12,15 +12,15 @@ function Login() {
   }
 
   return (
-    <div className="h-screen grid place-content-center text-center">
-      <div className="flex rounded-3xl shadow-md overflow-hidden">
+    <div className="grid h-screen place-content-center text-center">
+      <div className="flex overflow-hidden rounded-3xl shadow-md">
         <div className="flex flex-col justify-center bg-white p-8">
           <h1 className="mb-4">Inicia sesión</h1>
           <button
             onClick={handleSubmit}
-            className="flex items-center justify-center px-8 py-2 border rounded-xl border-gray-300"
+            className="flex items-center justify-center rounded-xl border border-gray-300 px-8 py-2"
           >
-            <FcGoogle className="w-8 h-8 mr-2" />
+            <FcGoogle className="mr-2 h-8 w-8" />
             <p className="text-gray-500">Ingresa con Google</p>
           </button>
           <p className="my-5 text-sm text-gray-700">O con tu correo</p>
@@ -28,20 +28,20 @@ function Login() {
             <input
               type="text"
               placeholder="Email"
-              className="bg-gray-100 rounded-md p-2"
+              className="rounded-md bg-gray-100 p-2"
             />
             <input
               type="text"
               placeholder="Contraseña"
-              className="bg-gray-100 rounded-md p-2"
+              className="rounded-md bg-gray-100 p-2"
             />
-            <a href="#" className="text-sm text-blue-600 mb-2">
+            <a href="#" className="mb-2 text-sm text-blue-600">
               ¿Olvidaste tu contraseña?
             </a>
             <button
               type="submit"
               onClick={handleSubmit}
-              className="bg-gray-300 hover:bg-slate-400 hover:text-white py-2 px-4 rounded-xl text-gray-500"
+              className="rounded-xl bg-gray-300 py-2 px-4 text-gray-500 hover:bg-slate-400 hover:text-white"
             >
               Iniciar sesión
             </button>
@@ -50,7 +50,7 @@ function Login() {
             </a>
           </form>
         </div>
-        <div className="p-8 max-w-md bg-slate-200 grid place-content-center">
+        <div className="grid max-w-md place-content-center bg-slate-200 p-8">
           <img src={loginSVG} alt="login-image" />
         </div>
       </div>
