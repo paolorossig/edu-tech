@@ -7,9 +7,9 @@ function Layout() {
   const { links, buttons } = alumnosNavConfig()
 
   return (
-    <div className="flex w-screen h-screen">
+    <div className="flex h-screen w-screen">
       <Sidebar links={links} buttons={buttons} />
-      <main className="flex flex-col z-10 w-full ml-[280px]">
+      <main className="ml-[280px] flex w-full flex-col">
         <Header />
         <Outlet />
       </main>

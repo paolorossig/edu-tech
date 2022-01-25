@@ -7,7 +7,7 @@ import { mentores } from '../../data/mentores.json'
 
 function Inicio() {
   return (
-    <div className="flex flex-col gap-12 mx-8 mt-4">
+    <div className="mx-8 mt-4 flex flex-col gap-12">
       <div>
         <h1 className="mb-8">Mis cursos</h1>
         <div className="flex gap-8">
@@ -20,7 +20,7 @@ function Inicio() {
       </div>
       <div>
         <h1 className="mb-8">Mentores Disponibles</h1>
-        <div className="flex gap-8 flex-wrap">
+        <div className="flex flex-wrap gap-8">
           {mentores.map((mentor) => (
             <Badge element={mentor} key={mentor.id} />
           ))}
