@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import Badge from '../../components/Badge'
-import Card from '../../components/Card'
+import Badge from '@/components/Badge'
+import Card from '@/components/Card'
 
-import { cursos } from '../../data/cursos.json'
-import { mentores } from '../../data/mentores.json'
+import { cursos } from '@/data/cursos.json'
+import { mentores } from '@/data/mentores.json'
 
 function Inicio() {
   return (

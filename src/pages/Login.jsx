@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 
-import loginSVG from '../assets/svg/login.svg'
+import loginSVG from '@/assets/svg/login.svg'
 
 function Login() {
   const navigate = useNavigate()

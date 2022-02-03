@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 
-import { contenido, cursos } from '../../../data/cursos.json'
+import { contenido, cursos } from '@/data/cursos.json'
 
 function Curso() {
   const { cursoId } = useParams()
