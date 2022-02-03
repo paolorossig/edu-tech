@@ -1,10 +1,10 @@
-import useToggle from '../../hooks/useToggle'
-import Card from '../../components/Card'
-import CardPay from '../../components/Checkout/CardPay'
-import ModalPay from '../../components/Checkout/ModalPay'
+import useToggle from '@/hooks/useToggle'
+import Card from '@/components/Card'
+import CardPay from '@/components/Checkout/CardPay'
+import ModalPay from '@/components/Checkout/ModalPay'
 
-import { cursos, cursosSeleccionados } from '../../data/cursos.json'
-import { creditCards } from '../../data/usuarios.json'
+import { cursos, cursosSeleccionados } from '@/data/cursos.json'
+import { creditCards } from '@/data/usuarios.json'
 
 function Checkout() {
   const [modalState, toggleModal] = useToggle()
