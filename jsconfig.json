@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": "./src",
+    "sourceMap": true,
+    "paths": {
+      "@/assets/*": ["./assets/*"],
+      "@/components/*": ["./components/*"],
+      "@/data/*": ["./data/*"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/pages/*": ["./pages/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}
