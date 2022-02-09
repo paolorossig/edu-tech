@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import Card from '../../../components/Card'
+import Card from '@/components/Card'
 
-import { cursos } from '../../../data/cursos.json'
+import { cursos } from '@/data/cursos.json'
 
 function Cursos() {
   return (
