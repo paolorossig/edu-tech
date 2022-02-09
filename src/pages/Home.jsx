@@ -1,6 +1,7 @@
 import LateralCard from '../components/LateralCard'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { Link } from 'react-router-dom'
 function Home() {
   const cursos = [
     {
@@ -39,16 +40,22 @@ function Home() {
         <h2 className="flex-auto">EduTECH</h2>
         <nav className="flex-auto">
           <ul className="flex flex-row">
-            <li className="mx-3">Cursos</li>
-            <li className="mx-3">Profesores</li>
-            <li className="mx-3">Contactanos</li>
+            <li className="link mx-3">
+              <Link to="/cursos">Cursos</Link>
+            </li>
+            <li className="link mx-3">
+              <Link to="/profesores">Profesores</Link>
+            </li>
+            <li className="link mx-3">
+              <Link to="/contactanos">Contactanos</Link>
+            </li>
           </ul>
         </nav>
-        <button className="m-3 rounded-xl border-2 border-solid border-black p-2">
+        {/* <button className="m-3 rounded-xl border-2 border-solid border-black p-2">
           SOY PROFESOR
-        </button>
+        </button> */}
         <button className="m-3s rounded-xl border-2 border-solid bg-black p-2 text-white">
-          SOY ALUMNO
+          LOGIN
         </button>
       </header>
       <main className="top-0 my-2 mx-4 flex items-center rounded-xl bg-white p-4 shadow-md">
