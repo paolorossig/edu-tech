@@ -1,20 +1,23 @@
-import LateralCard from '../components/LateralCard'
+import LateralCard from '../components/Landing/LateralCard'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Link } from 'react-router-dom'
 function Home() {
   const cursos = [
     {
+      id: 1,
       name: 'Javascript: async / await',
       tag: 'Web Development',
       url: 'https://devsdata.com/wp-content/uploads/2020/08/acync_await-1.png'
     },
     {
+      id: 2,
       name: 'React: Hooks',
       tag: 'Web Development',
       url: 'https://user-images.githubusercontent.com/47307889/116921331-826bbe80-ac5c-11eb-9f48-d8fbde144b04.png'
     },
     {
+      id: 3,
       name: 'Docker: Images',
       tag: 'DevOps',
       url: 'https://laravelnews.imgix.net/images/docker.png?ixlib=php-3.3.1'
@@ -22,15 +25,19 @@ function Home() {
   ]
   const categorias = [
     {
+      id: 1,
       name: 'DESARROLLO WEB'
     },
     {
+      id: 2,
       name: 'FRONTEND'
     },
     {
+      id: 3,
       name: 'DEVOPS'
     },
     {
+      id: 4,
       name: 'BACKEND'
     }
   ]
@@ -54,9 +61,15 @@ function Home() {
         {/* <button className="m-3 rounded-xl border-2 border-solid border-black p-2">
           SOY PROFESOR
         </button> */}
-        <button className="m-3s rounded-xl border-2 border-solid bg-black p-2 text-white">
+        {/* <button className="m-3s rounded-xl border-2 border-solid bg-black p-2 text-white">
           LOGIN
-        </button>
+        </button> */}
+        <Link
+          to="/login"
+          className="m-3 rounded-xl border-2 border-solid bg-black p-2 text-white"
+        >
+          Login
+        </Link>
       </header>
       <main className="top-0 my-2 mx-4 flex items-center rounded-xl bg-white p-4 shadow-md">
         <article className="w-full">
@@ -67,7 +80,12 @@ function Home() {
               {cursos.map((curso, index) => (
                 <div key={index}>
                   <img src={curso.url} />
-                  <p className="legend">{curso.name}1</p>
+                  <Link
+                    to={`/course/detail/${curso.id}`}
+                    className=" h-10 rounded-xl border border-solid border-black px-2"
+                  >
+                    <p className="legend">{curso.name}</p>
+                  </Link>
                 </div>
               ))}
             </Carousel>
@@ -84,12 +102,13 @@ function Home() {
             <h3 className="my-3 text-center">CATEGORIAS</h3>
             <div>
               {categorias.map((categoria, index) => (
-                <button
+                <Link
                   key={index}
-                  className="m-3 my-5 rounded-xl border-2 border-solid bg-black p-2 text-white"
+                  to={`/category/${categoria.id}`}
+                  className="m-3 rounded-xl border-2 border-solid bg-black p-2 text-white"
                 >
                   {categoria.name}
-                </button>
+                </Link>
               ))}
             </div>
           </section>
