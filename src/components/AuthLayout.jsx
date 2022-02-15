@@ -2,7 +2,7 @@ function AuthLayout({ imgsrc, children }) {
   return (
     <div className="grid h-screen place-content-center text-center">
       <div className="flex overflow-hidden rounded-3xl shadow-md">
-        <div className="flex flex-col justify-center bg-white p-8">
+        <div className="flex min-w-[300px] flex-col justify-center bg-white p-8">
           {children}
         </div>
         <div className="grid max-w-md place-content-center bg-slate-200 p-8">

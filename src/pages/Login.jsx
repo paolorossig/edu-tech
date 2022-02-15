@@ -15,8 +15,8 @@ function Login() {
     <AuthLayout imgsrc={loginSVG}>
       <h1 className="mb-4">Inicia sesión</h1>
       <button
-        onClick={handleSubmit}
-        className="flex items-center justify-center rounded-xl border border-gray-300 px-8 py-2"
+        onClick={() => navigate('/dashboard')}
+        className="flex items-center justify-center border-gray-300"
       >
         <FcGoogle className="mr-2 h-8 w-8" />
         <p className="text-gray-500">Ingresa con Google</p>
@@ -40,7 +40,7 @@ function Login() {
         </a>
         <button
           type="submit"
-          className="rounded-xl bg-gray-300 py-2 px-4 text-gray-500 hover:bg-slate-400 hover:text-white"
+          className="bg-gray-300 text-gray-500 hover:bg-slate-400 hover:text-white"
         >
           Iniciar sesión
         </button>
