@@ -1,14 +1,28 @@
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import AuthLayout from '@/components/AuthLayout'
 import loginSVG from '@/assets/svg/login.svg'
+import { login } from '@/services/auth'
 
 function Login() {
   const navigate = useNavigate()
+  const [error, setError] = useState()
 
-  const handleSubmit = () => {
-    // Just to simulate user sign in
-    navigate('/dashboard')
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const { email, password } = e.target
+    const user = {
+      email: email.value,
+      password: password.value
+    }
+
+    const response = await login(user)
+    if (!response.success) {
+      setError(response.error)
+      return
+    }
+    return navigate('/dashboard')
   }
 
   return (
@@ -23,18 +37,23 @@ function Login() {
       </button>
       <p className="my-5 text-sm text-gray-700">O con tu correo</p>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className="rounded-md bg-gray-100 p-2"
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Contraseña"
-          className="rounded-md bg-gray-100 p-2"
-        />
+        <div className="flex flex-col">
+          <input
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="mb-4"
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Contraseña"
+            className="mb-1"
+          />
+          <label className="mr-2 text-right text-sm text-red-600">
+            {error || ''}
+          </label>
+        </div>
         <a href="#" className="mb-2 text-sm text-blue-600">
           ¿Olvidaste tu contraseña?
         </a>
