@@ -1,25 +1,24 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
 import AuthLayout from '@/components/AuthLayout'
 import loginSVG from '@/assets/svg/login.svg'
 import { login } from '@/services/auth'
 
 function Login() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm()
   const navigate = useNavigate()
-  const [error, setError] = useState()
+  const [responseError, setResponseError] = useState()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const { email, password } = e.target
-    const user = {
-      email: email.value,
-      password: password.value
-    }
-
-    const response = await login(user)
+  const onSubmit = async (data) => {
+    const response = await login(data)
     if (!response.success) {
-      setError(response.error)
+      setResponseError(response.error)
       return
     }
     return navigate('/dashboard')
@@ -36,22 +35,28 @@ function Login() {
         <p className="text-gray-500">Ingresa con Google</p>
       </button>
       <p className="my-5 text-sm text-gray-700">O con tu correo</p>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col">
           <input
-            name="email"
             type="email"
             placeholder="Email"
-            className="mb-4"
+            className={`mb-4 ${
+              errors?.email &&
+              'border-red-600 focus:border-red-600 focus:ring-red-600'
+            }`}
+            {...register('email', { required: true })}
           />
           <input
-            name="password"
             type="password"
             placeholder="Contraseña"
-            className="mb-1"
+            className={`mb-1 ${
+              errors?.password &&
+              'border-red-600 focus:border-red-600 focus:ring-red-600'
+            }`}
+            {...register('password', { required: true, minLength: 6 })}
           />
           <label className="mr-2 text-right text-sm text-red-600">
-            {error || ''}
+            {responseError || ''}
           </label>
         </div>
         <a href="#" className="mb-2 text-sm text-blue-600">
