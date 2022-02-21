@@ -8,7 +8,7 @@ export async function signup(user) {
       ? { success: true, ...response.data }
       : { success: false, formErrors: response.data }
   } catch (error) {
-    console.error(error)
+    return { success: false, error: error.response.data.message }
   }
 }
 
