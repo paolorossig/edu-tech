@@ -6,6 +6,10 @@ import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
+import Teacher from './pages/teacher/Teacher'
+import ListTeacher from './pages/teacher/ListTeacher'
+import CoursesTeacher from './pages/teacher/CoursesTeacher'
+import CalendarT from './pages/teacher/CalendarT'
 
 function App() {
   return (
@@ -19,6 +23,11 @@ function App() {
           <Route path=":cursoId" element={<Curso />} />
         </Route>
         <Route path="checkout" element={<Checkout />} />
+      </Route>
+      <Route path="/teacher" element={<Teacher />}>
+        <Route index element={<ListTeacher />} />
+        <Route path="cursos" element={<CoursesTeacher />} />
+        <Route path="calendario" element={<CalendarT />} />
       </Route>
     </Routes>
   )
