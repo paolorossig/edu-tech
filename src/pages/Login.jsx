@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import AuthLayout from '@/components/AuthLayout'
 import loginSVG from '@/assets/svg/login.svg'
 import { login } from '@/services/auth'
+import useAuth from '@/hooks/useAuth'
 
 function Login() {
   const {
@@ -12,6 +13,7 @@ function Login() {
     handleSubmit,
     formState: { errors }
   } = useForm()
+  const { setAuth } = useAuth()
   const navigate = useNavigate()
   const [responseError, setResponseError] = useState()
 
@@ -21,6 +23,8 @@ function Login() {
       setResponseError(response.error)
       return
     }
+
+    setAuth({ user: data.email, accessToken: response.accessToken })
     return navigate('/dashboard')
   }
 
