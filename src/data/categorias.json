@@ -1,0 +1,19 @@
+{"categories" :[
+    {
+      "id": 1,
+      "name": "DESARROLLO WEB"
+    },
+    {
+      "id": 2,
+      "name": "FRONTEND"
+    },
+    {
+      "id": 3,
+      "name": "DEVOPS"
+    },
+    {
+      "id": 4,
+      "name": "BACKEND"
+    }
+  ]
+}
