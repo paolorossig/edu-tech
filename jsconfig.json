@@ -8,7 +8,9 @@
       "@/components/*": ["./components/*"],
       "@/data/*": ["./data/*"],
       "@/hooks/*": ["./hooks/*"],
-      "@/pages/*": ["./pages/*"]
+      "@/pages/*": ["./pages/*"],
+      "@/services/*": ["./services/*"],
+      "@/utils/*": ["./utils/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

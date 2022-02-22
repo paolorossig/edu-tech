@@ -4,7 +4,14 @@ module.exports = {
     fontFamily: {
       sans: ['Popins', 'sans-serif']
     },
-    extend: {}
+    extend: {
+      colors: {
+        primary: '#03b0ff'
+      }
+    }
   },
-  plugins: [require('prettier-plugin-tailwindcss')]
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('prettier-plugin-tailwindcss')
+  ]
 }
