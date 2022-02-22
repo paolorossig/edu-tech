@@ -7,6 +7,7 @@ import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
+import RequireAuth from './components/RequireAuth'
 
 function App() {
   return (
@@ -14,7 +15,14 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/dashboard" element={<Layout />}>
+      <Route
+        path="/dashboard"
+        element={
+          <RequireAuth>
+            <Layout />
+          </RequireAuth>
+        }
+      >
         <Route index element={<Inicio />} />
         <Route path="cursos">
           <Route index element={<Cursos />} />
