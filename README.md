@@ -2,7 +2,7 @@
 
 EduTech is a MERN Full Stack project developed in the Make it Real Bootcamp.
 
-> v1.0.1 is the first release intended for deployment configuration that includes a first draft of the platform
+> v1.1.0 comes with our First landing page and auth services
 
 ## Development
 
