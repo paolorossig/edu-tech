@@ -1,34 +1,15 @@
-import LateralCard from '../components/Landing/LateralCard'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Link } from 'react-router-dom'
+import { Carousel } from 'react-responsive-carousel'
+import Header from '@/components/Landing/Header'
+import LateralCard from '@/components/Landing/LateralCard'
 import { cursos } from '@/data/cursos.json'
 import { categories } from '@/data/categorias.json'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+
 function Home() {
   return (
     <>
-      <header className="sticky top-0 z-20 my-2 mx-4 flex h-20 items-center justify-end rounded-xl bg-white p-4 shadow-md">
-        <h2 className="flex-auto">EduTECH</h2>
-        <nav className="flex-auto">
-          <ul className="flex flex-row">
-            <li className="link mx-3">
-              <Link to="/cursos">Cursos</Link>
-            </li>
-            <li className="link mx-3">
-              <Link to="/profesores">Profesores</Link>
-            </li>
-            <li className="link mx-3">
-              <Link to="/contactanos">Contactanos</Link>
-            </li>
-          </ul>
-        </nav>
-        <Link
-          to="/login"
-          className="m-3 rounded-xl border-2 border-solid bg-black p-2 text-white"
-        >
-          Login
-        </Link>
-      </header>
+      <Header />
       <main className="top-0 my-2 mx-4 flex items-center rounded-xl bg-white p-4 shadow-md">
         <article className="w-full">
           <section>
