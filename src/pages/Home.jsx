@@ -5,16 +5,19 @@ import LateralCard from '@/components/Landing/LateralCard'
 import { cursos } from '@/data/cursos.json'
 import { categories } from '@/data/categorias.json'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import Hero from '@/components/Landing/Hero'
 
 function Home() {
   return (
     <>
       <Header />
-      <main className="top-0 my-2 mx-4 flex items-center rounded-xl bg-white p-4 shadow-md">
-        <article className="w-full">
-          <section>
-            <h3 className="my-3 text-center">LOS MEJORES PUNTUADOS</h3>
-
+      <main className="flex items-center justify-center">
+        <div className="flex flex-col items-center p-4 xl:w-[1280px]">
+          <Hero />
+          <section className="flex max-w-3xl flex-col">
+            <h2 className="my-3 text-center uppercase">
+              Los mejores puntuados
+            </h2>
             <Carousel>
               {cursos.map((curso, index) => (
                 <div key={index}>
@@ -81,7 +84,7 @@ function Home() {
               </div>
             </div>
           </section>
-        </article>
+        </div>
       </main>
       <footer className="sticky top-0 z-20 my-2 mx-4 flex h-10 items-center justify-end rounded-xl bg-white p-4 shadow-md">
         EduTech
