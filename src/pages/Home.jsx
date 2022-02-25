@@ -26,7 +26,10 @@ function Home() {
               ))}
             </Carousel>
           </section>
-          <section>
+          <section
+            id="cursos"
+            className="flex h-[500px] flex-col justify-center"
+          >
             <h3 className="my-3 text-center">LO MAS RECIENTE</h3>
             <div className="grid grid-cols-2 gap-8">
               {cursos.map((curso, index) => (
@@ -34,7 +37,7 @@ function Home() {
               ))}
             </div>
           </section>
-          <section className="text-center">
+          <section className="flex h-[300px] flex-col justify-center text-center">
             <h3 className="my-3 text-center">CATEGORIAS</h3>
             <div>
               {categories.map((categoria, index) => (
@@ -48,7 +51,10 @@ function Home() {
               ))}
             </div>
           </section>
-          <section>
+          <section
+            id="contacto"
+            className="flex h-[400px] flex-col justify-center"
+          >
             <h3 className="my-3 text-center">CONTACTANOS</h3>
             <div className="border-black-100 mx-20 grid grid-cols-2 overflow-hidden rounded-3xl border bg-white shadow-md">
               <img
