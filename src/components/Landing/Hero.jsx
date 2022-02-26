@@ -25,7 +25,7 @@ function Hero() {
         <Link
           to="cursos"
           {...scrollProps}
-          className="rounded-xl bg-primary px-8 py-2 text-white"
+          className="cursor-pointer rounded-xl bg-primary px-8 py-2 text-white"
         >
           Ver más
         </Link>

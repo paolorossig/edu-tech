@@ -1,33 +1,23 @@
 import { Link } from 'react-router-dom'
-import { Carousel } from 'react-responsive-carousel'
 import Header from '@/components/Landing/Header'
+import Hero from '@/components/Landing/Hero'
+import Carousel from '@/components/Landing/Carousel'
 import LateralCard from '@/components/Landing/LateralCard'
 import { cursos } from '@/data/cursos.json'
 import { categories } from '@/data/categorias.json'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import Hero from '@/components/Landing/Hero'
 
 function Home() {
   return (
     <>
       <Header />
       <main className="flex items-center justify-center">
-        <div className="flex flex-col items-center p-4 xl:w-[1280px]">
+        <div className="flex flex-col items-center gap-8 p-4 xl:w-[1280px]">
           <Hero />
-          <section className="flex max-w-3xl flex-col">
+          <section className="flex flex-col">
             <h2 className="my-3 text-center uppercase">
               Los mejores puntuados
             </h2>
-            <Carousel>
-              {cursos.map((curso, index) => (
-                <div key={index}>
-                  <img src={curso.url} />
-                  <Link to={`/course/detail/${curso.id}`}>
-                    <p className="legend">{curso.name}</p>
-                  </Link>
-                </div>
-              ))}
-            </Carousel>
+            <Carousel cursos={cursos} />
           </section>
           <section
             id="cursos"
