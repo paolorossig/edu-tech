@@ -8,6 +8,7 @@ import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
 import RequireAuth from './components/RequireAuth'
+import StudentConfigAccount from './components/studentConfigAccount'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/config" element={<StudentConfigAccount />} />
       <Route
         path="/dashboard"
         element={
