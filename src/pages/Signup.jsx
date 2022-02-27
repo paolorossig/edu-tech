@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
-import { signup } from '@/services/auth'
 import AuthLayout from '@/components/AuthLayout'
 import loginSVG from '@/assets/svg/login.svg'
+import useAuth from '@/hooks/useAuth'
 
 function Signup() {
   const {
@@ -12,16 +12,14 @@ function Signup() {
     handleSubmit,
     formState: { errors }
   } = useForm()
+  const { userSignup } = useAuth()
   const navigate = useNavigate()
   const [responseError, setResponseError] = useState()
 
   const onSubmit = async (data) => {
-    const response = await signup(data)
-    if (!response.success) {
-      setResponseError(response.error)
-      return
-    }
-    if (response.user) return navigate('/login')
+    const response = await userSignup(data)
+    if (!response.success) setResponseError(response.error)
+    if (response.user) navigate('/login')
   }
 
   return (

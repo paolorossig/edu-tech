@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
 import AuthLayout from '@/components/AuthLayout'
 import loginSVG from '@/assets/svg/login.svg'
-import { login } from '@/services/auth'
 import useAuth from '@/hooks/useAuth'
 
 function Login() {
@@ -13,18 +12,16 @@ function Login() {
     handleSubmit,
     formState: { errors }
   } = useForm()
-  const { setAuth } = useAuth()
+  const { userLogin } = useAuth()
   const navigate = useNavigate()
   const [responseError, setResponseError] = useState()
 
   const onSubmit = async (data) => {
-    const response = await login(data)
+    const response = await userLogin(data)
     if (!response.success) {
       setResponseError(response.error)
       return
     }
-
-    setAuth({ user: data.email, accessToken: response.accessToken })
     return navigate('/dashboard')
   }
 
