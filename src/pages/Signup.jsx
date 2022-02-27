@@ -27,9 +27,9 @@ function Signup() {
       <h1 className="mb-4">Regístrate</h1>
       <button
         onClick={() => navigate('/dashboard')}
-        className="flex items-center justify-center border-gray-300"
+        className="flex items-center justify-center rounded-xl border border-gray-300 py-2 px-4"
       >
-        <FcGoogle className="mr-2 h-8 w-8" />
+        <FcGoogle className="mr-2 h-6 w-6" />
         <p className="text-gray-500">Ingresa con Google</p>
       </button>
       <p className="my-5 text-sm text-gray-700">O con tu correo</p>
@@ -67,10 +67,7 @@ function Signup() {
         <label className="mr-2 text-right text-sm text-red-600">
           {responseError || ''}
         </label>
-        <button
-          type="submit"
-          className="bg-primary text-white hover:bg-[#008ecf]"
-        >
+        <button type="submit" className="btn hover:bg-primary">
           Regístrate
         </button>
       </form>

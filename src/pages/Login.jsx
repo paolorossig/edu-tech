@@ -30,9 +30,9 @@ function Login() {
       <h1 className="mb-4">Inicia sesión</h1>
       <button
         onClick={() => navigate('/dashboard')}
-        className="flex items-center justify-center border-gray-300"
+        className="flex items-center justify-center rounded-xl border border-gray-300 py-2 px-4"
       >
-        <FcGoogle className="mr-2 h-8 w-8" />
+        <FcGoogle className="mr-2 h-6 w-6" />
         <p className="text-gray-500">Ingresa con Google</p>
       </button>
       <p className="my-5 text-sm text-gray-700">O con tu correo</p>
@@ -63,10 +63,7 @@ function Login() {
         <a href="#" className="mb-2 text-sm text-blue-600">
           ¿Olvidaste tu contraseña?
         </a>
-        <button
-          type="submit"
-          className="bg-gray-300 text-gray-500 hover:bg-slate-400 hover:text-white"
-        >
+        <button type="submit" className="btn">
           Iniciar sesión
         </button>
         <Link to="/signup" className="text-sm text-blue-600">
