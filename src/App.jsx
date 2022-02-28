@@ -6,6 +6,7 @@ import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
+import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
 
@@ -30,6 +31,7 @@ function App() {
         </Route>
         <Route path="checkout" element={<Checkout />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Link as ScrollLink, animateScroll } from 'react-scroll'
 import useAuth from '@/hooks/useAuth'
 import logo from '@/assets/svg/logo.svg'
@@ -13,8 +13,11 @@ const scrollProps = {
 
 function Header() {
   const { auth } = useAuth()
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   const toggleHome = () => {
+    if (pathname !== '/') navigate('/')
     animateScroll.scrollToTop()
   }
 
