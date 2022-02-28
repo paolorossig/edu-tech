@@ -1,105 +1,64 @@
-import LateralCard from '../components/Landing/LateralCard'
-import { Carousel } from 'react-responsive-carousel'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { Link } from 'react-router-dom'
+import MainLayout from '@/components/Layouts/MainLayout'
+import Hero from '@/components/Landing/Hero'
+import Carousel from '@/components/Landing/Carousel'
+import LateralCard from '@/components/Landing/LateralCard'
 import { cursos } from '@/data/cursos.json'
 import { categories } from '@/data/categorias.json'
+import contactSVG from '@/assets/svg/contact.svg'
+
 function Home() {
   return (
-    <>
-      <header className="sticky top-0 z-20 my-2 mx-4 flex h-20 items-center justify-end rounded-xl bg-white p-4 shadow-md">
-        <h2 className="flex-auto">EduTECH</h2>
-        <nav className="flex-auto">
-          <ul className="flex flex-row">
-            <li className="link mx-3">
-              <Link to="/cursos">Cursos</Link>
+    <MainLayout>
+      {/* Hero Section */}
+      <Hero />
+      {/* Best rated Section */}
+      <section className="flex flex-col">
+        <h2 className="my-6 text-center uppercase">Los mejores puntuados</h2>
+        <Carousel cursos={cursos} />
+      </section>
+      {/* Course categories Section */}
+      <section className="flex flex-col justify-center">
+        <h2 className="my-6 text-center uppercase">Categorías</h2>
+        <ul className="flex gap-8">
+          {categories.map((category, index) => (
+            <li
+              key={index}
+              className="rounded-xl bg-black px-6 py-2 text-white shadow-md hover:bg-primary"
+            >
+              {category.name}
             </li>
-            <li className="link mx-3">
-              <Link to="/profesores">Profesores</Link>
-            </li>
-            <li className="link mx-3">
-              <Link to="/contactanos">Contactanos</Link>
-            </li>
-          </ul>
-        </nav>
-        <Link
-          to="/login"
-          className="m-3 rounded-xl border-2 border-solid bg-black p-2 text-white"
-        >
-          Login
-        </Link>
-      </header>
-      <main className="top-0 my-2 mx-4 flex items-center rounded-xl bg-white p-4 shadow-md">
-        <article className="w-full">
-          <section>
-            <h3 className="my-3 text-center">LOS MEJORES PUNTUADOS</h3>
-
-            <Carousel>
-              {cursos.map((curso, index) => (
-                <div key={index}>
-                  <img src={curso.url} />
-                  <Link to={`/course/detail/${curso.id}`}>
-                    <p className="legend">{curso.name}</p>
-                  </Link>
-                </div>
-              ))}
-            </Carousel>
-          </section>
-          <section>
-            <h3 className="my-3 text-center">LO MAS RECIENTE</h3>
-            <div className="grid grid-cols-2 gap-8">
-              {cursos.map((curso, index) => (
-                <LateralCard element={curso} key={index} />
-              ))}
+          ))}
+        </ul>
+      </section>
+      {/* Courses Section */}
+      <section id="cursos" className="flex flex-col justify-center">
+        <h2 className="my-6 text-center uppercase">Lo más reciente</h2>
+        <div className="grid grid-cols-2 gap-8">
+          {cursos.map((curso, index) => (
+            <LateralCard element={curso} key={index} />
+          ))}
+        </div>
+      </section>
+      {/* Contact Section */}
+      <section id="contacto" className="flex flex-col justify-center">
+        <div className="grid grid-cols-2 items-center overflow-hidden rounded-3xl bg-white p-10 shadow-md">
+          <img src={contactSVG} alt="contact" className="h-full px-14 py-5" />
+          <div className="flex flex-col p-4">
+            <div className="mb-14 flex flex-col items-center text-center">
+              <h2 className="text-3xl">¿Quieres recibir más información?</h2>
+              <p>¡Déjanos tu email y nos pondremos en contacto contigo!</p>
             </div>
-          </section>
-          <section className="text-center">
-            <h3 className="my-3 text-center">CATEGORIAS</h3>
-            <div>
-              {categories.map((categoria, index) => (
-                <Link
-                  key={index}
-                  to={`/category/${categoria.id}`}
-                  className="m-3 rounded-xl border-2 border-solid bg-black p-2 text-white"
-                >
-                  {categoria.name}
-                </Link>
-              ))}
-            </div>
-          </section>
-          <section>
-            <h3 className="my-3 text-center">CONTACTANOS</h3>
-            <div className="border-black-100 mx-20 grid grid-cols-2 overflow-hidden rounded-3xl border bg-white shadow-md">
-              <img
-                src="https://user-images.githubusercontent.com/47307889/116921331-826bbe80-ac5c-11eb-9f48-d8fbde144b04.png"
-                alt="Contactanos"
-                className="min-h-[176px] min-w-[320px] object-cover"
-              />
-              <div className="flex flex-col p-4">
-                <h2 className="mt-3 text-center">RECIBE MAS INFORMACION</h2>
-                <label className="mt-10 mb-2">
-                  Ingresa tu Correo Electronico:{' '}
-                </label>
-
-                <input
-                  type="text"
-                  id="eMail"
-                  name="eMail"
-                  required
-                  className="mx-4 mb-5 rounded-md border border-black"
-                />
-                <button className="m-3s mx-4 rounded-xl border-2 border-solid bg-black p-2 text-white">
-                  ENVIAR
-                </button>
-              </div>
-            </div>
-          </section>
-        </article>
-      </main>
-      <footer className="sticky top-0 z-20 my-2 mx-4 flex h-10 items-center justify-end rounded-xl bg-white p-4 shadow-md">
-        EduTech
-      </footer>
-    </>
+            <form className="mx-auto flex w-[70%] flex-col">
+              <label className="mb-2">Ingresa tu email:</label>
+              <input type="text" required className="mb-5" />
+              <button type="submit" className="btn_black">
+                Enviar
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </MainLayout>
   )
 }
 
