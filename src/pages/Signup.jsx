@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
-import AuthLayout from '@/components/AuthLayout'
+import ModalLayout from '@/components/Layouts/ModalLayout'
 import loginSVG from '@/assets/svg/login.svg'
 import useAuth from '@/hooks/useAuth'
 
@@ -23,7 +23,7 @@ function Signup() {
   }
 
   return (
-    <AuthLayout imgsrc={loginSVG}>
+    <ModalLayout imgsrc={loginSVG}>
       <h1 className="mb-4">Regístrate</h1>
       <button
         onClick={() => navigate('/dashboard')}
@@ -71,7 +71,7 @@ function Signup() {
           Regístrate
         </button>
       </form>
-    </AuthLayout>
+    </ModalLayout>
   )
 }
 

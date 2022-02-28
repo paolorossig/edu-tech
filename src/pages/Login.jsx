@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
-import AuthLayout from '@/components/AuthLayout'
+import ModalLayout from '@/components/Layouts/ModalLayout'
 import loginSVG from '@/assets/svg/login.svg'
 import useAuth from '@/hooks/useAuth'
 
@@ -26,7 +26,7 @@ function Login() {
   }
 
   return (
-    <AuthLayout imgsrc={loginSVG}>
+    <ModalLayout imgsrc={loginSVG}>
       <h1 className="mb-4">Inicia sesión</h1>
       <button
         onClick={() => navigate('/dashboard')}
@@ -70,7 +70,7 @@ function Login() {
           ¿No tienes cuenta? Regístrate
         </Link>
       </form>
-    </AuthLayout>
+    </ModalLayout>
   )
 }
 

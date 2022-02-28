@@ -1,4 +1,4 @@
-function AuthLayout({ imgsrc, children }) {
+function ModalLayout({ imgsrc, children }) {
   return (
     <div className="grid h-screen place-content-center text-center">
       <div className="flex overflow-hidden rounded-3xl shadow-md">
@@ -13,4 +13,4 @@ function AuthLayout({ imgsrc, children }) {
   )
 }
 
-export default AuthLayout
+export default ModalLayout

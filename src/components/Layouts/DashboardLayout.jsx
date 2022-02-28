@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
-import { alumnosNavConfig } from './layoutConfig'
+import { alumnosNavConfig } from '@/pages/dashboard/layoutConfig'
 
-function Layout() {
+function DashboardLayout() {
   const { links, buttons } = alumnosNavConfig()
 
   return (
@@ -17,4 +17,4 @@ function Layout() {
   )
 }
 
-export default Layout
+export default DashboardLayout

@@ -2,12 +2,12 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import Layout from './pages/dashboard/Layout'
 import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
 import RequireAuth from './components/RequireAuth'
+import DashboardLayout from './components/Layouts/DashboardLayout'
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         path="/dashboard"
         element={
           <RequireAuth>
-            <Layout />
+            <DashboardLayout />
           </RequireAuth>
         }
       >
