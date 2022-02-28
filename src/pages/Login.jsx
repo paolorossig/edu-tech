@@ -19,8 +19,7 @@ function Login() {
   const onSubmit = async (data) => {
     const response = await userLogin(data)
     if (!response.success) {
-      setResponseError(response.error)
-      return
+      return setResponseError(response.error)
     }
     return navigate('/dashboard')
   }
