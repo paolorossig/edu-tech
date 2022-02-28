@@ -4,24 +4,18 @@ function LateralCard({ element }) {
   const { name, tag, url } = element
 
   return (
-    <div className="border-black-100 grid grid-cols-2 overflow-hidden rounded-3xl border bg-white shadow-md">
-      <div className="px-4 py-10">
+    <div className="grid max-w-[500px] grid-cols-2 overflow-hidden rounded-3xl shadow-md">
+      <div className="z-10 -mr-3 flex flex-col justify-end rounded-3xl bg-white p-4">
         <h2>{name}</h2>
         <p className="text-sm text-gray-500">{tag}</p>
-        <center>
-          <Link
-            to={`/course/detail/${element.id}`}
-            className=" h-20 rounded-xl border border-solid border-black px-2"
-          >
-            Ver Curso
-          </Link>
-        </center>
       </div>
-      <img
-        src={url}
-        alt={name}
-        className="h-44 min-h-[176px] w-80 min-w-[320px] object-cover"
-      />
+      <Link to={`/course/detail/${element.id}`} className="-ml-3 h-44">
+        <img
+          src={url}
+          alt={name}
+          className="h-full object-cover object-center brightness-90 grayscale hover:brightness-100 hover:grayscale-0"
+        />
+      </Link>
     </div>
   )
 }
