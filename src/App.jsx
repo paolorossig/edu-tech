@@ -9,6 +9,7 @@ import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
 import RequireAuth from './components/RequireAuth'
 import Mentores from './pages/dashboard/mentores/Index'
+import Mentor from './pages/dashboard/mentores/Mentor'
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
         </Route>
         <Route path="mentores">
           <Route index element={<Mentores />} />
-          <Route path=":mentorId" element={<p></p>} />
+          <Route path=":mentorId" element={<Mentor />} />
         </Route>
         <Route path="checkout" element={<Checkout />} />
       </Route>
