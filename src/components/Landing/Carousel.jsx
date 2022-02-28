@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Navigation } from 'swiper'
+import { Autoplay, Navigation, Pagination } from 'swiper'
 
 import 'swiper/css'
-import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 
 function Carousel({ cursos }) {
   return (
     <Swiper
       pagination={true}
       navigation={true}
-      modules={[Pagination, Navigation]}
+      autoplay={true}
+      modules={[Autoplay, Navigation, Pagination]}
       className="h-[500px] w-[800px]"
     >
       {cursos.map((curso, index) => (
