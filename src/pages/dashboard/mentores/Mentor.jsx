@@ -1,9 +1,9 @@
 import { useParams, Link } from 'react-router-dom'
-
-import { contenido, cursos } from '@/data/cursos.json'
+import { mentores } from '@/data/mentores.json'
 
 function Mentor() {
   const { mentorId } = useParams()
+  const mentor = mentores.find((curso) => curso.id === mentorId)
 
   return (
     <div className="flex flex-1 flex-col px-8">
@@ -16,8 +16,8 @@ function Mentor() {
 
       <section className="content-mentor mx-4 grid h-full grid-cols-12 gap-4">
         <div className="col-span-3 col-start-1">
-          <aside className="sticky top-24 -mt-36">
-            <section className="flex flex-col items-center rounded-md bg-white p-4 shadow-md">
+          <aside className="sticky top-32 -mt-36">
+            <section className="flex flex-col items-center rounded-lg border bg-white p-4 shadow-md">
               <div className="flex flex-col items-center justify-center">
                 <picture className="h-36 w-36 overflow-hidden rounded-full bg-black">
                   <img
@@ -26,9 +26,8 @@ function Mentor() {
                   />
                 </picture>
               </div>
-
-              <h1 className="font-bold">Alexis Mora</h1>
-              <p className="pt-2 underline">{`#FrontEnd`}</p>
+              <h1 className="font-bold">{`${mentor.name}`}</h1>
+              <p className="pt-2 underline">{`#${mentor?.tag}`}</p>
               <p>Disponible</p>
               <p>Perú</p>
               <p>Ver horarios</p>
@@ -37,87 +36,29 @@ function Mentor() {
         </div>
 
         <div className="col-span-7 flex-1">
-          <section className="rounded-md bg-white p-4">
-            <h2>Cursos dictados por ...</h2>
+          <section className="rounded-lg border bg-white px-8 py-4 shadow-sm">
+            <h2 className="pb-4 text-2xl text-slate-600">{`Cursos dictados por ${mentor?.name}`}</h2>
             <ul className="flex flex-col gap-3">
-              <li>
-                <Link to="">
-                  <article className="grid grid-cols-5 items-center gap-2 p-2">
-                    <img
-                      alt="cusro"
-                      src="https://edteam-media.s3.amazonaws.com/courses/original/262e68b3-eea2-43f2-9e9a-febc106a8295.png"
-                    />
-                    <span className="col-span-4">CSS Avanzado</span>
-                  </article>
-                </Link>
-              </li>
+              {Array.from({ length: 20 }, (v, i) => i).map((e, index) => (
+                <li key={index}>
+                  <Link to="/dashboard/cursos">
+                    <article className="grid grid-cols-5 items-center gap-2 border-b p-2">
+                      <img
+                        alt="cusro"
+                        src="https://edteam-media.s3.amazonaws.com/courses/original/262e68b3-eea2-43f2-9e9a-febc106a8295.png"
+                      />
+                      <span className="col-span-4">CSS Avanzado</span>
+                    </article>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </section>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora
-            nostrum fugiat praesentium vero quos. Dicta eius enim distinctio
-            minus maxime quas non! Autem possimus delectus quas. Nemo ipsum quo
-            minima. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Tempora nostrum fugiat praesentium vero quos. Dicta eius enim
-            distinctio minus maxime quas non! Autem possimus delectus quas. Nemo
-            ipsum quo minima. Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. Tempora nostrum fugiat praesentium vero quos.
-            Dicta eius enim distinctio minus maxime quas non! Autem possimus
-            delectus quas. Nemo ipsum quo minima. Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. Tempora nostrum fugiat praesentium
-            vero quos. Dicta eius enim distinctio minus maxime quas non! Autem
-            possimus delectus quas. Nemo ipsum quo minima. Lorem, ipsum dolor
-            sit amet consectetur adipisicing elit. Tempora nostrum fugiat
-            praesentium vero quos. Dicta eius enim distinctio minus maxime quas
-            non! Autem possimus delectus quas. Nemo ipsum quo minima. Lorem,
-            ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum
-            fugiat praesentium vero quos. Dicta eius enim distinctio minus
-            maxime quas non! Autem possimus delectus quas. Nemo ipsum quo
-            minima. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Tempora nostrum fugiat praesentium vero quos. Dicta eius enim
-            distinctio minus maxime quas non! Autem possimus delectus quas. Nemo
-            ipsum quo minima. Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. Tempora nostrum fugiat praesentium vero quos.
-            Dicta eius enim distinctio minus maxime quas non! Autem possimus
-            delectus quas. Nemo ipsum quo minima. Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. Tempora nostrum fugiat praesentium
-            vero quos. Dicta eius enim distinctio minus maxime quas non! Autem
-            possimus delectus quas. Nemo ipsum quo minima. Lorem, ipsum dolor
-            sit amet consectetur adipisicing elit. Tempora nostrum fugiat
-            praesentium vero quos. Dicta eius enim distinctio minus maxime quas
-            non! Autem possimus delectus quas. Nemo ipsum quo minima. Lorem,
-            ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum
-            fugiat praesentium vero quos. Dicta eius enim distinctio minus
-            maxime quas non! Autem possimus delectus quas. Nemo ipsum quo
-            minima. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Tempora nostrum fugiat praesentium vero quos. Dicta eius enim
-            distinctio minus maxime quas non! Autem possimus delectus quas. Nemo
-            ipsum quo minima. Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. Tempora nostrum fugiat praesentium vero quos.
-            Dicta eius enim distinctio minus maxime quas non! Autem possimus
-            delectus quas. Nemo ipsum quo minima. Lorem, ipsum dolor sit amet
-            consectetur adipisicing elit. Tempora nostrum fugiat praesentium
-            vero quos. Dicta eius enim distinctio minus maxime quas non! Autem
-            possimus delectus quas. Nemo ipsum quo minima. Lorem, ipsum dolor
-            sit amet consectetur adipisicing elit. Tempora nostrum fugiat
-            praesentium vero quos. Dicta eius enim distinctio minus maxime quas
-            non! Autem possimus delectus quas. Nemo ipsum quo minima. Lorem,
-            ipsum dolor sit amet consectetur adipisicing elit. Tempora nostrum
-            fugiat praesentium vero quos. Dicta eius enim distinctio minus
-            maxime quas non! Autem possimus delectus quas. Nemo ipsum quo
-            minima. Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-            Tempora nostrum fugiat praesentium vero quos. Dicta eius enim
-            distinctio minus maxime quas non! Autem possimus delectus quas. Nemo
-            ipsum quo minima. Lorem, ipsum dolor sit amet consectetur
-            adipisicing elit. Tempora nostrum fugiat praesentium vero quos.
-            Dicta eius enim distinctio minus maxime quas non! Autem possimus
-            delectus quas. Nemo ipsum quo minima.
-          </p>
         </div>
 
         <div className="col-span-2">
           <section className="flex flex-col gap-3">
-            <span>Cursos Dictados</span>
+            <span>Cursos dictados</span>
             <span>Chat</span>
           </section>
         </div>
