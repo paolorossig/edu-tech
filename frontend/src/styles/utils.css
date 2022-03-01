@@ -1,0 +1,15 @@
+.link {
+  @apply cursor-pointer px-2 py-3 text-gray-500 hover:text-black;
+}
+
+.active {
+  @apply underline decoration-primary decoration-[3px] underline-offset-8;
+}
+
+.btn {
+  @apply rounded-xl bg-gray-300 py-2 px-4 text-gray-500 hover:bg-slate-400 hover:text-white;
+}
+
+.btn_black {
+  @apply rounded-xl bg-black py-2 px-4 text-white hover:bg-gray-700;
+}
