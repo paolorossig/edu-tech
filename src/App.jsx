@@ -6,6 +6,8 @@ import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
+import Mentores from './pages/dashboard/mentores'
+import Mentor from './pages/dashboard/mentores/Mentor'
 import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
@@ -28,6 +30,10 @@ function App() {
         <Route path="cursos">
           <Route index element={<Cursos />} />
           <Route path=":cursoId" element={<Curso />} />
+        </Route>
+        <Route path="mentores">
+          <Route index element={<Mentores />} />
+          <Route path=":mentorId" element={<Mentor />} />
         </Route>
         <Route path="checkout" element={<Checkout />} />
       </Route>
