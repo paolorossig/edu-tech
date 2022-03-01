@@ -23,7 +23,7 @@ function Home() {
           {categories.map((category, index) => (
             <li
               key={index}
-              className="rounded-xl bg-black px-6 py-2 text-white shadow-md hover:bg-primary"
+              className="hover:bg-primary rounded-xl bg-black px-6 py-2 text-white shadow-md"
             >
               {category.name}
             </li>
