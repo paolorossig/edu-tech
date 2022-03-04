@@ -12,6 +12,8 @@ import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
 import StudentConfigAccount from './components/studentConfigAccount'
+import TeacherConfigAccount from './components/TeacherConfigAccount'
+import SelectUser from './pages/SelectUser'
 
 function App() {
   return (
@@ -19,7 +21,12 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/config" element={<StudentConfigAccount />} />
+      <Route path="/selecccionar/usuario" element={<SelectUser />} />
+      <Route path="/configuracion/docente" element={<TeacherConfigAccount />} />
+      <Route
+        path="/configuracion/estudiante"
+        element={<StudentConfigAccount />}
+      />
       <Route
         path="/dashboard"
         element={
