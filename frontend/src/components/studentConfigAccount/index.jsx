@@ -13,7 +13,7 @@ function StudentConfigAccount() {
     <div className="grid h-screen place-content-center text-center">
       <div className="flex overflow-hidden rounded-3xl shadow-md">
         <div className="flex min-w-[300px] flex-col justify-center bg-white p-8">
-          <h1 className="mb-4">Configurar Cuenta</h1>
+          <h1 className="mb-4">Configurar cuenta de estudiante</h1>
           <form
             className="grid grid-cols-2 gap-3"
             onSubmit={handleSubmit(onSubmit)}
@@ -37,7 +37,7 @@ function StudentConfigAccount() {
               <label>Apellido Paterno: </label>
               <input
                 type="text"
-                placeholder="Ingrese Apellido Paterno"
+                placeholder="Ingrese apellido paterno"
                 {...register('apellidoPaterno', {
                   required: 'Campo Requerido'
                 })}
@@ -56,7 +56,7 @@ function StudentConfigAccount() {
               <label>Apellido Materno: </label>
               <input
                 type="text"
-                placeholder="Ingrese Apellido Materno"
+                placeholder="Ingrese apellido materno"
                 {...register('apellidoMaterno', {
                   required: 'Campo Requerido'
                 })}
@@ -95,7 +95,7 @@ function StudentConfigAccount() {
               <label>Fecha de Nacimiento: </label>
               <input
                 type="date"
-                placeholder="Seleccione su fecha de Nacimiento"
+                placeholder="Seleccione su fecha de nacimiento"
                 {...register('fechaNacimiento', {
                   required: 'Campo Requerido'
                 })}
@@ -131,7 +131,7 @@ function StudentConfigAccount() {
               <label>Celular: </label>
               <input
                 type="number"
-                placeholder="Ingrese numero de celular."
+                placeholder="Ingrese numero de celular"
                 {...register('phoneNumber', {
                   required: 'Campo Requerido'
                 })}
