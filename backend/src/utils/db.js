@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
+import 'dotenv/config'
 
 export function connectDb() {
   const url = process.env.MONGO_URL
-
   mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
