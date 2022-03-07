@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
 import StudentConfigAccount from './components/studentConfigAccount'
+import Lesson from './pages/dashboard/lessons/Lessons'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="cursos">
           <Route index element={<Cursos />} />
           <Route path=":cursoId" element={<Curso />} />
+          <Route path=":cursoId/:lessonId" element={<Lesson />} />
         </Route>
         <Route path="mentores">
           <Route index element={<Mentores />} />
