@@ -14,7 +14,8 @@ import DashboardLayout from './components/Layouts/DashboardLayout'
 import StudentConfigAccount from './components/studentConfigAccount'
 import Teacher from './pages/teacher/Teacher'
 import ListTeacher from './pages/teacher/ListTeacher'
-import CoursesTeacher from './pages/teacher/CoursesTeacher'
+import ListofCourse from './pages/teacher/components/ListofCourse'
+import Courses from './pages/teacher/CoursesTeacher'
 
 function App() {
   return (
@@ -42,11 +43,12 @@ function App() {
         </Route>
         <Route path="checkout" element={<Checkout />} />
       </Route>
-      <Route path="*" element={<NotFound />} />
       <Route path="/teacher" element={<Teacher />}>
         <Route index element={<ListTeacher />} />
-        <Route path="cursos" element={<CoursesTeacher />} />
-        </Route>
+        <Route path="Cursos" element={<ListofCourse />} />
+        <Route path="createCourse" element={<Courses />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }
