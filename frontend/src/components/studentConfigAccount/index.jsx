@@ -1,6 +1,10 @@
 import { useForm } from 'react-hook-form'
+import { useState } from 'react'
+import { MultiSelect } from 'react-multi-select-component'
+import { categories } from '@/data/categorias.json'
 
 function StudentConfigAccount() {
+  const [selected, setSelected] = useState([])
   const {
     register,
     handleSubmit,
@@ -8,6 +12,13 @@ function StudentConfigAccount() {
   } = useForm()
   function onSubmit(formData) {
     console.log('Data', formData)
+  }
+  function categoriesStructure(categorias) {
+    const newData = []
+    categorias.forEach((val) => {
+      newData.push({ label: val.name, value: val })
+    })
+    return newData
   }
   return (
     <div className="grid h-screen place-content-center text-center">
@@ -34,6 +45,17 @@ function StudentConfigAccount() {
               )}
             </div>
             <div className="text-left">
+              <label>Categorias de Preferencia</label>
+              {/* <pre>{JSON.stringify(selected)}</pre> */}
+              <MultiSelect
+                options={categoriesStructure(categories)}
+                value={selected}
+                onChange={setSelected}
+                labelledBy="Seleccionar categorias de interes."
+              />
+            </div>
+
+            <div className="text-left">
               <label>Apellido Paterno: </label>
               <input
                 type="text"
@@ -49,25 +71,6 @@ function StudentConfigAccount() {
               {errors?.apellidoPaterno?.message && (
                 <p className="text-red-600">
                   {errors?.apellidoPaterno?.message}
-                </p>
-              )}
-            </div>
-            <div className="text-left">
-              <label>Apellido Materno: </label>
-              <input
-                type="text"
-                placeholder="Ingrese apellido materno"
-                {...register('apellidoMaterno', {
-                  required: 'Campo Requerido'
-                })}
-                className={`${
-                  errors?.apellidoMaterno &&
-                  'border-red-600 focus:border-red-600 focus:ring-red-600'
-                }`}
-              />
-              {errors?.apellidoMaterno?.message && (
-                <p className="text-red-600">
-                  {errors?.apellidoMaterno?.message}
                 </p>
               )}
             </div>
@@ -91,6 +94,26 @@ function StudentConfigAccount() {
                 <p className="text-red-600">{errors?.sexo?.message}</p>
               )}
             </div>
+            <div className="text-left">
+              <label>Apellido Materno: </label>
+              <input
+                type="text"
+                placeholder="Ingrese apellido materno"
+                {...register('apellidoMaterno', {
+                  required: 'Campo Requerido'
+                })}
+                className={`${
+                  errors?.apellidoMaterno &&
+                  'border-red-600 focus:border-red-600 focus:ring-red-600'
+                }`}
+              />
+              {errors?.apellidoMaterno?.message && (
+                <p className="text-red-600">
+                  {errors?.apellidoMaterno?.message}
+                </p>
+              )}
+            </div>
+
             <div className="text-left">
               <label>Fecha de Nacimiento: </label>
               <input
@@ -164,6 +187,7 @@ function StudentConfigAccount() {
                 <p className="text-red-600">{errors?.country?.message}</p>
               )}
             </div>
+
             <div className="text-left">
               <label>Foto de Portada: </label>
               <input
