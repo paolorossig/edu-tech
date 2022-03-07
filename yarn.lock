@@ -2840,6 +2840,11 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-multi-select-component@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/react-multi-select-component/-/react-multi-select-component-4.2.3.tgz#ee8b5ee1bba6c67c38bb5bb6bbfefd2e8ef19d7d"
+  integrity sha512-NM8ZaSRXFxjWXSld41cg2k3AhEQhakTuPTQXpkkJHCfmgfwAkuKOxP7uAeMmBZcx6k12w8g3YsDVgz5mSXZvpA==
+
 react-player@2.9.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/react-player/-/react-player-2.9.0.tgz#ef7fe7073434087565f00ff219824e1e02c4b046"
