@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -6,12 +6,14 @@ import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
-import Mentores from './pages/dashboard/mentores'
-import Mentor from './pages/dashboard/mentores/Mentor'
+import Mentors from './pages/dashboard/mentors'
+import Mentor from './pages/dashboard/mentors/mentor'
 import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
 import StudentConfigAccount from './components/studentConfigAccount'
+import Courses from './pages/dashboard/mentors/mentor/options/Courses'
+import Chat from './pages/dashboard/mentors/mentor/options/Chat'
 
 function App() {
   return (
@@ -34,8 +36,12 @@ function App() {
           <Route path=":cursoId" element={<Curso />} />
         </Route>
         <Route path="mentores">
-          <Route index element={<Mentores />} />
-          <Route path=":mentorId" element={<Mentor />} />
+          <Route index element={<Mentors />} />
+          <Route path=":mentorId" element={<Mentor />}>
+            <Route index element={<Navigate to="courses" />} />
+            <Route path="courses" element={<Courses />} />
+            <Route path="chat" element={<Chat />} />
+          </Route>
         </Route>
         <Route path="checkout" element={<Checkout />} />
       </Route>
