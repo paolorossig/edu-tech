@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom'
 import Header from '@/components/Header'
 import Sidebar from '@/components/Sidebar'
-import { alumnosNavConfig } from '@/pages/dashboard/layoutConfig'
 
-function DashboardLayout() {
-  const { links, buttons } = alumnosNavConfig()
+function DashboardLayout({ navConfig }) {
+  const { links, buttons } = navConfig()
 
   return (
     <div className="flex h-full w-full">
