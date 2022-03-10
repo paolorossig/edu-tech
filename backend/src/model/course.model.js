@@ -2,20 +2,20 @@ import mongoose from 'mongoose'
 
 const courseSchema = new mongoose.Schema(
   {
-    course_name: { type: String },
-    course_description: { type: String },
-    course_category: { type: String },
-    course_keywords: { type: String },
-    course_price: { type: String },
-    course_numberlessons: { type: String },
-    course_language: { type: String },
-    course_imageURL: { type: String },
-    course_IDteacher: { type: String },
-    course_score: { type: String }
+    courseName: { type: String },
+    courseDescription: { type: String },
+    courseCategory: { type: String },
+    courseKeywords: { type: String },
+    coursePrice: { type: String },
+    courseNumberLessons: { type: String },
+    courseLanguage: { type: String },
+    courseImageURL: { type: String },
+    courseIdTeacher: { type: String },
+    courseScore: { type: String }
   },
   { timestamps: true }
 )
 
-const Coursem = mongoose.model('Coursem', courseSchema)
+const Course = mongoose.model('Course', courseSchema)
 
-export default Coursem
+export default Course

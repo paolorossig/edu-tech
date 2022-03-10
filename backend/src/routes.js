@@ -1,8 +1,8 @@
 import { signUp } from './controller/user.controller.js'
 import { getUserSession, login } from './controller/session.controller.js'
 import requireUser from './middleware/requireUser.js'
-import { createCoursec } from './controller/createcourse.controller.js'
-import requirecourse from './middleware/requireCourse.js'
+import { createCourse, getCourses } from './controller/course.controller.js'
+
 function routes(app) {
   app.get('/healthcheck', (req, res) => res.sendStatus(200))
 
@@ -10,9 +10,8 @@ function routes(app) {
   app.post('/api/sessions', login)
   app.get('/api/sessions', requireUser, getUserSession)
 
-  
-  app.post('/api/createcourse', createCoursec)
-  app.get('/api/getcourses', requirecourse)
+  app.post('/api/courses', createCourse)
+  app.get('/api/courses', getCourses)
 
   app.use((req, res) => {
     console.log('catch 404')

@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import 'dotenv/config'
 
 const { PRIVATE_KEY, PUBLIC_KEY, ACCESS_TOKEN_TTL, REFRESH_TOKEN_TTL } =
   process.env
