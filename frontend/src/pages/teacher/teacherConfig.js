@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 export function teacherNavConfig() {
   return {
     links: [
@@ -67,11 +66,9 @@ export const notificacions_Teacher = [
 ]
 
 export const category_courses = [
-  {
-    CatCourses: 'Development',
-    CatCourses: 'Math',
-    CatCourses: 'Deport',
-    CatCourses: 'Software',
-    CatCourses: 'Javascript'
-  }
+  'Development',
+  'Math',
+  'Deport',
+  'Software',
+  'Javascript'
 ]

@@ -1,7 +1,11 @@
-import CreateCourse from './components/CreateCourse'
+import CreateCourse from '@/components/Teacher/CreateCourse'
 
-function Courses() {
-  return <div>{<CreateCourse />}</div>
+function CoursesTeacher() {
+  return (
+    <div className="mx-8 mt-4">
+      <CreateCourse />
+    </div>
+  )
 }
 
-export default Courses
+export default CoursesTeacher

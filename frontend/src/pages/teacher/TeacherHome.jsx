@@ -1,19 +1,17 @@
-import Card from '../../components/Card'
-import TableTeacher from '../teacher/components/TableTeacher'
+import Card from '@/components/Card'
+import TableTeacher from '@/components/Teacher/TableTeacher'
 import { cursosestadisticas, cursosTeacher } from './teacherConfig'
 
-function ListTeacher() {
+function TeacherHome() {
   return (
-    <div>
-      <h1>Tus cursos</h1>
-      <br></br>
-      <div className="flex gap-8">
+    <div className="mx-8 mt-4">
+      <h1 className="mb-4">Tus cursos</h1>
+      <div className="mb-4 flex gap-8">
         {cursosTeacher.map((curso, index) => (
           <Card element={curso} key={index} />
         ))}
       </div>
-      <br></br>
-      <h1>Estadistica de tus cursos</h1>
+      <h1>Estadísticas de tus cursos</h1>
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -49,9 +47,8 @@ function ListTeacher() {
           ))}
         </tbody>
       </table>
-      <br></br>
     </div>
   )
 }
 
-export default ListTeacher
+export default TeacherHome
