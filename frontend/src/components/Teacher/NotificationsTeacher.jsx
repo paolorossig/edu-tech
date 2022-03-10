@@ -1,18 +1,14 @@
-import { useState } from 'react'
+import useToggle from '@/hooks/useToggle'
 
 function notificationTeacher() {
-  const [dropDown, setDropDown] = useState(false)
-
-  const dropDownOpen = () => {
-    setDropDown(!dropDown)
-    }
+  const [dropDown, toggleDropDown] = useToggle()
 
   return (
     <div>
       <div className="flex cursor-pointer gap-2">
         <div x-data={`${dropDown}`} className="flex">
           <button
-            onClick={dropDownOpen}
+            onClick={toggleDropDown}
             className="relative z-10 rounded-md p-2 focus:outline-none"
           >
             <svg
@@ -25,20 +21,16 @@ function notificationTeacher() {
             </svg>
           </button>
 
-          <div x-show={`${dropDown}`} onClick={dropDownOpen}></div>
-          {dropDown ? (
+          <div x-show={`${dropDown}`} onClick={toggleDropDown}></div>
+          {dropDown && (
             <div
               x-show="dropdownOpen"
-              className="
-              overflow-y-scroll
-              relative top-20
-              p-4
-              items-center
-              rounded-xl
-              bg-white
-              shadow-md"
-              style={{width: "20em", position: "absolute", right: "calc(19%)"}}
-
+              className="relative top-20 items-center overflow-y-scroll rounded-xl bg-white p-4 shadow-md"
+              style={{
+                width: '20em',
+                position: 'absolute',
+                right: 'calc(19%)'
+              }}
             >
               <div className="py-4">
                 <a
@@ -65,8 +57,6 @@ function notificationTeacher() {
                 Ver todas las notificaciones
               </a>
             </div>
-          ) : (
-            ''
           )}
         </div>
       </div>

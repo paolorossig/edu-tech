@@ -1,42 +1,32 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from '@/utils/axios'
+import { createCourse } from '@/services/courses'
+import Button from '@/components/Button'
 
-export default function RegisterCourse() {
+function RegisterCourse() {
   const navigate = useNavigate()
   const [value, setValue] = useState({
-    course_name: '',
-    course_description: '',
-    course_category: '',
-    course_keywords: ''
+    courseName: '',
+    courseDescription: '',
+    courseCategory: '',
+    courseKeywords: ''
   })
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     setValue({
       ...value,
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     })
-    console.log(event.target.name, event.target.value)
-    console.log(value)
   }
 
-  const urlApi = 'http://localhost:4000/api/createcourse'
-
-  const RegisterCourse = (e) => {
+  const handleCreateCourse = async (e) => {
     e.preventDefault()
-    axios
-      .post(urlApi, value, {})
-      .then(function (response) {
-        console.log(response)
-        navigate('/teacher/ListofCourse')
-      })
-      .catch(function (error) {
-        console.log(error)
-      })
+    const response = await createCourse(value)
+    if (response.success) return navigate('/teacher/cursos')
   }
 
   return (
-    <form className="w-full max-w-lg " onSubmit={RegisterCourse}>
+    <form className="w-full max-w-lg " onSubmit={handleCreateCourse}>
       <h1>Crea un curso nuevo</h1>
       <br></br>
       <h2 className="font-xs">Informacion General</h2>
@@ -52,12 +42,12 @@ export default function RegisterCourse() {
           </label>
           <input
             type="text"
-            className="mb-3 block w-full appearance-none rounded border border-red-500 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
+            name="courseName"
             placeholder="Nombre del curso"
-            name="course_name"
-            value={value.course_name}
+            value={value.courseName}
             onChange={handleChange}
-          ></input>
+            className="mb-3 block w-full appearance-none rounded border border-red-500 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:bg-white focus:outline-none"
+          />
           <p className="text-xs italic text-red-500">*Campo obligatorio.</p>
         </div>
         <div className="w-full px-3 md:w-1/2">
@@ -69,11 +59,11 @@ export default function RegisterCourse() {
           </label>
           <select
             id="category"
-            className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
+            name="courseCategory"
             htmlFor="grid-category"
-            name="course_category"
-            value={value.course_category}
+            value={value.courseCategory}
             onChange={handleChange}
+            className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
           >
             <option>Seleccione la categoria</option>
             <option>Desarrollo App Web</option>
@@ -95,14 +85,14 @@ export default function RegisterCourse() {
             Palabras clave
           </label>
           <input
-            className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-            id="grid-key-words"
             type="text"
+            id="grid-key-words"
+            name="courseKeywords"
             placeholder="Palabras clave"
-            value={value.course_keywords}
+            value={value.courseKeywords}
             onChange={handleChange}
-            name="course_keywords"
-          ></input>
+            className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+          />
           <p className="text-xs italic text-gray-600">
             Debe ingresar las palabras claves que se relacionan al curso que
             desea crear
@@ -116,14 +106,14 @@ export default function RegisterCourse() {
         DESCRIPCION DEL CURSO
       </label>
       <input
-        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
-        id="grid-description"
         type="text"
+        id="grid-description"
+        name="courseDescription"
         placeholder="Describa los temas que abarca el curso"
-        name="course_description"
-        value={value.course_description}
+        value={value.courseDescription}
         onChange={handleChange}
-      ></input>
+        className="mb-3 block w-full appearance-none rounded border border-gray-200 bg-gray-200 py-3 px-4 leading-tight text-gray-700 focus:border-gray-500 focus:bg-white focus:outline-none"
+      />
       <label
         className="mb-2 block text-xs font-bold uppercase tracking-wide text-gray-700"
         htmlFor="grid-category"
@@ -147,18 +137,10 @@ export default function RegisterCourse() {
           <input type="file" className="hidden" />
         </label>
       </div>
-
       <br></br>
-      <br></br>
-      <br></br>
-      <button
-        type="submit"
-        className="flex items-center justify-center rounded-xl border border-gray-300 px-8 py-2"
-      >
-        <p className="text-gray-500">Guardar</p>
-      </button>
-
-      <br></br>
+      <Button type="submit">Guardar</Button>
     </form>
   )
 }
+
+export default RegisterCourse

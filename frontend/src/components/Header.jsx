@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { BsCartPlusFill } from 'react-icons/bs'
 import Dropdown from './Dropdown'
-import NotificationTeacher from '@/pages/teacher/components/NotificationsTeacher'
+import NotificationTeacher from '@/components/Teacher/NotificationsTeacher'
 
 function Header() {
   return (

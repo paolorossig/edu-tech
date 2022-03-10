@@ -1,5 +1,6 @@
 function tableTeacher({ element }) {
   const { curso, matriculados, enlinea, conectadoshoy, url } = element
+
   return (
     <tr>
       <td className="whitespace-nowrap px-6 py-4">
