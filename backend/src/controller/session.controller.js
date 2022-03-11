@@ -18,7 +18,15 @@ export async function login(req, res) {
     'refreshToken'
   )
 
-  return res.send({ accessToken, refreshToken })
+  res.cookie('jwt', refreshToken, {
+    httpOnly: true,
+    // maxAge: 1000 * 60 * 60 * 24,
+    sameSite: 'strict',
+    path: '/'
+    // secure: true
+  })
+
+  return res.send({ accessToken })
 }
 
 export async function getUserSession(req, res) {
@@ -26,7 +34,7 @@ export async function getUserSession(req, res) {
 
   const sessions = await findSessions({ user: userId, valid: true })
 
-  return res.send(sessions)
+  return res.send({ sessions })
 }
 
 export async function deleteSession(req, res) {
@@ -34,5 +42,5 @@ export async function deleteSession(req, res) {
 
   await updateSession({ _id: sessionId }, { valid: false })
 
-  return res.send({ accessToken: null, refreshToken: null })
+  return res.clearCookie('jwt').send({ message: 'Sesión eliminada' })
 }
