@@ -25,22 +25,24 @@ function Curso() {
                 : 'bg-black'
 
             return (
-              <li className="flex items-center gap-8" key={id}>
-                <div
-                  className={`${bgColor} flex h-20 w-20 items-center justify-center rounded-full text-3xl text-white`}
-                >
-                  {id}
-                </div>
-                <div className="flex-1">
-                  <h3>{title}</h3>
-                  <p className="text-gray-500">{length}</p>
-                </div>
-                <div>
-                  <p className="text-gray-500">
-                    {completed}/{exercises}
-                  </p>
-                </div>
-              </li>
+              <Link to={`/dashboard/cursos/${cursoId}/${id}`} key={id}>
+                <li className="flex items-center gap-8">
+                  <div
+                    className={`${bgColor} flex h-20 w-20 items-center justify-center rounded-full text-3xl text-white`}
+                  >
+                    {id}
+                  </div>
+                  <div className="flex-1">
+                    <h3>{title}</h3>
+                    <p className="text-gray-500">{length}</p>
+                  </div>
+                  <div>
+                    <p className="text-gray-500">
+                      {completed}/{exercises}
+                    </p>
+                  </div>
+                </li>
+              </Link>
             )
           })}
         </ul>

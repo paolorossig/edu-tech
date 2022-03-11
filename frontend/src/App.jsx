@@ -8,6 +8,7 @@ import Curso from './pages/dashboard/cursos/Curso'
 import Checkout from './pages/dashboard/Checkout'
 import Mentores from './pages/dashboard/mentores'
 import Mentor from './pages/dashboard/mentores/Mentor'
+import Lesson from './pages/dashboard/lessons/Lessons'
 import TeacherHome from './pages/teacher/TeacherHome'
 import CoursesTeacher from './pages/teacher/CoursesTeacher'
 import NotFound from './pages/NotFound'
@@ -38,6 +39,7 @@ function App() {
         <Route path="cursos">
           <Route index element={<Cursos />} />
           <Route path=":cursoId" element={<Curso />} />
+          <Route path=":cursoId/:lessonId" element={<Lesson />} />
         </Route>
         <Route path="mentores">
           <Route index element={<Mentores />} />
