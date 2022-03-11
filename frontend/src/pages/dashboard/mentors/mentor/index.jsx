@@ -51,8 +51,8 @@ function Mentor() {
                 to="courses"
                 className={({ isActive }) =>
                   isActive
-                    ? ' flex cursor-pointer flex-row gap-1 text-base text-blue-600'
-                    : ' flex cursor-pointer flex-row gap-1 text-base'
+                    ? 'flex cursor-pointer flex-row items-center gap-1 text-base text-blue-600'
+                    : 'flex cursor-pointer flex-row items-center gap-1 text-base'
                 }
               >
                 <CoursesSVG />
@@ -64,8 +64,8 @@ function Mentor() {
                 to="chat"
                 className={({ isActive }) =>
                   isActive
-                    ? ' flex cursor-pointer flex-row gap-1 text-base text-blue-600'
-                    : ' flex cursor-pointer flex-row gap-1 text-base'
+                    ? 'flex cursor-pointer flex-row gap-1 text-base text-blue-600'
+                    : 'flex cursor-pointer flex-row gap-1 text-base'
                 }
               >
                 <ChatSVG />
