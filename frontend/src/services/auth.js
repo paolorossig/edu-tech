@@ -29,7 +29,29 @@ export async function signup(user) {
 
 export async function login(user) {
   try {
-    const response = await axios.post('/api/sessions', user)
+    const response = await axios.post('/api/sessions', user, {
+      withCredentials: true
+    })
+
+    if (response.status !== 200)
+      return { success: false, formErrors: response.data }
+
+    return { success: true, ...response.data }
+  } catch (error) {
+    const { status, data } = error.response
+
+    return {
+      success: false,
+      error: errorMessages[status]
+        ? errorMessages[status](data)
+        : defaultErrorMessage
+    }
+  }
+}
+
+export async function getUserSessions(axiosPrivate) {
+  try {
+    const response = await axiosPrivate.get('/api/sessions')
 
     if (response.status !== 200)
       return { success: false, formErrors: response.data }

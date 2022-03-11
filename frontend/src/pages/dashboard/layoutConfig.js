@@ -2,6 +2,7 @@ export function alumnosNavConfig() {
   return {
     links: [
       { path: '.', name: 'Inicio' },
+      { path: 'sesiones', name: 'Sesiones' },
       { path: 'cursos', name: 'Cursos' },
       { path: 'mentores', name: 'Mentores' },
       { path: 'actividades', name: 'Actividades' },

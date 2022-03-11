@@ -5,6 +5,7 @@ import Signup from './pages/Signup'
 import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
+import Sessions from './pages/dashboard/Sessions'
 import Checkout from './pages/dashboard/Checkout'
 import Mentors from './pages/dashboard/mentors'
 import Mentor from './pages/dashboard/mentors/mentor'
@@ -51,6 +52,7 @@ function App() {
             <Route path="chat" element={<Chat />} />
           </Route>
         </Route>
+        <Route path="sesiones" element={<Sessions />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
 
