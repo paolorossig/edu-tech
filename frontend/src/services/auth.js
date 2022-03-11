@@ -29,7 +29,7 @@ export async function signup(user) {
 
 export async function login(user) {
   try {
-    const response = await axios.post('/api/users', user)
+    const response = await axios.post('/api/sessions', user)
 
     if (response.status !== 200)
       return { success: false, formErrors: response.data }
