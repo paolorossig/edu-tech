@@ -3,6 +3,7 @@ import express, { json } from 'express'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import routes from './routes.js'
+import log from './utils/logger.js'
 import { connectDb } from './utils/db.js'
 import deserializeUser from './middleware/deserializeUser.js'
 
@@ -20,7 +21,7 @@ app.use(cookieParser())
 app.use(deserializeUser)
 
 app.listen(port, () => {
-  console.log(`Server listening on http://localhost:${port}`)
+  log.info(`Server listening on http://localhost:${port}`)
   connectDb()
   routes(app)
 })

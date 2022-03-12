@@ -1,14 +1,15 @@
+import log from '../utils/logger.js'
 import { verifyJwt } from '../utils/jwt.js'
 import { reIssueAccessToken } from '../service/session.service.js'
 
 const deserializeUser = async (req, res, next) => {
-  console.log('In deserializeUser------------')
+  log.trace('In deserializeUser------------')
   const accessToken = req.headers.authorization?.replace('Bearer', '').trim()
   const refreshToken = req.cookies?.jwt
 
   if (!accessToken && !refreshToken) {
-    console.log('No Acess Token or Refresh Token')
-    console.log('Out deserializeUser------------')
+    log.warn('No Acess Token or Refresh Token')
+    log.trace('Out deserializeUser------------')
     return next()
   }
 
@@ -17,15 +18,16 @@ const deserializeUser = async (req, res, next) => {
 
   if (decoded) {
     res.locals.user = decoded
-    console.log('Access Token Decoded')
+    log.info('Access Token Decoded')
   }
 
   if (expired && refreshToken) {
-    console.log('No Access Token or expired but with Refresh Token')
+    log.warn('No Access Token or it is expired but with Refresh Token')
     const newAccessToken = await reIssueAccessToken({ refreshToken })
 
     if (newAccessToken) {
-      console.log('New Acces Token:', newAccessToken)
+      const child = log.child({ newAccessToken })
+      child.info('New Acces Token:')
       res.setHeader('x-access-token', newAccessToken)
     }
 
@@ -34,7 +36,7 @@ const deserializeUser = async (req, res, next) => {
     res.locals.user = result.decoded
   }
 
-  console.log('Out deserializeUser------------')
+  log.trace('Out deserializeUser------------')
   return next()
 }
 

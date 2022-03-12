@@ -2,6 +2,7 @@ import { signUp } from './controller/user.controller.js'
 import { getUserSession, login } from './controller/session.controller.js'
 import requireUser from './middleware/requireUser.js'
 import { createCourse, getCourses } from './controller/course.controller.js'
+import log from './utils/logger.js'
 
 function routes(app) {
   app.get('/healthcheck', (req, res) => res.sendStatus(200))
@@ -14,7 +15,7 @@ function routes(app) {
   app.get('/api/courses', getCourses)
 
   app.use((req, res) => {
-    console.log('catch 404')
+    log.error('catch 404')
     res.send('404')
   })
 }

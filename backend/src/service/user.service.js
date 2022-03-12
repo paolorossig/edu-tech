@@ -1,4 +1,5 @@
 import User from '../model/user.model.js'
+import log from '../utils/logger.js'
 
 const omitPassword = (user) => {
   // eslint-disable-next-line no-unused-vars
@@ -22,7 +23,9 @@ export async function validatePassword({ email, password }) {
 
   const isValid = await user.comparePassword(password)
   if (!isValid) return false
-  console.log(omitPassword(user._doc))
+
+  const child = log.child(omitPassword(user._doc))
+  child.info('User logged in')
 
   return omitPassword(user._doc)
 }

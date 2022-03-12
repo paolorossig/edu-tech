@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+import log from './logger.js'
 
 const { PRIVATE_KEY, PUBLIC_KEY, ACCESS_TOKEN_TTL, REFRESH_TOKEN_TTL } =
   process.env
@@ -22,7 +23,7 @@ export function verifyJwt(token) {
       decoded
     }
   } catch (error) {
-    console.log(error.message)
+    log.error(error.message)
     return {
       valid: false,
       expired: error.message === 'jwt expired',
