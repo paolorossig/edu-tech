@@ -12,7 +12,11 @@ const clientUrl = process.env.CLIENT_URL
 
 const app = express()
 
-const corsOptions = { origin: clientUrl, credentials: true }
+const corsOptions = {
+  origin: clientUrl,
+  credentials: true,
+  exposedHeaders: ['X-access-token']
+}
 
 // Middlewares
 app.use(json())
