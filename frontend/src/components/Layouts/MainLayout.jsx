@@ -5,7 +5,7 @@ function MainLayout({ children }) {
   return (
     <>
       <Header />
-      <main className="mx-auto flex w-full flex-col items-center gap-20 p-4 xl:w-[1280px]">
+      <main className="mx-auto flex w-full flex-col items-center gap-10 p-4 md:gap-20 xl:w-[1280px]">
         {children}
       </main>
       <Footer />

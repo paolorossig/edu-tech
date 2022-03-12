@@ -4,7 +4,7 @@ import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 function Footer() {
   return (
-    <footer className="z-20 mt-10 grid grid-rows-3 items-center justify-items-center gap-2 rounded-t-3xl bg-white p-4 shadow-md sm:grid-cols-3 sm:grid-rows-1">
+    <footer className="z-20 mt-5 grid grid-rows-3 items-center justify-items-center gap-2 rounded-t-3xl bg-white p-4 shadow-md sm:grid-cols-3 sm:grid-rows-1 md:mt-10">
       <img src={logo} alt="logo" className="h-full cursor-pointer" />
       <div>edutech.vercel.app © {new Date().getFullYear()}</div>
       <div className="flex gap-6">
