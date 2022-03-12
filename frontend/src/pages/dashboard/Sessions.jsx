@@ -19,9 +19,10 @@ function Sessions() {
       <h1>Sessions</h1>
       <ul>
         {sessions.map((session) => (
-          <li key={session._id}>
+          <li key={session._id} className="flex gap-4">
             <p>{session._id}</p>
             <p>{session.createdAt}</p>
+            <p>{session.isValid}</p>
           </li>
         ))}
       </ul>

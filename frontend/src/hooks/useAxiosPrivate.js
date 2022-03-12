@@ -3,12 +3,11 @@ import useAuth from './useAuth'
 import { axiosPrivate } from '@/utils/axios'
 
 function useAxiosPrivate() {
-  const { auth } = useAuth()
+  const { auth, setAuth } = useAuth()
 
   useEffect(() => {
     const requestIntercept = axiosPrivate.interceptors.request.use(
       (req) => {
-        console.log('req intercepted')
         if (!req.headers['Authorization']) {
           req.headers['Authorization'] = `Bearer ${auth?.accessToken}`
         }
@@ -19,7 +18,12 @@ function useAxiosPrivate() {
 
     const responseIntercept = axiosPrivate.interceptors.response.use(
       (res) => {
-        console.log(res.headers)
+        res.headers['x-access-token'] &&
+          setAuth((prev) => ({
+            ...prev,
+            accessToken: res.headers['x-access-token']
+          }))
+
         return res
       },
       (error) => Promise.reject(error) // ToDo: add retry logic

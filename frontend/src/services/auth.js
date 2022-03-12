@@ -52,9 +52,25 @@ export async function login(user) {
 export async function getUserSessions(axiosPrivate) {
   try {
     const response = await axiosPrivate.get('/api/sessions')
+    if (response.status !== 200) return { success: false }
 
-    if (response.status !== 200)
-      return { success: false, formErrors: response.data }
+    return { success: true, ...response.data }
+  } catch (error) {
+    const { status, data } = error.response
+
+    return {
+      success: false,
+      error: errorMessages[status]
+        ? errorMessages[status](data)
+        : defaultErrorMessage
+    }
+  }
+}
+
+export async function deleteUserSession(axiosPrivate) {
+  try {
+    const response = await axiosPrivate.delete('/api/sessions')
+    if (response.status !== 200) return { success: false }
 
     return { success: true, ...response.data }
   } catch (error) {
