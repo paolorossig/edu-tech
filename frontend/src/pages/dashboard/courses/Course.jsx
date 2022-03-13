@@ -1,22 +1,22 @@
 import { useParams, Link } from 'react-router-dom'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
-import { contenido, cursos } from '@/data/cursos.json'
+import { cursos } from '@/data/cursos.json'
 
-function Curso() {
-  const { cursoId } = useParams()
-  const { name } = cursos.find((curso) => curso.id === cursoId)
+function Course() {
+  const { courseId } = useParams()
+  const { name, lessons } = cursos.find((course) => course.id === courseId)
 
   return (
     <ContentPageLayout>
       <ContentPageLayout.Title>
-        <Link to="/dashboard/cursos">Cursos</Link> / {name}
+        <Link to="/dashboard/courses">Cursos</Link> / {name}
       </ContentPageLayout.Title>
       <ContentPageLayout.Paper>
         <h2 className="text-gray-500">Contenido:</h2>
         <ul className="m-8 flex flex-col gap-8">
-          {contenido.map((step) => {
-            const { id, title, length, completed, exercises } = step
+          {lessons.map((lesson) => {
+            const { id: lessonId, title, length, completed, exercises } = lesson
 
             const bgColor =
               completed === exercises
@@ -26,12 +26,12 @@ function Curso() {
                 : 'bg-black'
 
             return (
-              <Link to={`/dashboard/cursos/${cursoId}/${id}`} key={id}>
+              <Link to={`${lessonId}`} key={lessonId}>
                 <li className="flex items-center gap-8">
                   <div
                     className={`${bgColor} flex h-20 w-20 items-center justify-center rounded-full text-3xl text-white`}
                   >
-                    {id}
+                    {lessonId}
                   </div>
                   <div className="flex-1">
                     <h3>{title}</h3>
@@ -52,4 +52,4 @@ function Curso() {
   )
 }
 
-export default Curso
+export default Course

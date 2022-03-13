@@ -12,7 +12,7 @@ function Inicio() {
         <h1 className="mb-8">Mis cursos</h1>
         <div className="scrollbar-hide flex gap-8 overflow-y-hidden overflow-x-scroll">
           {cursos.map((curso) => (
-            <Link to={`cursos/${encodeURIComponent(curso.id)}`} key={curso.id}>
+            <Link to={`courses/${encodeURIComponent(curso.id)}`} key={curso.id}>
               <Card element={curso} />
             </Link>
           ))}

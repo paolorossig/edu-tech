@@ -3,7 +3,7 @@ import Card from '@/components/Card'
 
 import { cursos } from '@/data/cursos.json'
 
-function Cursos() {
+function Courses() {
   return (
     <div>
       <h1 className="mb-8">Cursos</h1>
@@ -18,4 +18,4 @@ function Cursos() {
   )
 }
 
-export default Cursos
+export default Courses

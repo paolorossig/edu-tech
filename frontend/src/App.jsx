@@ -3,13 +3,13 @@ import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Inicio from './pages/dashboard/Inicio'
-import Cursos from './pages/dashboard/cursos'
-import Curso from './pages/dashboard/cursos/Curso'
+import Courses from './pages/dashboard/courses'
+import Course from './pages/dashboard/courses/Course'
+import Lesson from './pages/dashboard/courses/Lesson'
 import Checkout from './pages/dashboard/Checkout'
 import Mentors from './pages/dashboard/mentors'
 import Mentor from './pages/dashboard/mentors/mentor'
-import Lesson from './pages/dashboard/lessons/Lessons'
-import Courses from './pages/dashboard/mentors/mentor/options/Courses'
+import MentorCourses from './pages/dashboard/mentors/mentor/options/MentorCourses'
 import Chat from './pages/dashboard/mentors/mentor/options/Chat'
 import TeacherHome from './pages/teacher/TeacherHome'
 import CoursesTeacher from './pages/teacher/CoursesTeacher'
@@ -38,16 +38,16 @@ function App() {
         }
       >
         <Route index element={<Inicio />} />
-        <Route path="cursos">
-          <Route index element={<Cursos />} />
-          <Route path=":cursoId" element={<Curso />} />
-          <Route path=":cursoId/:lessonId" element={<Lesson />} />
+        <Route path="courses">
+          <Route index element={<Courses />} />
+          <Route path=":courseId" element={<Course />} />
+          <Route path=":courseId/:lessonId" element={<Lesson />} />
         </Route>
-        <Route path="mentores">
+        <Route path="mentors">
           <Route index element={<Mentors />} />
           <Route path=":mentorId" element={<Mentor />}>
             <Route index element={<Navigate to="courses" />} />
-            <Route path="courses" element={<Courses />} />
+            <Route path="courses" element={<MentorCourses />} />
             <Route path="chat" element={<Chat />} />
           </Route>
         </Route>

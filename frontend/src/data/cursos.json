@@ -285,36 +285,6 @@
       ]
     }
   ],
-  "contenido": [
-    {
-      "id": 1,
-      "title": "Introducción",
-      "length": "3 min",
-      "exercises": 2,
-      "completed": 2
-    },
-    {
-      "id": 2,
-      "title": "Callback Hell",
-      "length": "8 min",
-      "exercises": 5,
-      "completed": 3
-    },
-    {
-      "id": 3,
-      "title": "Aync-await implementation",
-      "length": "5 min",
-      "exercises": 10,
-      "completed": 0
-    },
-    {
-      "id": 4,
-      "title": "Repaso",
-      "length": "3 min",
-      "exercises": 2,
-      "completed": 0
-    }
-  ],
   "cursosSeleccionados": [
     {
       "name": "Curso de Desarrollo Web Básico",
