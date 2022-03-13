@@ -1,7 +1,7 @@
 import Header from '../Landing/Header'
 import Footer from '../Footer'
 
-function MainLayout({ children }) {
+function LandingLayout({ children }) {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ function MainLayout({ children }) {
   )
 }
 
-export default MainLayout
+export default LandingLayout

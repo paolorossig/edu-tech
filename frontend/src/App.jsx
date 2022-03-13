@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Home from './pages/Home'
+import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Inicio from './pages/dashboard/Inicio'
@@ -24,7 +24,7 @@ import { teacherNavConfig } from './pages/teacher/teacherConfig'
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/config" element={<StudentConfigAccount />} />

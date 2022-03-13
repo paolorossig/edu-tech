@@ -1,4 +1,4 @@
-import MainLayout from '@/components/Layouts/MainLayout'
+import LandingLayout from '@/components/Layouts/LandingLayout'
 import Hero from '@/components/Landing/Hero'
 import Carousel from '@/components/Landing/Carousel'
 import LateralCard from '@/components/Landing/LateralCard'
@@ -6,9 +6,9 @@ import ContactForm from '@/components/Landing/ContactForm'
 import { cursos } from '@/data/cursos.json'
 import { categories } from '@/data/categorias.json'
 
-function Home() {
+function Landing() {
   return (
-    <MainLayout>
+    <LandingLayout>
       {/* Hero Section */}
       <Hero />
       {/* Best rated Section */}
@@ -43,8 +43,8 @@ function Home() {
       <section id="contacto" className="flex justify-center">
         <ContactForm />
       </section>
-    </MainLayout>
+    </LandingLayout>
   )
 }
 
-export default Home
+export default Landing
