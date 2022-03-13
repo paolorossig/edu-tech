@@ -3,7 +3,7 @@ import logo from '@/assets/svg/logo.svg'
 
 function Sidebar({ links, buttons }) {
   return (
-    <aside className="fixed top-0 z-20 flex h-screen w-[280px] flex-shrink-0 flex-col items-center justify-between bg-white p-4 text-center shadow-lg">
+    <aside className="fixed top-0 z-30 hidden h-screen w-[280px] flex-shrink-0 flex-col items-center justify-between bg-white p-4 text-center shadow-lg md:flex">
       <Link to="/" className="h-[76px] py-2">
         <img src={logo} alt="logo" className="h-full cursor-pointer" />
       </Link>

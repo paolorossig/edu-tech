@@ -10,7 +10,7 @@ function Checkout() {
   const [modalState, toggleModal] = useToggle()
 
   return (
-    <div className="mx-8 mt-4 flex flex-col gap-12">
+    <div className="flex flex-col gap-12">
       <div>
         <h1 className="mb-8">Tus cursos seleccionados</h1>
         <div className="flex gap-8">
