@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
 import { cursos } from '@/data/cursos.json'
 
@@ -8,13 +9,12 @@ function Lesson() {
   const { title, questions } = lessons.find((leccion) => leccion.id == lessonId)
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden px-8">
-      <h1 className="my-4 pb-4">
+    <ContentPageLayout>
+      <ContentPageLayout.Title>
         <Link to={`/dashboard/cursos/${cursoId}`}>Cursos / {name}</Link> /
-        {' Lección '}
-        {lessonId}
-      </h1>
-      <div className="mb-[-50px] flex-1 overflow-hidden rounded-[50px] bg-white p-[50px]">
+        Lección {lessonId}
+      </ContentPageLayout.Title>
+      <ContentPageLayout.Paper>
         <div className=" flex justify-center">
           {/* VIDEO PLACE */}
           <img
@@ -66,8 +66,8 @@ function Lesson() {
             Comprobar
           </button>
         </div>
-      </div>
-    </div>
+      </ContentPageLayout.Paper>
+    </ContentPageLayout>
   )
 }
 

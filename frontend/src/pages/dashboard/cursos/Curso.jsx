@@ -1,4 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
+import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
 import { contenido, cursos } from '@/data/cursos.json'
 
@@ -7,11 +8,11 @@ function Curso() {
   const { name } = cursos.find((curso) => curso.id === cursoId)
 
   return (
-    <div className="flex flex-1 flex-col overflow-hidden px-8">
-      <h1 className="my-4 pb-4">
+    <ContentPageLayout>
+      <ContentPageLayout.Title>
         <Link to="/dashboard/cursos">Cursos</Link> / {name}
-      </h1>
-      <div className="mb-[-50px] flex-1 overflow-hidden rounded-[50px] bg-white p-[50px]">
+      </ContentPageLayout.Title>
+      <ContentPageLayout.Paper>
         <h2 className="text-gray-500">Contenido:</h2>
         <ul className="m-8 flex flex-col gap-8">
           {contenido.map((step) => {
@@ -46,8 +47,8 @@ function Curso() {
             )
           })}
         </ul>
-      </div>
-    </div>
+      </ContentPageLayout.Paper>
+    </ContentPageLayout>
   )
 }
 

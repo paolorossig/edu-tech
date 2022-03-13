@@ -1,14 +1,15 @@
 import { useParams, NavLink, Outlet } from 'react-router-dom'
-import { mentores } from '@/data/mentores.json'
+import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import { ReactComponent as CoursesSVG } from '@/assets/svg/courses.svg'
 import { ReactComponent as ChatSVG } from '@/assets/svg/chat.svg'
+import { mentores } from '@/data/mentores.json'
 
 function Mentor() {
   const { mentorId } = useParams()
   const mentor = mentores.find((curso) => curso.id === mentorId)
 
   return (
-    <div className="flex flex-1 flex-col px-8">
+    <ContentPageLayout>
       <section className="header-mentor mb-8 h-64">
         <img
           className="h-full w-full object-cover"
@@ -75,7 +76,7 @@ function Mentor() {
           </ul>
         </div>
       </section>
-    </div>
+    </ContentPageLayout>
   )
 }
 
