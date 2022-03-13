@@ -13,15 +13,15 @@ function Carousel({ cursos }) {
       navigation={true}
       autoplay={true}
       modules={[Autoplay, Navigation, Pagination]}
-      className="w-full md:max-w-4xl"
+      className="h-full w-full md:max-w-4xl"
     >
       {cursos.map((curso, index) => (
-        <SwiperSlide key={index} className="cursor-grab">
+        <SwiperSlide key={index} className="relative cursor-grab">
           <img
             src={curso.url}
             className="h-full w-full rounded-lg object-cover"
           />
-          <div className="absolute left-0 bottom-0 rounded-b-lg bg-gradient-to-b from-transparent to-[rgba(0,0,0,.75)] px-4 pt-24 pb-6">
+          <div className="absolute left-0 bottom-0 w-full rounded-b-lg bg-gradient-to-b from-transparent to-[rgba(0,0,0,.75)] px-4 pt-24 pb-6">
             <Link to={`/course/detail/${curso.id}`}>
               <h1 className="text-white">{curso.name}</h1>
               <p className="mt-2 hidden text-white opacity-70 md:block">
