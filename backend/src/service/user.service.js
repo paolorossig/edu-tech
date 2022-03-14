@@ -15,6 +15,31 @@ export async function createUser(input) {
     throw new Error(errorMessage)
   }
 }
+export async function updateUser(parametro, input) {
+  try {
+    const user = await User.update(
+      { _id: parametro },
+      {
+        name: input.name,
+        firstName: input.firstName,
+        lastName: input.lastName,
+        surName: input.surName,
+        role: input.role,
+        nickName: input.firstName,
+        // photoURL: { type: String, required: true, default: '' },
+        sexo: input.sexo,
+        dni: input.dni,
+        birthday: input.birthday,
+        occupation: input.occupation,
+        phoneNumber: input.phoneNumber,
+        country: input.country
+      }
+    )
+    return user
+  } catch (error) {
+    throw new Error(error)
+  }
+}
 
 export async function validatePassword({ email, password }) {
   const user = await User.findOne({ email })
