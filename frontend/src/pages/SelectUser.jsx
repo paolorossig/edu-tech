@@ -1,6 +1,8 @@
 import CardRedirect from '@/components/UserSelect/Card'
+import { useParams } from 'react-router'
 
 function SelectUser() {
+  const { idUsuario } = useParams()
   return (
     <div className="grid h-screen place-content-center text-center">
       <div className="flex overflow-hidden rounded-3xl shadow-md">
@@ -13,7 +15,7 @@ function SelectUser() {
                 name: 'Docente',
                 tag: 'Crear cuenta de docente',
                 url: 'https://conceptodefinicion.de/wp-content/uploads/2016/10/Docente2.jpg',
-                redirect: '/configuracion/docente'
+                redirect: `/configuracion/docente/${idUsuario}`
               }}
             />
             <CardRedirect
@@ -21,7 +23,7 @@ function SelectUser() {
                 name: 'Estudiante',
                 tag: 'Crear cuenta de estudiante',
                 url: 'https://www.residenciasarria.com/blog/wp-content/uploads/2018/08/primeros-d%C3%ADas-residencia-estudiantes-1080x675.jpg',
-                redirect: '/configuracion/estudiante'
+                redirect: `/configuracion/estudiante/${idUsuario}`
               }}
             />
           </div>
