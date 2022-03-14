@@ -1,13 +1,13 @@
-import MainLayout from '@/components/Layouts/MainLayout'
+import LandingLayout from '@/components/Layouts/LandingLayout'
 import notfoundSVG from '@/assets/svg/notfound.svg'
 
 function NotFound() {
   return (
-    <MainLayout>
+    <LandingLayout>
       <div className="grid h-[calc(100vh_-_230px)] place-content-center">
         <img src={notfoundSVG} alt="page not found" />
       </div>
-    </MainLayout>
+    </LandingLayout>
   )
 }
 

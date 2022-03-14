@@ -183,7 +183,7 @@ function StudentConfigAccount() {
 
             <button
               type="submit"
-              className="bg-primary text-white hover:bg-[#008ecf]"
+              className="bg-primary-400 hover:bg-primary-900 text-white"
             >
               Guardar Configuracion
             </button>

@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { mentores } from '@/data/mentores.json'
 
-function Courses() {
+function MentorCourses() {
   const { mentorId } = useParams()
   const mentor = mentores.find((curso) => curso.id === mentorId)
 
@@ -11,7 +11,7 @@ function Courses() {
       <ul className="flex flex-col gap-3">
         {Array.from({ length: 20 }, (v, i) => i).map((e, index) => (
           <li key={index}>
-            <Link to="/dashboard/cursos">
+            <Link to="/dashboard/courses">
               <article className="grid grid-cols-5 items-center gap-2 border-b p-2">
                 <img
                   alt="cusro"
@@ -27,4 +27,4 @@ function Courses() {
   )
 }
 
-export default Courses
+export default MentorCourses

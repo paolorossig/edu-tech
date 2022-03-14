@@ -28,6 +28,9 @@
   [multiple],
   textarea,
   select {
-    @apply w-full rounded-lg border-gray-300 shadow-sm focus:border-primary focus:ring-primary;
+    @apply focus:border-primary-400 focus:ring-primary-400 w-full rounded-lg border-gray-300 shadow-sm;
+  }
+  [type='radio'] {
+    @apply focus:border-primary-400 focus:ring-primary-400 text-primary-400;
   }
 }

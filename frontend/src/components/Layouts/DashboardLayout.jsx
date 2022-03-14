@@ -8,9 +8,11 @@ function DashboardLayout({ navConfig }) {
   return (
     <div className="flex h-full w-full">
       <Sidebar links={links} buttons={buttons} />
-      <main className="ml-[280px] flex w-full flex-col">
+      <main className="flex h-screen w-full flex-col md:ml-[280px] md:w-[calc(100%_-_280px)]">
         <Header />
-        <Outlet />
+        <div className="mx-4 my-4 h-full md:mx-8">
+          <Outlet />
+        </div>
       </main>
     </div>
   )

@@ -17,7 +17,7 @@ function CoursesList() {
   }, [])
 
   return (
-    <div className="mx-8 mt-4">
+    <div>
       <h1>Cursos creados</h1>
       <table className="mb-4 min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">

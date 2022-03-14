@@ -4,7 +4,7 @@ import { cursosestadisticas, cursosTeacher } from './teacherConfig'
 
 function TeacherHome() {
   return (
-    <div className="mx-8 mt-4">
+    <div>
       <h1 className="mb-4">Tus cursos</h1>
       <div className="mb-4 flex gap-8">
         {cursosTeacher.map((curso, index) => (

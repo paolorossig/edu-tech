@@ -7,25 +7,25 @@ import { mentores } from '@/data/mentores.json'
 
 function Inicio() {
   return (
-    <div className="mx-8 mt-4 flex flex-col gap-12">
-      <div>
+    <div className="flex flex-col gap-12">
+      <section className="-mr-8">
         <h1 className="mb-8">Mis cursos</h1>
-        <div className="flex gap-8">
+        <div className="scrollbar-hide flex gap-8 overflow-y-hidden overflow-x-scroll">
           {cursos.map((curso) => (
-            <Link to={`cursos/${encodeURIComponent(curso.id)}`} key={curso.id}>
+            <Link to={`courses/${encodeURIComponent(curso.id)}`} key={curso.id}>
               <Card element={curso} />
             </Link>
           ))}
         </div>
-      </div>
-      <div>
+      </section>
+      <section>
         <h1 className="mb-8">Mentores Disponibles</h1>
         <div className="flex flex-wrap gap-8">
           {mentores.map((mentor) => (
             <Badge element={mentor} key={mentor.id} />
           ))}
         </div>
-      </div>
+      </section>
     </div>
   )
 }
