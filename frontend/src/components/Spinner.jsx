@@ -7,7 +7,7 @@ function Spinner({ size = 'small', color = 'primary' }) {
 
   return (
     <div
-      className={`${sizeClasess[size]} h-6 animate-spin rounded-full border-2 border-${color} border-t-transparent`}
+      className={`${sizeClasess[size]} h-6 animate-spin rounded-full border-2 border-${color}-400 border-t-transparent`}
     />
   )
 }

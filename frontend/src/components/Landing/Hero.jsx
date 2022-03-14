@@ -25,7 +25,7 @@ function Hero() {
         <Link
           to="cursos"
           {...scrollProps}
-          className="bg-primary cursor-pointer rounded-xl px-8 py-2 text-white"
+          className="bg-primary-400 cursor-pointer rounded-xl px-8 py-2 text-white"
         >
           Ver más
         </Link>

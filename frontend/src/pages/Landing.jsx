@@ -23,7 +23,7 @@ function Landing() {
           {categories.map((category, index) => (
             <li
               key={index}
-              className="hover:bg-primary rounded-xl bg-black px-6 py-2 text-center text-sm text-white shadow-md"
+              className="hover:bg-primary-400 rounded-xl bg-black px-6 py-2 text-center text-sm text-white shadow-md"
             >
               {category.name}
             </li>

@@ -27,9 +27,9 @@ function Course() {
 
             return (
               <Link to={`${lessonId}`} key={lessonId}>
-                <li className="flex items-center gap-8">
+                <li className="flex items-center gap-4 md:gap-8">
                   <div
-                    className={`${bgColor} flex h-20 w-20 items-center justify-center rounded-full text-3xl text-white`}
+                    className={`${bgColor} flex h-14 w-14 items-center justify-center rounded-full text-3xl text-white md:h-20 md:w-20`}
                   >
                     {lessonId}
                   </div>

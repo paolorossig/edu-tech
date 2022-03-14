@@ -26,11 +26,11 @@ function Dropdown({ children }) {
               {({ active }) => (
                 <button
                   className={`${
-                    active ? 'bg-primary text-white' : 'text-gray-900'
+                    active ? 'bg-primary-400 text-white' : 'text-gray-900'
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   <PencilAltIcon
-                    className={`${!active && 'text-primary'} mr-2 h-5 w-5`}
+                    className={`${!active && 'text-primary-400'} mr-2 h-5 w-5`}
                     aria-hidden="true"
                   />
                   Editar
@@ -42,11 +42,11 @@ function Dropdown({ children }) {
                 <button
                   onClick={logout}
                   className={`${
-                    active ? 'bg-primary text-white' : 'text-gray-900'
+                    active ? 'bg-primary-400 text-white' : 'text-gray-900'
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
                 >
                   <LogoutIcon
-                    className={`${!active && 'text-primary'} mr-2 h-5 w-5`}
+                    className={`${!active && 'text-primary-400'} mr-2 h-5 w-5`}
                     aria-hidden="true"
                   />
                   Cerrar sesión
