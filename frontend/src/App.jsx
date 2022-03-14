@@ -21,10 +21,13 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/selecccionar/usuario" element={<SelectUser />} />
-      <Route path="/configuracion/docente" element={<TeacherConfigAccount />} />
+      <Route path="/selecccionar/usuario/:idUsuario" element={<SelectUser />} />
       <Route
-        path="/configuracion/estudiante"
+        path="/configuracion/docente/:idUsuario"
+        element={<TeacherConfigAccount />}
+      />
+      <Route
+        path="/configuracion/estudiante/:idUsuario"
         element={<StudentConfigAccount />}
       />
       <Route
