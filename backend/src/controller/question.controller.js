@@ -4,7 +4,7 @@ import {
   deleteQuestion
 } from '../service/question.service'
 
-export async function createCourse(req, res) {
+export async function createquestion(req, res) {
   try {
     const question = await createQuestion(req.body)
     res.status(201).json({ message: 'Question created', question })
