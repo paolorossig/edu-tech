@@ -14,6 +14,11 @@ export async function findAnswer() {
   return answers
 }
 
+export async function findAnswerByQuestionId(questionId) {
+  const answers = await Answer.find({ questionId })
+  return answers
+}
+
 export async function deleteAnswer(answerId) {
   try {
     await Answer.findByIdAndDelete(answerId)

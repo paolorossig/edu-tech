@@ -14,6 +14,11 @@ export async function findLesson() {
   return lessons
 }
 
+export async function findLessonsByCourseId(courseId) {
+  const lessons = await Lesson.find({ courseId })
+  return lessons
+}
+
 export async function deleteLesson(lessonId) {
   try {
     await Lesson.findByIdAndDelete(lessonId)
