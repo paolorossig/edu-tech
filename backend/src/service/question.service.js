@@ -1,6 +1,6 @@
 import Question from '../model/question.model.js'
 
-export async function createQuestions(input) {
+export async function createQuestion(input) {
   try {
     await Question.create(input)
     return 'La pregunta se creo correctamente'
@@ -9,7 +9,7 @@ export async function createQuestions(input) {
   }
 }
 
-export async function findQuestions(lessonId = null) {
+export async function findQuestion(lessonId = null) {
   const questions = await Question.find({ lessonId: lessonId })
   return questions
 }

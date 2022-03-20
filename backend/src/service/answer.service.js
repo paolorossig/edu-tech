@@ -1,6 +1,6 @@
 import Answer from '../model/answer.model.js'
 
-export async function createAnswers(input) {
+export async function createAnswer(input) {
   try {
     await Answer.create(input)
     return 'La respuesta se creo correctamente'
@@ -9,7 +9,7 @@ export async function createAnswers(input) {
   }
 }
 
-export async function findAnswers(questionId = null) {
+export async function findAnswer(questionId = null) {
   const answers = await Answer.find({ questionId: questionId })
   return answers
 }
