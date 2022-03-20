@@ -15,7 +15,7 @@ export async function createanswer(req, res) {
 
 export async function getAnswer(req, res) {
   try {
-    const answer = await findAnswer(req.params.questionId)
+    const answer = await findAnswer()
     res.status(200).json({ message: 'Answer retrieved', answer })
   } catch (error) {
     res.status(400).json({ message: error.message })

@@ -15,7 +15,7 @@ export async function createlesson(req, res) {
 
 export async function getLessons(req, res) {
   try {
-    const lesson = await findLesson(req.params.courseId)
+    const lesson = await findLesson()
     res.status(200).json({ message: 'Lessons retrieved', lesson })
   } catch (error) {
     res.status(400).json({ message: error.message })

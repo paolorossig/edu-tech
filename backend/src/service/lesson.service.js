@@ -9,8 +9,8 @@ export async function createLesson(input) {
   }
 }
 
-export async function findLesson(courseId = null) {
-  const lessons = await Lesson.find({ courseId: courseId })
+export async function findLesson() {
+  const lessons = await Lesson.find({})
   return lessons
 }
 

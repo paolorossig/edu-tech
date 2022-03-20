@@ -15,7 +15,7 @@ export async function createquestion(req, res) {
 
 export async function getQuestion(req, res) {
   try {
-    const question = await findQuestion(req.params.lessonId)
+    const question = await findQuestion()
     res.status(200).json({ message: 'Question retrieved', question })
   } catch (error) {
     res.status(400).json({ message: error.message })
