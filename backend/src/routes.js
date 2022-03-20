@@ -5,17 +5,20 @@ import { createCourse, getCourses } from './controller/course.controller.js'
 import {
   createlesson,
   getLessons,
-  deletelesson
+  deletelesson,
+  getLessonsByCourseId
 } from './controller/lesson.controller.js'
 import {
   createquestion,
   deletequestion,
-  getQuestion
+  getQuestion,
+  getQuestionsByLessonId
 } from './controller/question.controller.js'
 import {
   createanswer,
   deleteanswer,
-  getAnswer
+  getAnswer,
+  getAnswesByQuestionId
 } from './controller/answer.controller.js'
 
 function routes(app) {
@@ -31,18 +34,21 @@ function routes(app) {
   //start lesson routes
   app.post('/api/lesson', createlesson)
   app.get('/api/lesson', getLessons)
+  app.get('/api/lesson/:lessonId', getLessonsByCourseId)
   app.delete('/api/lesson/:lessonId', deletelesson)
   //end lesson routes
 
   //start question routes
   app.post('/api/question', createquestion)
   app.get('/api/question', getQuestion)
+  app.get('/api/question/:lessonId', getQuestionsByLessonId)
   app.delete('/api/question/:questionId', deletequestion)
   //end question routes
 
   //start answer routes
   app.post('/api/answer', createanswer)
   app.get('/api/answer', getAnswer)
+  app.get('/api/answer/:questionId', getAnswesByQuestionId)
   app.delete('/api/answer/:answerId', deleteanswer)
   //end answer routes
 
