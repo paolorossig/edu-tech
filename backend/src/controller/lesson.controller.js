@@ -3,7 +3,7 @@ import {
   findLesson,
   deleteLesson,
   findLessonsByCourseId
-} from '../service/lesson.service'
+} from '../service/lesson.service.js'
 
 export async function createlesson(req, res) {
   try {

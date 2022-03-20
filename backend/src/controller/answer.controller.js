@@ -3,7 +3,7 @@ import {
   findAnswer,
   deleteAnswer,
   findAnswerByQuestionId
-} from '../service/answer.service'
+} from '../service/answer.service.js'
 
 export async function createanswer(req, res) {
   try {

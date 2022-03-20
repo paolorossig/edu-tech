@@ -3,8 +3,13 @@
     {
       "id": "webdev001",
       "name": "Javascript: async - await",
-      "tag": "Web Development",
-      "url": "https://devsdata.com/wp-content/uploads/2020/08/acync_await-1.png",
+      "description": "Curso básico de Javascript donde aprenderás sobre asyncronismo",
+      "category": "Web Development",
+      "price": 19.99,
+      "teacherId": "6209b6856fb975081a6e7d2c",
+      "imageUrl": "https://devsdata.com/wp-content/uploads/2020/08/acync_await-1.png",
+      "keywords": ["javascript", "asynchronism", "basic"],
+      "language": "es",
       "lessons": [
         {
           "id": 1,
@@ -215,8 +220,8 @@
     {
       "id": "webdev002",
       "name": "React: Hooks",
-      "tag": "Web Development",
-      "url": "https://user-images.githubusercontent.com/47307889/116921331-826bbe80-ac5c-11eb-9f48-d8fbde144b04.png",
+      "category": "Web Development",
+      "imageUrl": "https://user-images.githubusercontent.com/47307889/116921331-826bbe80-ac5c-11eb-9f48-d8fbde144b04.png",
       "lessons": [
         {
           "id": 1,
@@ -251,8 +256,8 @@
     {
       "id": "devops001",
       "name": "Docker: Images",
-      "tag": "DevOps",
-      "url": "https://laravelnews.imgix.net/images/docker.png?ixlib=php-3.3.1",
+      "category": "DevOps",
+      "imageUrl": "https://laravelnews.imgix.net/images/docker.png?ixlib=php-3.3.1",
       "lessons": [
         {
           "id": 1,

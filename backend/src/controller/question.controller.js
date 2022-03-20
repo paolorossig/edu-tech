@@ -3,7 +3,7 @@ import {
   findQuestion,
   deleteQuestion,
   findQuestionByLessonId
-} from '../service/question.service'
+} from '../service/question.service.js'
 
 export async function createquestion(req, res) {
   try {

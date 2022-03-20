@@ -2,16 +2,19 @@ import mongoose from 'mongoose'
 
 const courseSchema = new mongoose.Schema(
   {
-    courseName: { type: String },
-    courseDescription: { type: String },
-    courseCategory: { type: String },
-    courseKeywords: { type: String },
-    coursePrice: { type: String },
-    courseNumberLessons: { type: String },
-    courseLanguage: { type: String },
-    courseImageURL: { type: String },
-    courseIdTeacher: { type: String },
-    courseScore: { type: String }
+    name: { type: String, required: true },
+    description: { type: String, required: true },
+    category: { type: String, required: true },
+    price: { type: Number, required: true },
+    teacherId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    imageUrl: { type: String },
+    keywords: { type: [String] },
+    language: { type: String },
+    score: { type: String }
   },
   { timestamps: true }
 )

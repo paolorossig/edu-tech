@@ -18,7 +18,7 @@ function Carousel({ cursos }) {
       {cursos.map((curso, index) => (
         <SwiperSlide key={index} className="relative cursor-grab">
           <img
-            src={curso.url}
+            src={curso.imageUrl}
             className="h-full w-full rounded-lg object-cover"
           />
           <div className="absolute left-0 bottom-0 w-full rounded-b-lg bg-gradient-to-b from-transparent to-[rgba(0,0,0,.75)] px-4 pt-24 pb-6">

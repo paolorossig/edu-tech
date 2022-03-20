@@ -1,7 +1,10 @@
 import { signUp } from './controller/user.controller.js'
 import { getUserSession, login } from './controller/session.controller.js'
 import requireUser from './middleware/requireUser.js'
-import { createCourse, getCourses } from './controller/course.controller.js'
+import {
+  createCourseHandler,
+  getCourses
+} from './controller/course.controller.js'
 import {
   createlesson,
   getLessons,
@@ -28,7 +31,7 @@ function routes(app) {
   app.post('/api/sessions', login)
   app.get('/api/sessions', requireUser, getUserSession)
 
-  app.post('/api/courses', createCourse)
+  app.post('/api/courses', createCourseHandler)
   app.get('/api/courses', getCourses)
 
   //start lesson routes
