@@ -23,7 +23,7 @@ export function verifyJwt(token) {
       decoded
     }
   } catch (error) {
-    log.error(error.message)
+    log.child({ error }).error('Error in verifyJwt step')
     return {
       valid: false,
       expired: error.message === 'jwt expired',

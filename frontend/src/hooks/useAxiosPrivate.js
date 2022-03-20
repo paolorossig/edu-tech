@@ -18,11 +18,8 @@ function useAxiosPrivate() {
 
     const responseIntercept = axiosPrivate.interceptors.response.use(
       (res) => {
-        res.headers['x-access-token'] &&
-          setAuth((prev) => ({
-            ...prev,
-            accessToken: res.headers['x-access-token']
-          }))
+        const accessToken = res.headers['x-access-token']
+        accessToken && setAuth((prev) => ({ ...prev, accessToken }))
 
         return res
       },

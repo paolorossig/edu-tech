@@ -6,6 +6,7 @@ const deserializeUser = async (req, res, next) => {
   log.trace('In deserializeUser------------')
   const accessToken = req.headers.authorization?.replace('Bearer', '').trim()
   const refreshToken = req.cookies?.jwt
+  log.child({ accessToken, refreshToken }).info('Tokens intercepted')
 
   if (!accessToken && !refreshToken) {
     log.warn('No Acess Token or Refresh Token')
