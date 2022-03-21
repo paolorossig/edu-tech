@@ -4,7 +4,7 @@ const studentSchema = new mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     membership: { type: Number, default: 0 },
-    interests: { type: String },
+    interestCategories: { type: String },
     savedAccountNumbers: { type: Number },
     coursesEnabled: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Course' }]
   },
