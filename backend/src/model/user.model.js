@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema(
     role: { type: String, default: '' },
     nickName: { type: String, default: '' },
     // photoURL: { type: String, required: true, default: '' },
-    sexo: { type: String, default: '' },
+    gender: { type: String, default: '' },
     dni: { type: String, default: '' },
     birthday: { type: String, default: '' },
     occupation: { type: String, default: '' },

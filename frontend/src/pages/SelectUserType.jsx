@@ -14,7 +14,8 @@ function SelectUserType() {
                 element={{
                   name: 'Docente',
                   tag: 'Crear cuenta de docente',
-                  url: 'https://conceptodefinicion.de/wp-content/uploads/2016/10/Docente2.jpg'
+                  imageUrl:
+                    'https://conceptodefinicion.de/wp-content/uploads/2016/10/Docente2.jpg'
                 }}
               />
             </Link>
@@ -24,7 +25,8 @@ function SelectUserType() {
                 element={{
                   name: 'Estudiante',
                   tag: 'Crear cuenta de estudiante',
-                  url: 'https://www.residenciasarria.com/blog/wp-content/uploads/2018/08/primeros-d%C3%ADas-residencia-estudiantes-1080x675.jpg'
+                  imageUrl:
+                    'https://www.residenciasarria.com/blog/wp-content/uploads/2018/08/primeros-d%C3%ADas-residencia-estudiantes-1080x675.jpg'
                 }}
               />
             </Link>

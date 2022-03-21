@@ -1,46 +1,41 @@
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
 import { MultiSelect } from 'react-multi-select-component'
 import { categories } from '@/data/categorias.json'
-import { useParams } from 'react-router'
 import axios from '@/utils/axios'
 
 function StudentConfigAccount() {
   const { idUsuario } = useParams()
   const navigate = useNavigate()
-  const [selected, setSelected] = useState([])
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm()
-  function onSubmit(formData) {
+
+  const [selected, setSelected] = useState([])
+
+  const onSubmit = (formData) => {
     console.log('Data', formData)
     axios
-      .put(`http://localhost:4000/api/users/${idUsuario}`, {
-        name: formData.nombres,
-        lastName: formData.apellidoPaterno,
-        surName: formData.apellidoMaterno,
+      .put(`api/users/${idUsuario}`, {
+        ...formData,
+        nickName: formData.name,
         role: 'student',
-        nickName: formData.nombres,
-        sexo: formData.sexo,
-        dni: formData.dni,
-        birthday: formData.fechaNacimiento,
-        occupation: 'student',
-        phoneNumber: formData.phoneNumber,
-        country: formData.country
+        occupation: 'student'
       })
       .then(() => navigate('/login'))
       .catch((err) => console.log('err', err))
   }
-  function categoriesStructure(categorias) {
+  const categoriesStructure = (categorias) => {
     const newData = []
     categorias.forEach((val) => {
       newData.push({ label: val.name, value: val })
     })
     return newData
   }
+
   return (
     <div className="grid h-screen place-content-center text-center">
       <div className="flex overflow-hidden rounded-3xl shadow-md">
@@ -55,7 +50,7 @@ function StudentConfigAccount() {
               <input
                 type="text"
                 placeholder="Ingrese sus nombres"
-                {...register('nombres', { required: 'Campo requerido' })}
+                {...register('name', { required: 'Campo requerido' })}
                 className={`${
                   errors?.nombres &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
@@ -81,29 +76,23 @@ function StudentConfigAccount() {
               <input
                 type="text"
                 placeholder="Ingrese apellido paterno"
-                {...register('apellidoPaterno', {
-                  required: 'Campo Requerido'
-                })}
+                {...register('lastName', { required: 'Campo Requerido' })}
                 className={`${
-                  errors?.apellidoPaterno &&
+                  errors?.lastName &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
                 }`}
               />
-              {errors?.apellidoPaterno?.message && (
-                <p className="text-red-600">
-                  {errors?.apellidoPaterno?.message}
-                </p>
+              {errors?.lastName?.message && (
+                <p className="text-red-600">{errors?.lastName?.message}</p>
               )}
             </div>
             <div className="text-left">
-              <label>Sexo: </label>
+              <label>Género: </label>
               <select
-                placeholder="Seleccione su sexo"
-                {...register('sexo', {
-                  required: 'Campo Requerido'
-                })}
+                placeholder="Seleccione su género"
+                {...register('gender', { required: 'Campo Requerido' })}
                 className={`${
-                  errors?.sexo &&
+                  errors?.gender &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
                 }`}
               >
@@ -111,8 +100,8 @@ function StudentConfigAccount() {
                 <option value="femenino">Femenino</option>
                 <option value="otro">Otro</option>
               </select>
-              {errors?.sexo?.message && (
-                <p className="text-red-600">{errors?.sexo?.message}</p>
+              {errors?.gender?.message && (
+                <p className="text-red-600">{errors?.gender?.message}</p>
               )}
             </div>
             <div className="text-left">
@@ -120,18 +109,14 @@ function StudentConfigAccount() {
               <input
                 type="text"
                 placeholder="Ingrese apellido materno"
-                {...register('apellidoMaterno', {
-                  required: 'Campo Requerido'
-                })}
+                {...register('surName', { required: 'Campo Requerido' })}
                 className={`${
-                  errors?.apellidoMaterno &&
+                  errors?.surName &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
                 }`}
               />
-              {errors?.apellidoMaterno?.message && (
-                <p className="text-red-600">
-                  {errors?.apellidoMaterno?.message}
-                </p>
+              {errors?.surName?.message && (
+                <p className="text-red-600">{errors?.surName?.message}</p>
               )}
             </div>
 
@@ -140,18 +125,14 @@ function StudentConfigAccount() {
               <input
                 type="date"
                 placeholder="Seleccione su fecha de nacimiento"
-                {...register('fechaNacimiento', {
-                  required: 'Campo Requerido'
-                })}
+                {...register('birthday', { required: 'Campo Requerido' })}
                 className={`${
-                  errors?.fechaNacimiento &&
+                  errors?.birthday &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
                 }`}
               />
-              {errors?.fechaNacimiento?.message && (
-                <p className="text-red-600">
-                  {errors?.fechaNacimiento?.message}
-                </p>
+              {errors?.birthday?.message && (
+                <p className="text-red-600">{errors?.birthday?.message}</p>
               )}
             </div>
             <div className="text-left">
@@ -159,9 +140,7 @@ function StudentConfigAccount() {
               <input
                 type="number"
                 placeholder="Ingrese su DNI"
-                {...register('dni', {
-                  required: 'Campo Requerido'
-                })}
+                {...register('dni', { required: 'Campo Requerido' })}
                 className={`${
                   errors?.dni &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
@@ -176,9 +155,7 @@ function StudentConfigAccount() {
               <input
                 type="number"
                 placeholder="Ingrese numero de celular"
-                {...register('phoneNumber', {
-                  required: 'Campo Requerido'
-                })}
+                {...register('phoneNumber', { required: 'Campo Requerido' })}
                 className={`${
                   errors?.phoneNumber &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
@@ -192,9 +169,7 @@ function StudentConfigAccount() {
               <label>Pais: </label>
               <select
                 placeholder="Pais"
-                {...register('country', {
-                  required: 'Campo Requerido'
-                })}
+                {...register('country', { required: 'Campo Requerido' })}
                 className={`${
                   errors?.country &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
@@ -213,9 +188,7 @@ function StudentConfigAccount() {
               <label>Foto de Portada: </label>
               <input
                 type="file"
-                {...register('image', {
-                  required: 'Campo Requerido'
-                })}
+                {...register('image', { required: 'Campo Requerido' })}
                 className={`${
                   errors?.image &&
                   'border-red-600 focus:border-red-600 focus:ring-red-600'
