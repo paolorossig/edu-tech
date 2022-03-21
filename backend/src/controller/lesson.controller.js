@@ -5,7 +5,7 @@ import {
   findLessonsByCourseId
 } from '../service/lesson.service.js'
 
-export async function createlesson(req, res) {
+export async function createLessonHandler(req, res) {
   try {
     const lesson = await createLesson(req.body)
     res.status(201).json({ message: 'Lesson created', lesson })

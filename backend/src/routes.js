@@ -6,7 +6,7 @@ import {
   getCourses
 } from './controller/course.controller.js'
 import {
-  createlesson,
+  createLessonHandler,
   getLessons,
   deletelesson,
   getLessonsByCourseId
@@ -35,7 +35,7 @@ function routes(app) {
   app.get('/api/courses', getCourses)
 
   //start lesson routes
-  app.post('/api/lesson', createlesson)
+  app.post('/api/lesson', createLessonHandler)
   app.get('/api/lesson', getLessons)
   app.get('/api/lesson/:lessonId', getLessonsByCourseId)
   app.delete('/api/lesson/:lessonId', deletelesson)

@@ -1,12 +1,8 @@
 import Lesson from '../model/lesson.model.js'
 
 export async function createLesson(input) {
-  try {
-    await Lesson.create(input)
-    return 'La leccion se creo correctamente'
-  } catch (error) {
-    return 'Ocurrio un error al crear la leccion'
-  }
+  const lesson = await Lesson.create(input)
+  return lesson
 }
 
 export async function findLesson() {
