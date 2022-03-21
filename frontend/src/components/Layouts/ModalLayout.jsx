@@ -27,7 +27,7 @@ function Title({ withIcon, children }) {
           <img src={icon} alt="logo" className="h-full" />
         </Link>
       )}
-      <h1 className="w-full">{children}</h1>
+      <h1 className="w-full px-16">{children}</h1>
     </div>
   )
 }

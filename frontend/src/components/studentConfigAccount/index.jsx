@@ -5,6 +5,7 @@ import { MultiSelect } from 'react-multi-select-component'
 import { categories } from '@/data/categorias.json'
 import axios from '@/utils/axios'
 import ModalLayout from '../Layouts/ModalLayout'
+import InputForm from '../InputForm'
 import Button from '../Button'
 
 function StudentConfigAccount() {
@@ -45,24 +46,17 @@ function StudentConfigAccount() {
           Configurar cuenta de estudiante
         </ModalLayout.Title>
         <form
-          className="grid grid-cols-2 gap-3"
+          className="grid grid-cols-1 gap-4 md:grid-cols-2"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="text-left">
-            <label>Nombres: </label>
-            <input
-              type="text"
-              placeholder="Ingrese sus nombres"
-              {...register('name', { required: 'Campo requerido' })}
-              className={`${
-                errors?.nombres &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            />
-            {errors?.nombres?.message && (
-              <p className="text-red-600">{errors?.nombres.message}</p>
-            )}
-          </div>
+          <InputForm
+            type="text"
+            placeholder="Ingrese sus nombres"
+            label="Nombres:"
+            id="name"
+            register={register}
+            errors={errors}
+          />
           <div className="text-left">
             <label>Categorias de Preferencia</label>
             {/* <pre>{JSON.stringify(selected)}</pre> */}
@@ -73,135 +67,75 @@ function StudentConfigAccount() {
               labelledBy="Seleccionar categorias de interes."
             />
           </div>
-
-          <div className="text-left">
-            <label>Apellido Paterno: </label>
-            <input
-              type="text"
-              placeholder="Ingrese apellido paterno"
-              {...register('lastName', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.lastName &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            />
-            {errors?.lastName?.message && (
-              <p className="text-red-600">{errors?.lastName?.message}</p>
-            )}
-          </div>
-          <div className="text-left">
-            <label>Género: </label>
-            <select
-              placeholder="Seleccione su género"
-              {...register('gender', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.gender &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            >
-              <option value="masculino">Masculino</option>
-              <option value="femenino">Femenino</option>
-              <option value="otro">Otro</option>
-            </select>
-            {errors?.gender?.message && (
-              <p className="text-red-600">{errors?.gender?.message}</p>
-            )}
-          </div>
-          <div className="text-left">
-            <label>Apellido Materno: </label>
-            <input
-              type="text"
-              placeholder="Ingrese apellido materno"
-              {...register('surName', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.surName &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            />
-            {errors?.surName?.message && (
-              <p className="text-red-600">{errors?.surName?.message}</p>
-            )}
-          </div>
-
-          <div className="text-left">
-            <label>Fecha de Nacimiento: </label>
-            <input
-              type="date"
-              placeholder="Seleccione su fecha de nacimiento"
-              {...register('birthday', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.birthday &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            />
-            {errors?.birthday?.message && (
-              <p className="text-red-600">{errors?.birthday?.message}</p>
-            )}
-          </div>
-          <div className="text-left">
-            <label>DNI: </label>
-            <input
-              type="number"
-              placeholder="Ingrese su DNI"
-              {...register('dni', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.dni &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            />
-            {errors?.dni?.message && (
-              <p className="text-red-600">{errors?.dni?.message}</p>
-            )}
-          </div>
-          <div className="text-left">
-            <label>Celular: </label>
-            <input
-              type="number"
-              placeholder="Ingrese numero de celular"
-              {...register('phoneNumber', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.phoneNumber &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            />
-            {errors?.phoneNumber?.message && (
-              <p className="text-red-600">{errors?.phoneNumber?.message}</p>
-            )}
-          </div>
-          <div className="text-left">
-            <label>Pais: </label>
-            <select
-              placeholder="Pais"
-              {...register('country', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.country &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            >
-              <option value="Peru">Perú</option>
-              <option value="Argentina">Arg</option>
-              <option value="...">...</option>
-            </select>
-            {errors?.country?.message && (
-              <p className="text-red-600">{errors?.country?.message}</p>
-            )}
-          </div>
-
-          <div className="text-left">
-            <label>Foto de Portada: </label>
-            <input
-              type="file"
-              {...register('image', { required: 'Campo Requerido' })}
-              className={`${
-                errors?.image &&
-                'border-red-600 focus:border-red-600 focus:ring-red-600'
-              }`}
-            ></input>
-            {errors?.image?.message && (
-              <p className="text-red-600">{errors?.image?.message}</p>
-            )}
-          </div>
-
+          <InputForm
+            type="text"
+            placeholder="Ingrese su apellido paterno"
+            label="Apellido Paterno:"
+            id="lastname"
+            register={register}
+            errors={errors}
+          />
+          <InputForm
+            select={true}
+            label="Género:"
+            id="gender"
+            register={register}
+            errors={errors}
+          >
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+            <option value="otro">Otro</option>
+          </InputForm>
+          <InputForm
+            type="text"
+            placeholder="Ingrese su apellido materno"
+            label="Apellido Materno:"
+            id="surname"
+            register={register}
+            errors={errors}
+          />
+          <InputForm
+            type="date"
+            placeholder="Seleccione su fecha de nacimiento"
+            label="Fecha de Nacimiento:"
+            id="birthday"
+            register={register}
+            errors={errors}
+          />
+          <InputForm
+            type="number"
+            placeholder="Ingrese su DNI"
+            label="DNI:"
+            id="dni"
+            register={register}
+            errors={errors}
+          />
+          <InputForm
+            type="number"
+            placeholder="Ingrese su numero de celular"
+            label="Celular:"
+            id="phoneNumber"
+            register={register}
+            errors={errors}
+          />
+          <InputForm
+            select={true}
+            label="País:"
+            id="country"
+            register={register}
+            errors={errors}
+          >
+            <option value="Peru">Perú</option>
+            <option value="Argentina">Arg</option>
+            <option value="...">...</option>
+          </InputForm>
+          <InputForm
+            type="file"
+            label="Foto de Portada:"
+            id="image"
+            register={register}
+            errors={errors}
+          />
           <Button type="submit">Guardar Configuracion</Button>
         </form>
       </ModalLayout.Content>
