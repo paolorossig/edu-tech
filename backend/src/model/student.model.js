@@ -1,20 +1,16 @@
 import mongoose from 'mongoose'
 
-const StudentSchema = new mongoose.Schema(
+const studentSchema = new mongoose.Schema(
   {
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: true
-    },
-    membership: { type: Number, required: false, default: 1 },
-    interests: { type: String, required: false },
-    savedAccountNumbers: { type: Number, requirde: false },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    membership: { type: Number, default: 0 },
+    interests: { type: String },
+    savedAccountNumbers: [{ type: Number }],
     coursesEnabled: [{ idCurso: String }]
   },
   { timestamps: true }
 )
 
-const Student = mongoose.model('UserStudent', StudentSchema)
+const Student = mongoose.model('Student', studentSchema)
 
 export default Student
