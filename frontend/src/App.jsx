@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import SelectUserType from './pages/SelectUserType'
 import Inicio from './pages/dashboard/Inicio'
 import Cursos from './pages/dashboard/cursos'
 import Curso from './pages/dashboard/cursos/Curso'
@@ -13,7 +14,6 @@ import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
 import StudentConfigAccount from './components/studentConfigAccount'
 import TeacherConfigAccount from './components/TeacherConfigAccount'
-import SelectUser from './pages/SelectUser'
 
 function App() {
   return (
@@ -21,15 +21,9 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/selecccionar/usuario/:idUsuario" element={<SelectUser />} />
-      <Route
-        path="/configuracion/docente/:idUsuario"
-        element={<TeacherConfigAccount />}
-      />
-      <Route
-        path="/configuracion/estudiante/:idUsuario"
-        element={<StudentConfigAccount />}
-      />
+      <Route path="/select-user-type" element={<SelectUserType />} />
+      <Route path="/config/teacher" element={<TeacherConfigAccount />} />
+      <Route path="/config/student" element={<StudentConfigAccount />} />
       <Route
         path="/dashboard"
         element={
