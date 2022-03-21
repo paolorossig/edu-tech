@@ -1,9 +1,14 @@
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { MultiSelect } from 'react-multi-select-component'
 import { categories } from '@/data/categorias.json'
+import { useParams } from 'react-router'
+import axios from '@/utils/axios'
 
 function StudentConfigAccount() {
+  const { idUsuario } = useParams()
+  const navigate = useNavigate()
   const [selected, setSelected] = useState([])
   const {
     register,
@@ -12,6 +17,22 @@ function StudentConfigAccount() {
   } = useForm()
   function onSubmit(formData) {
     console.log('Data', formData)
+    axios
+      .put(`http://localhost:4000/api/users/${idUsuario}`, {
+        name: formData.nombres,
+        lastName: formData.apellidoPaterno,
+        surName: formData.apellidoMaterno,
+        role: 'student',
+        nickName: formData.nombres,
+        sexo: formData.sexo,
+        dni: formData.dni,
+        birthday: formData.fechaNacimiento,
+        occupation: 'student',
+        phoneNumber: formData.phoneNumber,
+        country: formData.country
+      })
+      .then(() => navigate('/login'))
+      .catch((err) => console.log('err', err))
   }
   function categoriesStructure(categorias) {
     const newData = []

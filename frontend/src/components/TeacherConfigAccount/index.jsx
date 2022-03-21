@@ -1,6 +1,10 @@
+import axios from '@/utils/axios'
 import { useForm } from 'react-hook-form'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function TeacherConfigAccount() {
+  const { idUsuario } = useParams()
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -8,6 +12,22 @@ function TeacherConfigAccount() {
   } = useForm()
   function onSubmit(formData) {
     console.log('Data', formData)
+    axios
+      .put(`http://localhost:4000/api/users/${idUsuario}`, {
+        name: formData.nombres,
+        lastName: formData.apellidoPaterno,
+        surName: formData.apellidoMaterno,
+        role: 'teacher',
+        nickName: formData.nombres,
+        sexo: formData.sexo,
+        dni: formData.dni,
+        birthday: formData.fechaNacimiento,
+        occupation: 'teacher',
+        phoneNumber: formData.phoneNumber,
+        country: formData.country
+      })
+      .then(() => navigate('/login'))
+      .catch((err) => console.log('err', err))
   }
   return (
     <div className="grid h-screen place-content-center text-center">
