@@ -1,8 +1,12 @@
 import mongoose from 'mongoose'
 
-const userStudentSchema = new mongoose.Schema(
+const StudentSchema = new mongoose.Schema(
   {
-    idUsuario: { type: String, required: true },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
     membership: { type: Number, required: false, default: 1 },
     interests: { type: String, required: false },
     savedAccountNumbers: { type: Number, requirde: false },
@@ -11,6 +15,6 @@ const userStudentSchema = new mongoose.Schema(
   { timestamps: true }
 )
 
-const User = mongoose.model('UserStudent', userStudentSchema)
+const Student = mongoose.model('UserStudent', StudentSchema)
 
-export default User
+export default Student
