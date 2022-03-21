@@ -23,14 +23,14 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-20 flex h-20 w-full justify-center bg-white p-4 shadow-md">
-      <div className="mx-4 flex w-full items-center gap-4 xl:w-[1280px]">
+      <div className="mx-4 flex w-full items-center justify-between gap-4 xl:w-[1280px]">
         <img
           src={logo}
           alt="logo"
           onClick={toggleHome}
           className="h-full cursor-pointer"
         />
-        <nav className="flex-auto">
+        <nav className="hidden flex-auto md:block">
           <ul className="flex justify-center gap-4">
             <li className="link">
               <ScrollLink to="cursos" {...scrollProps}>

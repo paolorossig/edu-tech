@@ -6,12 +6,16 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: '#03b0ff'
+        primary: {
+          400: '#03b0ff',
+          900: '#008ecf'
+        }
       }
     }
   },
   plugins: [
     require('@tailwindcss/forms'),
-    require('prettier-plugin-tailwindcss')
+    require('prettier-plugin-tailwindcss'),
+    require('tailwind-scrollbar-hide')
   ]
 }
