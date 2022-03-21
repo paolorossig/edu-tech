@@ -30,7 +30,7 @@ function Lesson() {
             <h2 className="text-gray-500">Preguntas:</h2>
             <ul className="flex w-full flex-col gap-6 md:m-8">
               {questions.map((item, index) => {
-                const { id, question, answers } = item
+                const { id, description, answers } = item
 
                 return (
                   <li key={id}>
@@ -38,18 +38,20 @@ function Lesson() {
                       <div className="grid h-10 w-10 place-content-center rounded-full bg-slate-400 text-xl text-white">
                         {index + 1}
                       </div>
-                      <h3 className="flex-auto font-extrabold">{question}</h3>
+                      <h3 className="flex-auto font-extrabold">
+                        {description}
+                      </h3>
                     </div>
                     {/* List answers with radio btn */}
                     <div className="ml-3 flex flex-col gap-2">
-                      {answers.map((answer) => {
-                        const { id, text } = answer
+                      {answers.map((option) => {
+                        const { id, text } = option
 
                         return (
                           <div key={id} className="flex items-center gap-4">
                             <input
                               type="radio"
-                              name="answer"
+                              name="option"
                               id={id}
                               value={id}
                             />

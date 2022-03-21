@@ -6,7 +6,7 @@ const courseSchema = new mongoose.Schema(
     description: { type: String, required: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
-    teacherId: {
+    teacher: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true

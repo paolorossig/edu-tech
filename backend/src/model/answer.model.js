@@ -2,19 +2,13 @@ import mongoose from 'mongoose'
 
 const answerSchema = new mongoose.Schema(
   {
-    text: {
-      type: String,
+    text: { type: String, required: true },
+    question: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Question',
       required: true
     },
-    correct: {
-      type: Boolean,
-      required: true
-    },
-    questionId: {
-      type: String,
-      required: true
-    },
-    question: { type: mongoose.Schema.Types.ObjectId, ref: 'Question' }
+    correct: { type: Boolean, required: true }
   },
   { timestamps: true }
 )

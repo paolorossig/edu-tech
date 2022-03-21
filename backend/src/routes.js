@@ -12,7 +12,7 @@ import {
   getLessonsByCourseId
 } from './controller/lesson.controller.js'
 import {
-  createquestion,
+  createQuestionHandler,
   deletequestion,
   getQuestion,
   getQuestionsByLessonId
@@ -34,26 +34,20 @@ function routes(app) {
   app.post('/api/courses', createCourseHandler)
   app.get('/api/courses', getCourses)
 
-  //start lesson routes
   app.post('/api/lesson', createLessonHandler)
   app.get('/api/lesson', getLessons)
   app.get('/api/lesson/:lessonId', getLessonsByCourseId)
   app.delete('/api/lesson/:lessonId', deletelesson)
-  //end lesson routes
 
-  //start question routes
-  app.post('/api/question', createquestion)
+  app.post('/api/question', createQuestionHandler)
   app.get('/api/question', getQuestion)
   app.get('/api/question/:lessonId', getQuestionsByLessonId)
   app.delete('/api/question/:questionId', deletequestion)
-  //end question routes
 
-  //start answer routes
   app.post('/api/answer', createanswer)
   app.get('/api/answer', getAnswer)
   app.get('/api/answer/:questionId', getAnswesByQuestionId)
   app.delete('/api/answer/:answerId', deleteanswer)
-  //end answer routes
 
   app.use((req, res) => {
     console.log('catch 404')

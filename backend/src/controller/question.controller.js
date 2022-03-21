@@ -5,7 +5,7 @@ import {
   findQuestionByLessonId
 } from '../service/question.service.js'
 
-export async function createquestion(req, res) {
+export async function createQuestionHandler(req, res) {
   try {
     const question = await createQuestion(req.body)
     res.status(201).json({ message: 'Question created', question })
