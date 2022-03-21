@@ -1,16 +1,15 @@
 import mongoose from 'mongoose'
 
-const userTeacherSchema = new mongoose.Schema(
+const teacherSchema = new mongoose.Schema(
   {
-    idUsuario: { type: String, required: true },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     banckAccount: { type: String, required: true },
-    salary: { type: Number, required: false },
-    disponibility: [{ dia: String, horaInicio: String, horaFinal: String }],
-    createdCursos: [{ id_cursos: Number }]
+    salary: { type: Number },
+    disponibility: [{ day: String, horaInicio: String, horaFinal: String }]
   },
   { timestamps: true }
 )
 
-const User = mongoose.model('UserTeacher', userTeacherSchema)
+const Teacher = mongoose.model('Teacher', teacherSchema)
 
-export default User
+export default Teacher
