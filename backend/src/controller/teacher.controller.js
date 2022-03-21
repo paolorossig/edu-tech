@@ -1,18 +1,17 @@
-import { createUser, updateUser } from '../service/user.service.js'
-
-export async function signUp(req, res) {
+import { createTeacher, updateTeacher } from '../service/teacher.service.js'
+export async function createTeacherHandler(req, res) {
   try {
-    const user = await createUser(req.body)
-    res.status(201).json({ message: 'User created', user })
+    const teacher = await createTeacher(req.body)
+    res.status(201).json({ message: 'Teacher created', teacher })
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
 }
 
-export async function updateUserData(req, res) {
+export async function updateTeacherHandler(req, res) {
   try {
-    const user = await updateUser(req.params.idUser, req.body)
-    res.status(201).json({ message: 'User updated', user })
+    const teacher = await updateTeacher(req.params.idUser, req.body)
+    res.status(201).json({ message: 'Teacher updated', teacher })
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
