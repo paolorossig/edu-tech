@@ -1,8 +1,13 @@
 # EduTECH
 
-EduTech is a MERN Full Stack project developed in the Make it Real Bootcamp.
+[EduTech](https://edutech.vercel.app) is a MERN Full Stack project developed in the Make it Real Bootcamp.
 
-> v1.1.0 comes with our First landing page and auth services
+## Stack
+
+This project is structured in a monorepo with the following stack:
+
+- Frontend: React, Vite, Tailwindcss
+- Backend: NodeJs, Express, MongoDB
 
 ## Development
 

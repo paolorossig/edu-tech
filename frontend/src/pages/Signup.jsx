@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
 import { EyeIcon } from '@heroicons/react/outline'
@@ -7,6 +7,7 @@ import ModalLayout from '@/components/Layouts/ModalLayout'
 import Button from '@/components/Button'
 import useAuth from '@/hooks/useAuth'
 import useToggle from '@/hooks/useToggle'
+import icon from '@/assets/svg/icon.svg'
 import loginSVG from '@/assets/svg/login.svg'
 
 function Signup() {
@@ -31,7 +32,12 @@ function Signup() {
 
   return (
     <ModalLayout imgsrc={loginSVG}>
-      <h1 className="mb-4">Regístrate</h1>
+      <div className="relative mb-4 flex h-16 items-center">
+        <Link to="/" className="absolute -left-2 h-full">
+          <img src={icon} alt="logo" className="h-full" />
+        </Link>
+        <h1 className="w-full">Regístrate</h1>
+      </div>
       <button
         onClick={() => navigate('/dashboard')}
         className="flex items-center justify-center rounded-xl border border-gray-300 py-2 px-4"

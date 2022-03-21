@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { mentores } from '@/data/mentores.json'
 
-function Mentores() {
+function Mentors() {
   return (
     <section className="flex w-full flex-wrap gap-x-6 gap-y-4 px-8 py-2">
       {mentores.map((mentor) => (
@@ -27,4 +27,4 @@ function Mentores() {
   )
 }
 
-export default Mentores
+export default Mentors

@@ -1,25 +1,26 @@
 import Spinner from './Spinner'
-import { contrastColors, hoverColors } from '@/utils/colors'
 
 function Button({
   children,
   color = 'primary',
   isLoading,
   variant = 'solid',
+  className,
   ...restProps
 }) {
-  const contrastColor = contrastColors[color] || 'black'
-  const hoverColor = hoverColors[color] || 'gray-400'
+  const baseColor = `${color}-400`
+  const hoverColor = `${color}-900`
+
   const colorClasses =
     variant === 'solid'
-      ? `bg-${color} hover:bg-${hoverColor}`
+      ? `bg-${baseColor} hover:bg-${hoverColor}`
       : `bg-white hover:bg-gray-100`
-  const contentColor = variant === 'solid' ? contrastColor : color
+  const contentColor = variant === 'solid' ? 'white' : baseColor
 
   return (
     <button
       {...restProps}
-      className={`flex justify-center rounded-xl border border-${color} py-2 px-4 text-${contentColor} ${colorClasses}`}
+      className={`flex justify-center rounded-xl border border-${baseColor} py-2 px-4 text-${contentColor} ${colorClasses} ${className}`}
     >
       {isLoading ? <Spinner color={contentColor} /> : children}
     </button>
