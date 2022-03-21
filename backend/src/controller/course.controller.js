@@ -1,8 +1,8 @@
-import { createCourses, findCourses } from '../service/course.service.js'
+import { createCourse, findCourses } from '../service/course.service.js'
 
-export async function createCourse(req, res) {
+export async function createCourseHandler(req, res) {
   try {
-    const course = await createCourses(req.body)
+    const course = await createCourse(req.body)
     res.status(201).json({ message: 'Course created', course })
   } catch (error) {
     res.status(400).json({ message: error.message })

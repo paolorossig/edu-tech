@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
 import { cursos } from '@/data/cursos.json'
+import { getTimeString } from '@/utils/time'
 
 function Course() {
   const { courseId } = useParams()
@@ -16,7 +17,13 @@ function Course() {
         <h2 className="text-gray-500">Contenido:</h2>
         <ul className="m-8 flex flex-col gap-8">
           {lessons.map((lesson) => {
-            const { id: lessonId, title, length, completed, exercises } = lesson
+            const {
+              id: lessonId,
+              title,
+              duration,
+              completed,
+              exercises
+            } = lesson
 
             const bgColor =
               completed === exercises
@@ -35,7 +42,7 @@ function Course() {
                   </div>
                   <div className="flex-1">
                     <h3>{title}</h3>
-                    <p className="text-gray-500">{length}</p>
+                    <p className="text-gray-500">{getTimeString(duration)}</p>
                   </div>
                   <div>
                     <p className="text-gray-500">
