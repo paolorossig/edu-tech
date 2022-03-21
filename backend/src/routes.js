@@ -23,12 +23,26 @@ import {
   getAnswer,
   getAnswesByQuestionId
 } from './controller/answer.controller.js'
+import {
+  createStudentHandler,
+  updateStudentHandler
+} from './controller/student.controller.js'
+import {
+  createTeacherHandler,
+  updateTeacherHandler
+} from './controller/teacher.controller.js'
 
 function routes(app) {
   app.get('/healthcheck', (req, res) => res.sendStatus(200))
 
   app.post('/api/users', signUp)
-  app.update('/api/users', updateUserHandler)
+  app.put('/api/users', updateUserHandler)
+
+  app.post('/api/student', createStudentHandler)
+  app.put('/api/student', updateStudentHandler)
+
+  app.post('/api/teacher', createTeacherHandler)
+  app.put('/api/teacher', updateTeacherHandler)
 
   app.post('/api/sessions', login)
   app.get('/api/sessions', requireUser, getUserSession)
