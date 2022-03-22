@@ -1,5 +1,6 @@
 import { createUser, updateUser } from '../service/user.service.js'
 
+
 export async function signUp(req, res) {
   try {
     const user = await createUser(req.body)
@@ -11,7 +12,7 @@ export async function signUp(req, res) {
 
 export async function updateUserHandler(req, res) {
   try {
-    const user = await updateUser(req.params._id, req.body)
+    const user = await updateUser(req.params.userId, req)
     res.status(201).json({ message: 'User updated', user })
   } catch (error) {
     res.status(400).json({ message: error.message })
