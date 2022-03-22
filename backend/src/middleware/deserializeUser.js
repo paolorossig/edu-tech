@@ -1,42 +1,43 @@
+import log from '../utils/logger.js'
 import { verifyJwt } from '../utils/jwt.js'
 import { reIssueAccessToken } from '../service/session.service.js'
 
 const deserializeUser = async (req, res, next) => {
-  console.log('In deserializeUser------------')
+  log.trace('In deserializeUser------------')
   const accessToken = req.headers.authorization?.replace('Bearer', '').trim()
-  const refreshToken = req.headers['x-refresh'] || ''
-  if (!accessToken) {
-    console.log('No Acess Token')
-    console.log('Out deserializeUser------------')
+  const refreshToken = req.cookies?.jwt
+  log.child({ accessToken, refreshToken }).info('Tokens intercepted')
+
+  if (!accessToken && !refreshToken) {
+    log.warn('No Acess Token or Refresh Token')
+    log.trace('Out deserializeUser------------')
     return next()
   }
 
-  const { decoded, expired } = verifyJwt(accessToken, 'accessToken')
+  let { decoded, expired } = verifyJwt(accessToken, 'accessToken')
+  if (!decoded) expired = true // Force it when accessToken is null
 
   if (decoded) {
     res.locals.user = decoded
-    console.log('Access Token Decoded')
-    console.log('Out deserializeUser------------')
+    log.info('Access Token Decoded')
   }
 
   if (expired && refreshToken) {
-    console.log('Access Token Expired but with Refresh Token')
+    log.warn('No Access Token or it is expired but with Refresh Token')
     const newAccessToken = await reIssueAccessToken({ refreshToken })
 
     if (newAccessToken) {
-      console.log('New Acces Token')
+      const child = log.child({ newAccessToken })
+      child.info('New Acces Token:')
       res.setHeader('x-access-token', newAccessToken)
     }
 
     const result = verifyJwt(newAccessToken, 'accessToken')
 
     res.locals.user = result.decoded
-    console.log('Out deserializeUser------------')
   }
 
-  console.log('No Refresh Token')
-  console.log('Out deserializeUser------------')
-
+  log.trace('Out deserializeUser------------')
   return next()
 }
 

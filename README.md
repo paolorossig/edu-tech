@@ -7,7 +7,21 @@
 This project is structured in a monorepo with the following stack:
 
 - Frontend: React, Vite, Tailwindcss
-- Backend: NodeJs, Express, MongoDB
+- Backend: Node.js, Express.js, MongoDB
+
+## Requests Flow
+
+```mermaid
+flowchart LR
+A[HTTP Endpoint] -- Middleware --> B[Controller]
+B[Controller] --> C[Service]
+C[Service] --> D[(Database)]
+```
+
+## Deployment
+
+- Client: Vercel
+- Server: Heroku
 
 ## Development
 

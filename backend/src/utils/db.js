@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import log from './logger.js'
 
 export function connectDb() {
   const url = process.env.MONGO_URL
@@ -9,10 +10,10 @@ export function connectDb() {
   })
 
   mongoose.connection.once('open', () => {
-    console.log('DB connection established successfully')
+    log.info('DB connection established successfully')
   })
 
   mongoose.connection.on('error', (error) => {
-    console.error(error)
+    log.error(error)
   })
 }

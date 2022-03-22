@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react'
-import { login, signup } from '@/services/auth'
+import { deleteUserSession, login, signup } from '@/services/auth'
 
 const AuthContext = createContext()
 
@@ -23,13 +23,14 @@ export const AuthProvider = ({ children }) => {
     return response
   }
 
-  const logout = () => {
-    setAuth({})
+  const logout = async (axiosPrivate) => {
+    const response = await deleteUserSession(axiosPrivate)
+    if (response.success) return setAuth({})
   }
 
   return (
     <AuthContext.Provider
-      value={{ auth, isLoading, userSignup, userLogin, logout }}
+      value={{ auth, setAuth, isLoading, userSignup, userLogin, logout }}
     >
       {children}
     </AuthContext.Provider>
