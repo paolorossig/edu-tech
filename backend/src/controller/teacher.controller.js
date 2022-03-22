@@ -1,7 +1,9 @@
 import { createTeacher, updateTeacher } from '../service/teacher.service.js'
+import { sendMail } from '../utils/mailer.js'
 export async function createTeacherHandler(req, res) {
   try {
     const teacher = await createTeacher(req.body)
+    await sendMail(teacher.user)
     res.status(201).json({ message: 'Teacher created', teacher })
   } catch (error) {
     res.status(400).json({ message: error.message })
