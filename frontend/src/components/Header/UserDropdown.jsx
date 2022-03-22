@@ -4,14 +4,20 @@ import { LogoutIcon, PencilAltIcon } from '@heroicons/react/outline'
 import useAuth from '@/hooks/useAuth'
 import useAxiosPrivate from '@/hooks/useAxiosPrivate'
 
-function Dropdown({ children }) {
+function UserDropdown() {
   const axiosPrivate = useAxiosPrivate()
   const { logout } = useAuth()
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button className="inline-flex w-full justify-center rounded-xl px-4 py-2 text-sm font-medium hover:bg-black hover:bg-opacity-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-        {children}
+        <div className="flex gap-2">
+          <div className="h-10 w-10 rounded-full bg-black"></div>
+          <div className="flex flex-col items-start">
+            <h3>Paolo Rossi</h3>
+            <h4>Alumno</h4>
+          </div>
+        </div>
       </Menu.Button>
       <Transition
         as={Fragment}
@@ -22,7 +28,7 @@ function Dropdown({ children }) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 mt-4 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute -right-2 mt-4 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="p-1">
             <Menu.Item>
               {({ active }) => (
@@ -62,4 +68,4 @@ function Dropdown({ children }) {
   )
 }
 
-export default Dropdown
+export default UserDropdown
