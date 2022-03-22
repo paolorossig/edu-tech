@@ -1,4 +1,5 @@
 import User from '../model/user.model.js'
+import cloudinary from 'cloudinary'
 
 const omitPassword = (user) => {
   // eslint-disable-next-line no-unused-vars
@@ -33,7 +34,16 @@ export async function findUser(query) {
 
 export async function updateUser(query, update) {
   try {
-    const user = await User.updateOne(query, update)
+    const userFinded = await User.findById(query)
+    if (userFinded.cloudinary_id !== '') {
+      await cloudinary.uploader.destroy(userFinded.photoCloudinaryId)
+    }
+    const image = await cloudinary.uploader.upload(update.file.path)
+    const user = await User.findByIdAndUpdate(query, {
+      ...update.body,
+      photoURL: image.secure_url,
+      photoCloudinaryId: image.public_id
+    })
     return user
   } catch (error) {
     throw new Error(error)
