@@ -31,12 +31,14 @@ import {
   createTeacherHandler,
   updateTeacherHandler
 } from './controller/teacher.controller.js'
+import { upload } from './utils/multer.js'
 
 function routes(app) {
   app.get('/healthcheck', (req, res) => res.sendStatus(200))
 
+  // app.post('/api/users', upload.none(), signUp)
   app.post('/api/users', signUp)
-  app.put('/api/users', updateUserHandler)
+  app.put('/api/users/:userId', upload.single('photoURL'), updateUserHandler)
 
   app.post('/api/student', createStudentHandler)
   app.put('/api/student', updateStudentHandler)
