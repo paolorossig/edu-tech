@@ -17,7 +17,7 @@ export async function updateSession(query, update) {
 }
 
 export async function reIssueAccessToken({ refreshToken }) {
-  const { decoded } = verifyJwt(refreshToken, 'refreshTokenPublicKey')
+  const { decoded } = verifyJwt(refreshToken, 'refreshToken')
   if (!decoded || !decoded?.session) return false
 
   const session = await Session.findById(decoded.session)

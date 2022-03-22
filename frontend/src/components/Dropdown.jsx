@@ -2,8 +2,10 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { LogoutIcon, PencilAltIcon } from '@heroicons/react/outline'
 import useAuth from '@/hooks/useAuth'
+import useAxiosPrivate from '@/hooks/useAxiosPrivate'
 
 function Dropdown({ children }) {
+  const axiosPrivate = useAxiosPrivate()
   const { logout } = useAuth()
 
   return (
@@ -40,7 +42,7 @@ function Dropdown({ children }) {
             <Menu.Item>
               {({ active }) => (
                 <button
-                  onClick={logout}
+                  onClick={() => logout(axiosPrivate)}
                   className={`${
                     active ? 'bg-primary-400 text-white' : 'text-gray-900'
                   } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
