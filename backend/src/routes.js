@@ -41,10 +41,10 @@ function routes(app) {
   app.put('/api/users/:userId', upload.single('photoURL'), updateUserHandler)
 
   app.post('/api/student', createStudentHandler)
-  app.put('/api/student', updateStudentHandler)
+  app.put('/api/student/:studentId', updateStudentHandler)
 
   app.post('/api/teacher', createTeacherHandler)
-  app.put('/api/teacher', updateTeacherHandler)
+  app.put('/api/teacher/:teacherId', updateTeacherHandler)
 
   app.post('/api/sessions', login)
   app.get('/api/sessions', requireUser, getUserSession)
