@@ -5,6 +5,7 @@
     "bradlc.vscode-tailwindcss",
     "mhutchie.git-graph",
     "usernamehw.errorlens",
-    "formulahendry.auto-rename-tag"
+    "formulahendry.auto-rename-tag",
+    "bierner.markdown-mermaid"
   ]
 }

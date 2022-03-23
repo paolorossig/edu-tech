@@ -6,6 +6,7 @@ import Inicio from './pages/dashboard/Inicio'
 import Courses from './pages/dashboard/courses'
 import Course from './pages/dashboard/courses/Course'
 import Lesson from './pages/dashboard/courses/Lesson'
+import Sessions from './pages/dashboard/Sessions'
 import Checkout from './pages/dashboard/Checkout'
 import Mentors from './pages/dashboard/mentors'
 import Mentor from './pages/dashboard/mentors/Mentor'
@@ -51,6 +52,7 @@ function App() {
             <Route path="chat" element={<Chat />} />
           </Route>
         </Route>
+        <Route path="sesiones" element={<Sessions />} />
         <Route path="checkout" element={<Checkout />} />
       </Route>
 

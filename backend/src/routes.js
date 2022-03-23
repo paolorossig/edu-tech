@@ -1,5 +1,10 @@
+import log from './utils/logger.js'
 import { signUp } from './controller/user.controller.js'
-import { getUserSession, login } from './controller/session.controller.js'
+import {
+  deleteUserSession,
+  getUserSession,
+  login
+} from './controller/session.controller.js'
 import requireUser from './middleware/requireUser.js'
 import {
   createCourseHandler,
@@ -30,6 +35,7 @@ function routes(app) {
   app.post('/api/users', signUp)
   app.post('/api/sessions', login)
   app.get('/api/sessions', requireUser, getUserSession)
+  app.delete('/api/sessions', requireUser, deleteUserSession)
 
   app.post('/api/courses', createCourseHandler)
   app.get('/api/courses', getCourses)
@@ -50,7 +56,7 @@ function routes(app) {
   app.delete('/api/answer/:answerId', deleteanswer)
 
   app.use((req, res) => {
-    console.log('catch 404')
+    log.error('catch 404')
     res.send('404')
   })
 }
