@@ -21,10 +21,10 @@ export async function login(req, res) {
     .status(200)
     .cookie('jwt', refreshToken, {
       httpOnly: true,
-      // maxAge: 1000 * 60 * 60 * 24,
+      maxAge: 1000 * 60 * 60 * 24,
       sameSite: 'strict',
-      path: '/'
-      // secure: true
+      path: '/',
+      secure: process.env.NODE_ENV === 'production'
     })
     .send({ accessToken })
 }
@@ -32,7 +32,7 @@ export async function login(req, res) {
 export async function getUserSession(req, res) {
   const userId = res.locals.user._id
 
-  const sessions = await findSessions({ user: userId, valid: true })
+  const sessions = await findSessions({ user: userId, loggedOut: false })
 
   return res.send({ sessions })
 }
@@ -40,7 +40,7 @@ export async function getUserSession(req, res) {
 export async function deleteUserSession(req, res) {
   const sessionId = res.locals.user.session
 
-  await updateSession({ _id: sessionId }, { valid: false })
+  await updateSession({ _id: sessionId }, { loggedOut: true })
 
   return res.clearCookie('jwt').send({ message: 'Sesión invalidada' })
 }

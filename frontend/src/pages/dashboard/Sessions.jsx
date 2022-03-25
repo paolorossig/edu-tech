@@ -22,7 +22,7 @@ function Sessions() {
           <li key={session._id} className="flex gap-4">
             <p>{session._id}</p>
             <p>{session.createdAt}</p>
-            <p>{session.isValid}</p>
+            <p>{session.loggedOut ? 'logged out' : 'valid session'}</p>
           </li>
         ))}
       </ul>
