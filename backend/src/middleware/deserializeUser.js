@@ -27,8 +27,7 @@ const deserializeUser = async (req, res, next) => {
     const newAccessToken = await reIssueAccessToken({ refreshToken })
 
     if (newAccessToken) {
-      const child = log.child({ newAccessToken })
-      child.info('New Acces Token:')
+      log.child({ newAccessToken }).info('New Acces Token:')
       res.setHeader('x-access-token', newAccessToken)
     }
 
