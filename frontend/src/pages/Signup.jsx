@@ -21,12 +21,10 @@ function Signup() {
   const [viewPassword, toggleViewPassword] = useToggle()
 
   const onSubmit = async (data) => {
-    // navigate('/select-user-type')
     const response = await userSignup(data)
-    console.log('Response', response)
-    if (!response.success) setResponseError(response.error)
-    if (response.success) navigate(`/select-user-type/${response.user._id}`)
-    // if (response.user) navigate('/login')
+    return !response.success
+      ? setResponseError(response.error)
+      : navigate(`/select-user-type`)
   }
 
   return (
