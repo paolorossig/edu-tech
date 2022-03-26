@@ -17,11 +17,7 @@ function TeacherForm({ goBack }) {
   } = useForm()
 
   const onSubmit = async (formData) => {
-    const response = await updateUserData(auth.userId, {
-      ...formData,
-      nickName: formData.name,
-      role: 'teacher'
-    })
+    const response = await updateUserData(auth.userId, formData, 2)
     response.success && navigate('/login')
   }
 
@@ -111,6 +107,7 @@ function TeacherForm({ goBack }) {
           label="Foto de Portada:"
           register={register}
           errors={errors}
+          accept="image/*"
         />
         <Button type="submit">Guardar</Button>
         <Button color="gray" onClick={goBack}>

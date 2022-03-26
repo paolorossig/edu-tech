@@ -12,6 +12,7 @@ import Button from '../Button'
 
 function StudentForm({ goBack }) {
   const { auth } = useAuth()
+  // const [image, setImage] = useState()
   const navigate = useNavigate()
   const {
     register,
@@ -22,11 +23,7 @@ function StudentForm({ goBack }) {
   const [selected, setSelected] = useState([])
 
   const onSubmit = async (formData) => {
-    const response = await updateUserData(auth.userId, {
-      ...formData,
-      nickName: formData.name,
-      role: 'student'
-    })
+    const response = await updateUserData(auth.userId, formData, 1, selected)
     response.success && navigate('/login')
   }
 
@@ -41,7 +38,8 @@ function StudentForm({ goBack }) {
         Configurar cuenta de estudiante
       </ModalLayout.Title>
       <form
-        className="grid grid-cols-1 gap-4 md:grid-cols-2"
+        className="grid grid-cols-1 gap-4
+        md:grid-cols-2"
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputForm
@@ -125,6 +123,7 @@ function StudentForm({ goBack }) {
           name="image"
           register={register}
           errors={errors}
+          accept="image/*"
         />
         <Button type="submit">Guardar</Button>
         <Button color="gray" onClick={goBack}>
