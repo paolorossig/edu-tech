@@ -10,6 +10,7 @@ import Button from '../Button'
 
 function StudentConfigAccount() {
   const { idUsuario } = useParams()
+  const [image, setImage] = useState('')
   const navigate = useNavigate()
   const {
     register,
@@ -20,13 +21,33 @@ function StudentConfigAccount() {
   const [selected, setSelected] = useState([])
 
   const onSubmit = (formData) => {
-    console.log('Data', formData)
+    // console.log('Data', formData)
+    const data = new FormData()
+    if (image) {
+      console.log(typeof image)
+      for (let i = 0; i < image.length; i++) {
+        // Con el metodo append vamos agregando los archivos
+        // y si tuvieramos otros campos también
+        data.append('photoURL', image[i], image[i].name)
+      }
+    }
+    data.append('nickName', formData.name)
+    data.append('role', 'student')
+    data.append('occupation', 'student')
+    data.append('firstName', formData.name)
     axios
-      .put(`api/users/${idUsuario}`, {
-        ...formData,
-        nickName: formData.name,
-        role: 'student',
-        occupation: 'student'
+      .put(`http://localhost:4000/api/users/${idUsuario}`, data, {
+        headers: {
+          'Content-Type': `multipart/form-data;`
+        }
+      })
+      .then(() => console.log('Logrado'))
+      .catch((err) => console.log('err', err))
+    axios
+      .post(`http://localhost:4000/api/student`, {
+        user: idUsuario,
+        savedAccountNumbers: 123456789,
+        coursesEnabled: []
       })
       .then(() => navigate('/login'))
       .catch((err) => console.log('err', err))
@@ -37,6 +58,10 @@ function StudentConfigAccount() {
       newData.push({ label: val.name, value: val })
     })
     return newData
+  }
+  const handleChange = (event) => {
+    console.log('here', event.target.files)
+    setImage(event.target.files)
   }
 
   return (
@@ -129,12 +154,12 @@ function StudentConfigAccount() {
             <option value="Argentina">Arg</option>
             <option value="...">...</option>
           </InputForm>
-          <InputForm
+          <input
             type="file"
             label="Foto de Portada:"
             id="image"
-            register={register}
-            errors={errors}
+            accept="image/*"
+            onChange={(event) => handleChange(event)}
           />
           <Button type="submit">Guardar Configuracion</Button>
         </form>

@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import ModalLayout from '@/components/Layouts/ModalLayout'
 import Card from '@/components/Card'
 
 function SelectUserType() {
+  const { idUsuario } = useParams()
   return (
     <ModalLayout>
       <ModalLayout.Content>
@@ -10,7 +11,7 @@ function SelectUserType() {
           Seleccione el tipo de usuario
         </ModalLayout.Title>
         <div className="flex flex-col gap-4 md:flex-row">
-          <Link to={'/config/teacher'}>
+          <Link to={`/config/teacher/${idUsuario}`}>
             <Card
               className="border-2 border-orange-500"
               element={{
@@ -21,7 +22,7 @@ function SelectUserType() {
               }}
             />
           </Link>
-          <Link to={'/config/student'}>
+          <Link to={`/config/student/${idUsuario}`}>
             <Card
               className="border-2 border-orange-500"
               element={{

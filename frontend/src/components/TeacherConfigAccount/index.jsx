@@ -119,6 +119,7 @@ function TeacherConfigAccount() {
             type="file"
             label="Foto de Portada:"
             id="image"
+            accept="image/*"
             register={register}
             errors={errors}
           />

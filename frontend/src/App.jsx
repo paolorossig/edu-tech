@@ -30,9 +30,15 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/select-user-type" element={<SelectUserType />} />
-      <Route path="/config/teacher" element={<TeacherConfigAccount />} />
-      <Route path="/config/student" element={<StudentConfigAccount />} />
+      <Route path="/select-user-type/:idUsuario" element={<SelectUserType />} />
+      <Route
+        path="/config/teacher/:idUsuario"
+        element={<TeacherConfigAccount />}
+      />
+      <Route
+        path="/config/student/:idUsuario"
+        element={<StudentConfigAccount />}
+      />
       <Route
         path="/dashboard"
         element={
