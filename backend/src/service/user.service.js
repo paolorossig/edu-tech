@@ -38,7 +38,7 @@ export async function findUser(query) {
 export async function updateUser(query, update) {
   try {
     const userFinded = await User.findById(query)
-    if (userFinded.cloudinary_id !== '') {
+    if (userFinded.photoCloudinaryId !== '') {
       await cloudinary.uploader.destroy(userFinded.photoCloudinaryId)
     }
     const image = await cloudinary.uploader.upload(update.file.path)
