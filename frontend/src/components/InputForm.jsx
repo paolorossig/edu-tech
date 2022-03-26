@@ -4,7 +4,7 @@ function InputForm({
   register,
   errors,
   select,
-  children,
+  options,
   ...restProps
 }) {
   return (
@@ -27,7 +27,11 @@ function InputForm({
             'border-red-600 focus:border-red-600 focus:ring-red-600'
           }`}
         >
-          {children}
+          {options.map(({ label, value }) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
         </select>
       )}
       {errors[id] && <p className="text-red-600">{errors[id].message}</p>}

@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { MultiSelect } from 'react-multi-select-component'
-import { categories } from '@/data/categorias.json'
-import axios from '@/utils/axios'
 import useAuth from '@/hooks/useAuth'
+import { updateUserData } from '@/services/users'
+import { countryOptions, genderOptions } from './commonOptions'
+import { categories } from '@/data/categorias.json'
 import ModalLayout from '../Layouts/ModalLayout'
 import InputForm from '../InputForm'
 import Button from '../Button'
@@ -20,24 +21,19 @@ function StudentForm({ goBack }) {
 
   const [selected, setSelected] = useState([])
 
-  const onSubmit = (formData) => {
-    axios
-      .put(`api/users/${auth.userId}`, {
-        ...formData,
-        nickName: formData.name,
-        role: 'student',
-        occupation: 'student'
-      })
-      .then(() => navigate('/login'))
-      .catch((err) => console.log('err', err))
-  }
-  const categoriesStructure = (categorias) => {
-    const newData = []
-    categorias.forEach((val) => {
-      newData.push({ label: val.name, value: val })
+  const onSubmit = async (formData) => {
+    const response = await updateUserData(auth.userId, {
+      ...formData,
+      nickName: formData.name,
+      role: 'student'
     })
-    return newData
+    response.success && navigate('/login')
   }
+
+  const categoriesStructure = (categorias) =>
+    categorias.map((val) => {
+      return { label: val.name, value: val._id }
+    })
 
   return (
     <>
@@ -58,12 +54,12 @@ function StudentForm({ goBack }) {
         />
         <div className="text-left">
           <label>Categorias de Preferencia</label>
-          {/* <pre>{JSON.stringify(selected)}</pre> */}
           <MultiSelect
             options={categoriesStructure(categories)}
             value={selected}
             onChange={setSelected}
-            labelledBy="Seleccionar categorias de interes."
+            labelledBy="Seleccionar categorias de interés"
+            disableSearch
           />
         </div>
         <InputForm
@@ -75,16 +71,13 @@ function StudentForm({ goBack }) {
           errors={errors}
         />
         <InputForm
-          select={true}
           label="Género:"
           id="gender"
+          select={true}
+          options={genderOptions}
           register={register}
           errors={errors}
-        >
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-          <option value="otro">Otro</option>
-        </InputForm>
+        />
         <InputForm
           type="text"
           placeholder="Ingrese su apellido materno"
@@ -118,20 +111,18 @@ function StudentForm({ goBack }) {
           errors={errors}
         />
         <InputForm
-          select={true}
           label="País:"
           id="country"
+          select={true}
+          options={countryOptions}
           register={register}
           errors={errors}
-        >
-          <option value="Peru">Perú</option>
-          <option value="Argentina">Arg</option>
-          <option value="...">...</option>
-        </InputForm>
+        />
         <InputForm
           type="file"
           label="Foto de Portada:"
           id="image"
+          name="image"
           register={register}
           errors={errors}
         />

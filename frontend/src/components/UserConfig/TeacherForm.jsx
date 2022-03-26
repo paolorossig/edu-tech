@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import axios from '@/utils/axios'
 import useAuth from '@/hooks/useAuth'
+import { updateUserData } from '@/services/users'
+import { countryOptions, genderOptions } from './commonOptions'
 import ModalLayout from '../Layouts/ModalLayout'
 import InputForm from '../InputForm'
 import Button from '../Button'
@@ -15,16 +16,13 @@ function TeacherForm({ goBack }) {
     formState: { errors }
   } = useForm()
 
-  const onSubmit = (formData) => {
-    axios
-      .put(`api/users/${auth.userId}`, {
-        ...formData,
-        nickName: formData.name,
-        role: 'teacher',
-        occupation: 'teacher'
-      })
-      .then(() => navigate('/login'))
-      .catch((err) => console.log('err', err))
+  const onSubmit = async (formData) => {
+    const response = await updateUserData(auth.userId, {
+      ...formData,
+      nickName: formData.name,
+      role: 'teacher'
+    })
+    response.success && navigate('/login')
   }
 
   return (
@@ -37,87 +35,80 @@ function TeacherForm({ goBack }) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputForm
-          type="text"
-          placeholder="Ingrese sus nombres"
-          label="Nombres:"
           id="name"
+          type="text"
+          label="Nombres:"
+          placeholder="Ingrese sus nombres"
           register={register}
           errors={errors}
         />
         <InputForm
-          type="text"
-          placeholder="Ingrese su apellido paterno"
-          label="Apellido Paterno:"
           id="lastname"
-          register={register}
-          errors={errors}
-        />
-        <InputForm
           type="text"
-          placeholder="Ingrese su apellido materno"
-          label="Apellido Materno:"
+          label="Apellido Paterno:"
+          placeholder="Ingrese su apellido paterno"
+          register={register}
+          errors={errors}
+        />
+        <InputForm
           id="surname"
+          type="text"
+          label="Apellido Materno:"
+          placeholder="Ingrese su apellido materno"
           register={register}
           errors={errors}
         />
         <InputForm
-          select={true}
-          label="Género:"
           id="gender"
-          register={register}
-          errors={errors}
-        >
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-          <option value="otro">Otro</option>
-        </InputForm>
-        <InputForm
-          type="date"
-          placeholder="Seleccione su fecha de nacimiento"
-          label="Fecha de Nacimiento:"
-          id="birthday"
-          register={register}
-          errors={errors}
-        />
-        <InputForm
-          type="number"
-          placeholder="Ingrese su DNI"
-          label="DNI:"
-          id="dni"
-          register={register}
-          errors={errors}
-        />
-        <InputForm
-          type="number"
-          placeholder="Ingrese su numero de celular"
-          label="Celular:"
-          id="phoneNumber"
-          register={register}
-          errors={errors}
-        />
-        <InputForm
+          label="Género:"
           select={true}
-          label="País:"
-          id="country"
-          register={register}
-          errors={errors}
-        >
-          <option value="Peru">Perú</option>
-          <option value="Argentina">Arg</option>
-          <option value="...">...</option>
-        </InputForm>
-        <InputForm
-          type="number"
-          placeholder="Ingrese su numero de cuenta bancaria"
-          label="Numero de Cuenta:"
-          id="cardNumber"
+          options={genderOptions}
           register={register}
           errors={errors}
         />
         <InputForm
+          id="birthday"
+          type="date"
+          label="Fecha de Nacimiento:"
+          register={register}
+          errors={errors}
+        />
+        <InputForm
+          id="dni"
+          type="number"
+          label="DNI:"
+          placeholder="Ingrese su DNI"
+          register={register}
+          errors={errors}
+        />
+        <InputForm
+          id="phoneNumber"
+          type="number"
+          label="Celular:"
+          placeholder="Ingrese su numero de celular"
+          register={register}
+          errors={errors}
+        />
+        <InputForm
+          id="country"
+          label="País:"
+          select={true}
+          options={countryOptions}
+          register={register}
+          errors={errors}
+        />
+        <InputForm
+          id="cardNumber"
+          type="number"
+          label="Numero de Cuenta:"
+          placeholder="Ingrese su numero de cuenta bancaria"
+          register={register}
+          errors={errors}
+        />
+        <InputForm
+          id="image"
           type="file"
           label="Foto de Portada:"
-          id="image"
           register={register}
           errors={errors}
         />
