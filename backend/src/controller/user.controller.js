@@ -1,10 +1,10 @@
 import { createUser, updateUser } from '../service/user.service.js'
-import { sendMailConfigUser } from '../utils/mailer.js'
+import { sendMailCreateUser } from '../utils/mailer.js'
 
 export async function signUp(req, res) {
   try {
     const user = await createUser(req.body)
-    sendMailConfigUser(user)
+    sendMailCreateUser(user)
     res.status(201).json({ message: 'User created', user })
   } catch (error) {
     res.status(400).json({ message: error.message })
