@@ -1,8 +1,11 @@
-function Card({ element }) {
+function Card({ element, className, ...restProps }) {
   const { name, category, imageUrl } = element
 
   return (
-    <div className="overflow-hidden rounded-3xl bg-white">
+    <div
+      className={`overflow-hidden rounded-3xl bg-white ${className}`}
+      {...restProps}
+    >
       <img
         src={imageUrl}
         alt={name}

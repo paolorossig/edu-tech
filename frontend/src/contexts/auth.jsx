@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true)
     const response = await signup(data)
     setIsLoading(false)
+    response.success && setAuth({ userId: response.user._id })
     return response
   }
 

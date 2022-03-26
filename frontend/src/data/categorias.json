@@ -1,19 +1,20 @@
-{"categories" :[
+{
+  "categories": [
     {
-      "id": 1,
-      "name": "DESARROLLO WEB"
+      "_id": 1,
+      "name": "Desarrollo web"
     },
     {
-      "id": 2,
-      "name": "FRONTEND"
+      "_id": 2,
+      "name": "Frontend"
     },
     {
-      "id": 3,
-      "name": "DEVOPS"
+      "_id": 3,
+      "name": "DevOps"
     },
     {
-      "id": 4,
-      "name": "BACKEND"
+      "_id": 4,
+      "name": "Backend"
     }
   ]
 }

@@ -1,10 +1,9 @@
 import { createUser, updateUser } from '../service/user.service.js'
-import { sendMailCreateUser } from '../utils/mailer.js'
+import { sendWelcomeMail } from '../utils/mailer.js'
 
 export async function signUp(req, res) {
   try {
     const user = await createUser(req.body)
-    sendMailCreateUser(user)
     res.status(201).json({ message: 'User created', user })
   } catch (error) {
     res.status(400).json({ message: error.message })
@@ -14,6 +13,7 @@ export async function signUp(req, res) {
 export async function updateUserHandler(req, res) {
   try {
     const user = await updateUser(req.params.userId, req)
+    sendWelcomeMail(user)
     res.status(201).json({ message: 'User updated', user })
   } catch (error) {
     res.status(400).json({ message: error.message })

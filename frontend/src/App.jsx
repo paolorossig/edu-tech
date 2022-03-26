@@ -18,8 +18,6 @@ import CoursesTeacher from './pages/teacher/CoursesTeacher'
 import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
-import StudentConfigAccount from './components/studentConfigAccount'
-import TeacherConfigAccount from './components/TeacherConfigAccount'
 import CoursesList from './components/Teacher/CoursesList'
 import { alumnosNavConfig } from './pages/dashboard/layoutConfig'
 import { teacherNavConfig } from './pages/teacher/teacherConfig'
@@ -30,15 +28,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/select-user-type/:idUsuario" element={<SelectUserType />} />
-      <Route
-        path="/config/teacher/:idUsuario"
-        element={<TeacherConfigAccount />}
-      />
-      <Route
-        path="/config/student/:idUsuario"
-        element={<StudentConfigAccount />}
-      />
+      <Route path="/select-user-type" element={<SelectUserType />} />
       <Route
         path="/dashboard"
         element={

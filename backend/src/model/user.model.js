@@ -15,7 +15,6 @@ const userSchema = new mongoose.Schema(
     gender: { type: String, default: '' },
     dni: { type: String, default: '' },
     birthday: { type: String, default: '' },
-    occupation: { type: String, default: '' },
     phoneNumber: { type: String, default: '' },
     country: { type: String, default: '' }
     // authProvider: { type: String, required: true, default: '' }
