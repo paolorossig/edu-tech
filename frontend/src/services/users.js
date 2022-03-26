@@ -28,22 +28,18 @@ export async function updateUserData(userId, formData, type, selected) {
   data.append('phoneNumber', formData.phoneNumber)
   data.append('country', formData.country)
   try {
-    const response = await axios.put(
-      `http://localhost:4000/api/users/${userId}`,
-      data,
-      {
-        headers: {
-          'Content-Type': `multipart/form-data;`
-        }
+    const response = await axios.put(`/api/users/${userId}`, data, {
+      headers: {
+        'Content-Type': `multipart/form-data;`
       }
-    )
+    })
     if (type === 1) {
-      await axios.post(`http://localhost:4000/api/student`, {
+      await axios.post(`/api/student`, {
         user: response.data.user._id,
         interestCategories: selected
       })
     } else if (type === 2) {
-      await axios.post(`http://localhost:4000/api/teacher`, {
+      await axios.post(`/api/teacher`, {
         user: response.data.user._id,
         banckAccount: formData.cardNumber
       })

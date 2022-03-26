@@ -10,7 +10,7 @@ const defaultErrorMessage = 'Error desconocido'
 
 export async function signup(user) {
   try {
-    const response = await axios.post('http://localhost:4000/api/users', user)
+    const response = await axios.post('/api/users', user)
 
     return response.status === 201
       ? { success: true, ...response.data }
@@ -29,13 +29,9 @@ export async function signup(user) {
 
 export async function login(user) {
   try {
-    const response = await axios.post(
-      'http://localhost:4000/api/sessions',
-      user,
-      {
-        withCredentials: true
-      }
-    )
+    const response = await axios.post('/api/sessions', user, {
+      withCredentials: true
+    })
 
     if (response.status !== 200)
       return { success: false, formErrors: response.data }
@@ -55,9 +51,7 @@ export async function login(user) {
 
 export async function getUserSessions(axiosPrivate) {
   try {
-    const response = await axiosPrivate.get(
-      'http://localhost:4000/api/sessions'
-    )
+    const response = await axiosPrivate.get('/api/sessions')
     if (response.status !== 200) return { success: false }
 
     return { success: true, ...response.data }
@@ -75,9 +69,7 @@ export async function getUserSessions(axiosPrivate) {
 
 export async function deleteUserSession(axiosPrivate) {
   try {
-    const response = await axiosPrivate.delete(
-      'http://localhost:4000/api/sessions'
-    )
+    const response = await axiosPrivate.delete('/api/sessions')
     if (response.status !== 200) return { success: false }
 
     return { success: true, ...response.data }
