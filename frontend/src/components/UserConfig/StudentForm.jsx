@@ -23,7 +23,13 @@ function StudentForm({ goBack }) {
   const [selected, setSelected] = useState([])
 
   const onSubmit = async (formData) => {
-    const response = await updateUserData(auth.userId, formData, 1, selected)
+    const idsCategoriesSelected = selected.map((category) => category.value)
+    const response = await updateUserData(
+      auth.userId,
+      formData,
+      1,
+      idsCategoriesSelected
+    )
     response.success && navigate('/login')
   }
 
