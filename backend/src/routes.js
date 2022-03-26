@@ -34,6 +34,12 @@ import {
   updateTeacherHandler
 } from './controller/teacher.controller.js'
 import { upload } from './utils/multer.js'
+import {
+  createCategoryHandler,
+  updateCategoryHandler,
+  deleteCategoryHandler,
+  getCategories
+} from './controller/category.controller.js'
 
 function routes(app) {
   app.get('/healthcheck', (req, res) => res.sendStatus(200))
@@ -54,6 +60,11 @@ function routes(app) {
 
   app.post('/api/courses', createCourseHandler)
   app.get('/api/courses', getCourses)
+
+  app.post('/api/categories', createCategoryHandler)
+  app.get('/api/categories', getCategories)
+  app.put('/api/categories/:categoryId', updateCategoryHandler)
+  app.delete('/api/categories/:categoryId', deleteCategoryHandler)
 
   app.post('/api/lesson', createLessonHandler)
   app.get('/api/lesson', getLessons)
