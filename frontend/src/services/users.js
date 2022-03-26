@@ -18,8 +18,8 @@ export async function updateUserData(userId, formData, type, selected) {
     }
   }
   data.append('firstName', formData.name)
-  data.append('lastName', formData.lastName)
-  data.append('surName', formData.surName)
+  data.append('lastName', formData.lastname)
+  data.append('surName', formData.surname)
   data.append('nickName', formData.name)
   data.append('role', 'student')
   data.append('gender', formData.gender)
@@ -38,13 +38,13 @@ export async function updateUserData(userId, formData, type, selected) {
       }
     )
     if (type === 1) {
-      axios.post(`http://localhot:4000/api/student`, {
-        user: response.id,
-        coursesEnabled: selected
+      await axios.post(`http://localhost:4000/api/student`, {
+        user: response.data.user._id,
+        interestCategories: selected
       })
     } else if (type === 2) {
-      axios.post(`http://localhost:4000/api/teacher`, {
-        user: response.id,
+      await axios.post(`http://localhost:4000/api/teacher`, {
+        user: response.data.user._id,
         banckAccount: formData.cardNumber
       })
     }
