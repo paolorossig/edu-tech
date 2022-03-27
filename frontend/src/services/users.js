@@ -1,21 +1,12 @@
 import axios from '@/utils/axios'
-
-const errorMessages = {
-  400: (data) => data.message,
-  401: (data) => data.message,
-  404: () => 'Error en el servidor'
-}
-
-const defaultErrorMessage = 'Error desconocido'
+import { getErrorResponse } from '@/utils/errors'
 
 export async function updateUserData(userId, formData, type, selected) {
   const { image } = formData
   const data = new FormData()
   if (image) {
     console.log(typeof image)
-    for (let i = 0; i < image.length; i++) {
-      data.append('photoURL', image[i], image[i].name)
-    }
+    data.append('photoURL', image[0], image[0].name)
   }
   data.append('firstName', formData.name)
   data.append('lastName', formData.lastname)
@@ -47,13 +38,6 @@ export async function updateUserData(userId, formData, type, selected) {
 
     return { success: true, ...response.data }
   } catch (error) {
-    const { status, data } = error.response
-
-    return {
-      success: false,
-      error: errorMessages[status]
-        ? errorMessages[status](data)
-        : defaultErrorMessage
-    }
+    return getErrorResponse(error)
   }
 }
