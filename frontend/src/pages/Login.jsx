@@ -25,7 +25,9 @@ function Login() {
     if (!response.success) {
       return setResponseError(response.error)
     }
-    return navigate('/dashboard')
+    return response.user.role === 'student'
+      ? navigate('/dashboard')
+      : navigate('/teacher')
   }
 
   return (
