@@ -18,8 +18,7 @@ export const AuthProvider = ({ children }) => {
   const userLogin = async (data) => {
     setIsLoading(true)
     const response = await login(data)
-    if (response.success)
-      setAuth({ user: data.email, accessToken: response.accessToken })
+    if (response.success) setAuth(response)
     setIsLoading(false)
     return response
   }

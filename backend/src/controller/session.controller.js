@@ -26,7 +26,7 @@ export async function login(req, res) {
       path: '/'
       // secure: true
     })
-    .send({ accessToken })
+    .send({ user, accessToken })
 }
 
 export async function getUserSession(req, res) {
