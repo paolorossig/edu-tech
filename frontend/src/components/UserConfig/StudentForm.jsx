@@ -12,13 +12,9 @@ import Button from '../Button'
 
 function StudentForm({ goBack }) {
   const { auth } = useAuth()
-  // const [image, setImage] = useState()
   const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm()
+  const { register, handleSubmit, formState } = useForm()
+  const { errors, isSubmitting } = formState
 
   const [selected, setSelected] = useState([])
 
@@ -26,9 +22,8 @@ function StudentForm({ goBack }) {
     const idsCategoriesSelected = selected.map((category) => category.value)
     const response = await updateUserData(
       auth.userId,
-      formData,
-      1,
-      idsCategoriesSelected
+      { ...formData, idsCategoriesSelected },
+      'student'
     )
     response.success && navigate('/login')
   }
@@ -49,10 +44,10 @@ function StudentForm({ goBack }) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputForm
+          id="firstName"
           type="text"
-          placeholder="Ingrese sus nombres"
           label="Nombres:"
-          id="name"
+          placeholder="Ingrese sus nombres"
           register={register}
           errors={errors}
         />
@@ -67,72 +62,74 @@ function StudentForm({ goBack }) {
           />
         </div>
         <InputForm
+          id="lastName"
           type="text"
-          placeholder="Ingrese su apellido paterno"
           label="Apellido Paterno:"
-          id="lastname"
+          placeholder="Ingrese su apellido paterno"
           register={register}
           errors={errors}
         />
         <InputForm
-          label="Género:"
           id="gender"
+          label="Género:"
           select={true}
           options={genderOptions}
           register={register}
           errors={errors}
         />
         <InputForm
+          id="surName"
           type="text"
-          placeholder="Ingrese su apellido materno"
           label="Apellido Materno:"
-          id="surname"
+          placeholder="Ingrese su apellido materno"
           register={register}
           errors={errors}
         />
         <InputForm
-          type="date"
-          placeholder="Seleccione su fecha de nacimiento"
-          label="Fecha de Nacimiento:"
           id="birthday"
+          type="date"
+          label="Fecha de Nacimiento:"
+          placeholder="Seleccione su fecha de nacimiento"
           register={register}
           errors={errors}
         />
         <InputForm
-          type="number"
-          placeholder="Ingrese su DNI"
-          label="DNI:"
           id="dni"
-          register={register}
-          errors={errors}
-        />
-        <InputForm
           type="number"
-          placeholder="Ingrese su numero de celular"
-          label="Celular:"
-          id="phoneNumber"
+          label="DNI:"
+          placeholder="Ingrese su DNI"
           register={register}
           errors={errors}
         />
         <InputForm
-          label="País:"
+          id="phoneNumber"
+          type="number"
+          label="Celular:"
+          placeholder="Ingrese su numero de celular"
+          register={register}
+          errors={errors}
+        />
+        <InputForm
           id="country"
+          label="País:"
           select={true}
           options={countryOptions}
           register={register}
           errors={errors}
         />
         <InputForm
-          type="file"
-          label="Foto de Portada:"
           id="image"
           name="image"
+          type="file"
+          label="Foto de Portada:"
           register={register}
           errors={errors}
           accept="image/*"
         />
-        <Button type="submit">Guardar</Button>
-        <Button color="gray" onClick={goBack}>
+        <Button type="submit" isLoading={isSubmitting}>
+          Guardar
+        </Button>
+        <Button color="gray" onClick={goBack} disabled={isSubmitting}>
           Cancelar
         </Button>
       </form>

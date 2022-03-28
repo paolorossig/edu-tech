@@ -10,14 +10,11 @@ import Button from '../Button'
 function TeacherForm({ goBack }) {
   const { auth } = useAuth()
   const navigate = useNavigate()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm()
+  const { register, handleSubmit, formState } = useForm()
+  const { errors, isSubmitting } = formState
 
   const onSubmit = async (formData) => {
-    const response = await updateUserData(auth.userId, formData, 2)
+    const response = await updateUserData(auth.userId, formData, 'teacher')
     response.success && navigate('/login')
   }
 
@@ -31,7 +28,7 @@ function TeacherForm({ goBack }) {
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputForm
-          id="name"
+          id="firstName"
           type="text"
           label="Nombres:"
           placeholder="Ingrese sus nombres"
@@ -39,7 +36,7 @@ function TeacherForm({ goBack }) {
           errors={errors}
         />
         <InputForm
-          id="lastname"
+          id="lastName"
           type="text"
           label="Apellido Paterno:"
           placeholder="Ingrese su apellido paterno"
@@ -47,7 +44,7 @@ function TeacherForm({ goBack }) {
           errors={errors}
         />
         <InputForm
-          id="surname"
+          id="surName"
           type="text"
           label="Apellido Materno:"
           placeholder="Ingrese su apellido materno"
@@ -109,8 +106,10 @@ function TeacherForm({ goBack }) {
           errors={errors}
           accept="image/*"
         />
-        <Button type="submit">Guardar</Button>
-        <Button color="gray" onClick={goBack}>
+        <Button type="submit" isLoading={isSubmitting}>
+          Guardar
+        </Button>
+        <Button color="gray" onClick={goBack} disabled={isSubmitting}>
           Cancelar
         </Button>
       </form>
