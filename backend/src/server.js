@@ -5,7 +5,6 @@ import cookieParser from 'cookie-parser'
 import routes from './routes.js'
 import log from './utils/logger.js'
 import { connectDb } from './utils/db.js'
-import { connectCloudinary } from './utils/cloudinary.js'
 import deserializeUser from './middleware/deserializeUser.js'
 
 const port = process.env.PORT || 4000
@@ -28,6 +27,5 @@ app.use(deserializeUser)
 app.listen(port, () => {
   log.info(`Server listening on http://localhost:${port}`)
   connectDb()
-  connectCloudinary()
   routes(app)
 })

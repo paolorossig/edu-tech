@@ -1,5 +1,5 @@
 import User from '../model/user.model.js'
-import cloudinary from 'cloudinary'
+import cloudinary, { uploads } from '../utils/cloudinary.js'
 import log from '../utils/logger.js'
 
 const omitPassword = (user) => {
@@ -36,17 +36,24 @@ export async function findUser(query) {
 }
 
 export async function updateUser(query, update) {
+  const uploader = async (path) => await uploads(path, 'profile-images')
+
   try {
     const userFinded = await User.findById(query)
-    if (userFinded.photoCloudinaryId !== '') {
+    if (userFinded.photoCloudinaryId) {
       await cloudinary.uploader.destroy(userFinded.photoCloudinaryId)
     }
-    const image = await cloudinary.uploader.upload(update.file.path)
-    const user = await User.findByIdAndUpdate(query, {
-      ...update.body,
-      photoURL: image.secure_url,
-      photoCloudinaryId: image.public_id
-    })
+    const { photoURL, photoCloudinaryId } = await uploader(update.file.path)
+    const user = await User.findByIdAndUpdate(
+      query,
+      {
+        ...update.body,
+        photoURL,
+        photoCloudinaryId
+      },
+      { new: true }
+    )
+    log.child({ user }).info('User updated')
     return user
   } catch (error) {
     throw new Error(error)
