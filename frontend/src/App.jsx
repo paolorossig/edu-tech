@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import SelectUserType from './pages/SelectUserType'
 import Inicio from './pages/dashboard/Inicio'
 import Courses from './pages/dashboard/courses'
 import Course from './pages/dashboard/courses/Course'
@@ -17,7 +18,6 @@ import CoursesTeacher from './pages/teacher/CoursesTeacher'
 import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
-import StudentConfigAccount from './components/studentConfigAccount'
 import CoursesList from './components/Teacher/CoursesList'
 import { alumnosNavConfig } from './pages/dashboard/layoutConfig'
 import { teacherNavConfig } from './pages/teacher/teacherConfig'
@@ -28,8 +28,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-      <Route path="/config" element={<StudentConfigAccount />} />
-
+      <Route path="/select-user-type" element={<SelectUserType />} />
       <Route
         path="/dashboard"
         element={
