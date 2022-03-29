@@ -16,12 +16,15 @@
     "cors": "2.8.5",
     "dotenv": "16.0.0",
     "express": "4.17.3",
+    "googleapis": "99.0.0",
     "jsonwebtoken": "8.5.1",
     "mongoose": "6.2.8",
     "multer": "1.4.4",
-    "uuid": "8.3.2",
+    "open": "8.4.0",
     "pino": "7.9.2",
-    "pino-pretty": "7.6.0"
+    "pino-pretty": "7.6.0",
+    "uuid": "8.3.2",
+    "youtube-api": "3.0.1"
   },
   "devDependencies": {
     "nodemon": "2.0.15"
