@@ -8,14 +8,14 @@ export const sendMail = async (message) => {
     await sgMail.send(message)
     log.info('Mail sent')
   } catch (error) {
-    log.child({ error }).error('sendgrid error')
+    log.child({ error }).error('Sendgrid error')
   }
 }
 
 export function sendWelcomeMail(user) {
   return sendMail({
     to: user.email,
-    from: 'fernandorafaelcallayarihuaman@gmail.com',
+    from: process.env.EMAIL,
     subject: 'Bienvenid@ a EduTECH',
     html: `<h1>Hola ${user.firstName},</h1>
     <p>Acabas de terminar de configurar tu cuenta como ${user.role}!</p>
