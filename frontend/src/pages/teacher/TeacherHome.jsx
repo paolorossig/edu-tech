@@ -1,13 +1,13 @@
 import Card from '@/components/Card'
 import TableTeacher from '@/components/Teacher/TableTeacher'
-import { cursosestadisticas, cursosTeacher } from './teacherConfig'
+import { cursos, estadisticas } from '@/data/cursos.json'
 
 function TeacherHome() {
   return (
     <div>
       <h1 className="mb-4">Tus cursos</h1>
       <div className="mb-4 flex gap-8">
-        {cursosTeacher.map((curso, index) => (
+        {cursos.map((curso, index) => (
           <Card element={curso} key={index} />
         ))}
       </div>
@@ -42,7 +42,7 @@ function TeacherHome() {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200 bg-white">
-          {cursosestadisticas.map((curso, index) => (
+          {estadisticas.map((curso, index) => (
             <TableTeacher element={curso} key={index} />
           ))}
         </tbody>

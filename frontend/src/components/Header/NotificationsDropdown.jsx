@@ -15,11 +15,11 @@ function NotificationsDropdown() {
           <BellIcon className="h-7 w-7 text-gray-500 hover:text-black" />
         </button>
         {dropDown && (
-          <div className="scrollbar-hide absolute top-24 right-8 w-80 items-center overflow-y-scroll rounded-xl bg-white p-4 shadow-md">
+          <div className="scrollbar-hide absolute top-24 right-8 w-80 items-center overflow-y-scroll rounded-xl bg-white p-2 shadow-md">
             <div className="pb-2">
               <a
                 href="#"
-                className="-mx-2 flex items-center border-b px-4 py-3 hover:bg-gray-100"
+                className="flex items-center border-b px-4 py-3 hover:bg-gray-100"
               >
                 <img
                   className="mx-1 h-8 w-8 rounded-full object-cover"
