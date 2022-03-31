@@ -1,15 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FaCloudUploadAlt } from 'react-icons/fa'
+import useCategories from '@/hooks/useCategories'
 import { createCourse } from '@/services/courses'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
-import { categories } from '@/data/categorias.json'
-import { getCategoryOptions } from '@/services/categories'
 
 function RegisterCourse() {
   const navigate = useNavigate()
+  const { options } = useCategories()
   const { register, handleSubmit, formState } = useForm()
   const { errors, isSubmitting } = formState
 
@@ -38,7 +38,7 @@ function RegisterCourse() {
               id="category"
               label="Categoría:"
               select={true}
-              options={getCategoryOptions(categories)}
+              options={options}
               register={register}
               errors={errors}
             />

@@ -4,9 +4,11 @@ import Carousel from '@/components/Landing/Carousel'
 import LateralCard from '@/components/Landing/LateralCard'
 import ContactForm from '@/components/Landing/ContactForm'
 import { cursos } from '@/data/cursos.json'
-import { categories } from '@/data/categorias.json'
+import useCategories from '@/hooks/useCategories'
 
 function Landing() {
+  const categories = useCategories()
+
   return (
     <LandingLayout>
       {/* Hero Section */}
@@ -20,12 +22,12 @@ function Landing() {
       <section className="flex flex-col justify-center">
         <h2 className="my-6 text-center uppercase">Categorías</h2>
         <ul className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {categories.map((category, index) => (
+          {categories.options.map((category) => (
             <li
-              key={index}
+              key={category.value}
               className="hover:bg-primary-400 rounded-xl bg-black px-6 py-2 text-center text-sm text-white shadow-md"
             >
-              {category.name}
+              {category.label}
             </li>
           ))}
         </ul>
