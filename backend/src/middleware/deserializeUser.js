@@ -6,7 +6,6 @@ const deserializeUser = async (req, res, next) => {
   log.trace('In deserializeUser------------')
   const accessToken = req.headers.authorization?.replace('Bearer', '').trim()
   const refreshToken = req.cookies?.jwt
-  log.child({ accessToken, refreshToken }).info('Tokens intercepted')
 
   if (!accessToken && !refreshToken) {
     log.warn('No Acess Token or Refresh Token')
@@ -27,8 +26,7 @@ const deserializeUser = async (req, res, next) => {
     const newAccessToken = await reIssueAccessToken({ refreshToken })
 
     if (newAccessToken) {
-      const child = log.child({ newAccessToken })
-      child.info('New Acces Token:')
+      log.child({ newAccessToken }).info('New Acces Token:')
       res.setHeader('x-access-token', newAccessToken)
     }
 

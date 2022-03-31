@@ -6,16 +6,21 @@ import useAxiosPrivate from '@/hooks/useAxiosPrivate'
 
 function UserDropdown() {
   const axiosPrivate = useAxiosPrivate()
-  const { logout } = useAuth()
+  const { auth, logout } = useAuth()
+  const { email, firstName, lastName, photoURL, role } = auth.user
 
   return (
     <Menu as="div" className="relative inline-block text-left">
       <Menu.Button className="inline-flex w-full justify-center rounded-xl px-4 py-2 text-sm font-medium hover:bg-black hover:bg-opacity-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
         <div className="flex gap-2">
-          <div className="h-10 w-10 rounded-full bg-black"></div>
+          <img
+            src={photoURL}
+            alt={email}
+            className="h-10 w-10 rounded-full object-cover"
+          />
           <div className="flex flex-col items-start">
-            <h3>Paolo Rossi</h3>
-            <h4>Alumno</h4>
+            <h3>{`${firstName} ${lastName}`}</h3>
+            <h4>{role === 'student' ? 'Estudiante' : 'Profesor'}</h4>
           </div>
         </div>
       </Menu.Button>

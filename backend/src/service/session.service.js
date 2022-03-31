@@ -21,7 +21,7 @@ export async function reIssueAccessToken({ refreshToken }) {
   if (!decoded || !decoded?.session) return false
 
   const session = await Session.findById(decoded.session)
-  if (!session || !session.valid) return false
+  if (!session || session.loggedOut) return false
 
   const user = await findUser({ _id: session.user })
   if (!user) return false

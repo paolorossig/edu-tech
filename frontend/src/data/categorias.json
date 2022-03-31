@@ -1,19 +1,39 @@
-{"categories" :[
+{
+  "categories": [
     {
-      "id": 1,
-      "name": "DESARROLLO WEB"
+        "_id": "623f634220e6172b71d229e8",
+        "name": "Desarrollo Web",
+        "createdAt": "2022-03-26T19:02:26.310Z",
+        "updatedAt": "2022-03-26T19:02:26.310Z",
+        "__v": 0
     },
     {
-      "id": 2,
-      "name": "FRONTEND"
+        "_id": "623f634720e6172b71d229ea",
+        "name": "Frontend",
+        "createdAt": "2022-03-26T19:02:31.483Z",
+        "updatedAt": "2022-03-26T19:02:31.483Z",
+        "__v": 0
     },
     {
-      "id": 3,
-      "name": "DEVOPS"
+        "_id": "623f634f20e6172b71d229ec",
+        "name": "Backend",
+        "createdAt": "2022-03-26T19:02:39.981Z",
+        "updatedAt": "2022-03-26T19:02:39.981Z",
+        "__v": 0
     },
     {
-      "id": 4,
-      "name": "BACKEND"
+        "_id": "623f635920e6172b71d229ee",
+        "name": "DevOps",
+        "createdAt": "2022-03-26T19:02:49.713Z",
+        "updatedAt": "2022-03-26T19:02:49.713Z",
+        "__v": 0
+    },
+    {
+        "_id": "623f636520e6172b71d229f0",
+        "name": "IA",
+        "createdAt": "2022-03-26T19:03:01.345Z",
+        "updatedAt": "2022-03-26T19:03:01.345Z",
+        "__v": 0
     }
-  ]
+]
 }

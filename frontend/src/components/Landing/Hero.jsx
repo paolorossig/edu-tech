@@ -1,4 +1,4 @@
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/file'
 import { Link } from 'react-scroll'
 import { BsCheck2Square } from 'react-icons/bs'
 import heroVideo from '@/assets/video/hero-video.mp4'

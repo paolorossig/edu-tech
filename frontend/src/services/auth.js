@@ -1,12 +1,5 @@
 import axios from '@/utils/axios'
-
-const errorMessages = {
-  401: (data) => data.message,
-  400: (data) => data.message,
-  404: () => 'Error en el servidor'
-}
-
-const defaultErrorMessage = 'Error desconocido'
+import { getErrorResponse } from '@/utils/errors'
 
 export async function signup(user) {
   try {
@@ -16,14 +9,7 @@ export async function signup(user) {
       ? { success: true, ...response.data }
       : { success: false, formErrors: response.data }
   } catch (error) {
-    const { status, data } = error.response
-
-    return {
-      success: false,
-      error: errorMessages[status]
-        ? errorMessages[status](data)
-        : defaultErrorMessage
-    }
+    return getErrorResponse(error)
   }
 }
 
@@ -38,14 +24,7 @@ export async function login(user) {
 
     return { success: true, ...response.data }
   } catch (error) {
-    const { status, data } = error.response
-
-    return {
-      success: false,
-      error: errorMessages[status]
-        ? errorMessages[status](data)
-        : defaultErrorMessage
-    }
+    return getErrorResponse(error)
   }
 }
 
@@ -56,14 +35,7 @@ export async function getUserSessions(axiosPrivate) {
 
     return { success: true, ...response.data }
   } catch (error) {
-    const { status, data } = error.response
-
-    return {
-      success: false,
-      error: errorMessages[status]
-        ? errorMessages[status](data)
-        : defaultErrorMessage
-    }
+    return getErrorResponse(error)
   }
 }
 
@@ -74,13 +46,6 @@ export async function deleteUserSession(axiosPrivate) {
 
     return { success: true, ...response.data }
   } catch (error) {
-    const { status, data } = error.response
-
-    return {
-      success: false,
-      error: errorMessages[status]
-        ? errorMessages[status](data)
-        : defaultErrorMessage
-    }
+    return getErrorResponse(error)
   }
 }
