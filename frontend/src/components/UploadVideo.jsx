@@ -1,8 +1,8 @@
-import React from 'react'
-import axios from 'axios'
+import { useState } from 'react'
+import axios from '@/utils/axios'
 
 function UploadVideo() {
-  const [form, setForm] = React.useState({
+  const [form, setForm] = useState({
     title: '',
     description: '',
     file: null
@@ -28,7 +28,7 @@ function UploadVideo() {
     videoData.append('title', form.title)
     videoData.append('description', form.description)
 
-    axios.post('http://localhost:4000/upload', videoData).then((response) => {
+    axios.post('/upload', videoData).then((response) => {
       console.log(response.data)
     })
   }

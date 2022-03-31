@@ -5,11 +5,12 @@ function InputForm({
   errors,
   select,
   options,
+  className,
   ...restProps
 }) {
   return (
     <div className="flex flex-col text-left">
-      <label>{label}</label>
+      <label className="mb-1">{label}</label>
       {!select ? (
         <input
           {...restProps}
@@ -17,7 +18,7 @@ function InputForm({
           className={`${
             errors[id] &&
             'border-red-600 focus:border-red-600 focus:ring-red-600'
-          }`}
+          } ${className}`}
         />
       ) : (
         <select
@@ -25,7 +26,7 @@ function InputForm({
           className={`${
             errors[id] &&
             'border-red-600 focus:border-red-600 focus:ring-red-600'
-          }`}
+          } ${className}`}
         >
           {options.map(({ label, value }) => (
             <option key={value} value={value}>
