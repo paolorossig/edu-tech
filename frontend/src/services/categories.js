@@ -1,6 +1,6 @@
 import axios from '@/utils/axios'
 
-export async function getCourses() {
+export async function getCategories() {
   try {
     const response = await axios.get('/api/categories')
 
@@ -10,4 +10,10 @@ export async function getCourses() {
   } catch (error) {
     return { success: false, error }
   }
+}
+
+export function getCategoryOptions(categories) {
+  return categories.map((val) => {
+    return { label: val.name, value: val._id }
+  })
 }

@@ -9,7 +9,7 @@ function CoursesList() {
 
   const listCourses = async () => {
     const response = await getCourses()
-    if (response.success) return setCourses(response.courses)
+    if (response.success) setCourses(response.courses)
   }
 
   useEffect(() => {
@@ -31,21 +31,33 @@ function CoursesList() {
             <td className="whitespace-nowrap px-6 py-4">
               <strong>Categoria</strong>
             </td>
+            <td className="whitespace-nowrap px-6 py-4">
+              <strong>Precio</strong>
+            </td>
+            <td className="whitespace-nowrap px-6 py-4">
+              <strong>URL portada</strong>
+            </td>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200 bg-white">
           {courses.map((item, index) => (
             <tr key={item._id}>
               <td className="whitespace-nowrap px-6 py-4">{index + 1}</td>
-              <td className="whitespace-nowrap px-6 py-4">{item.courseName}</td>
+              <td className="whitespace-nowrap px-6 py-4">{item.name}</td>
+              <td className="whitespace-nowrap px-6 py-4">{item.category}</td>
+              <td className="whitespace-nowrap px-6 py-4">{item.price}</td>
               <td className="whitespace-nowrap px-6 py-4">
-                {item.courseCategory}
+                <img
+                  src={item.imageURL}
+                  alt="course-image"
+                  className="w-26 h-10 object-cover"
+                />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Button type="submit" onClick={() => navigate('/teacher/createCourse')}>
+      <Button type="submit" onClick={() => navigate('createCourse')}>
         Crear curso
       </Button>
     </div>

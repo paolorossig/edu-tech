@@ -4,8 +4,9 @@ import { useForm } from 'react-hook-form'
 import { MultiSelect } from 'react-multi-select-component'
 import useAuth from '@/hooks/useAuth'
 import { updateUserData } from '@/services/users'
-import { countryOptions, genderOptions } from './commonOptions'
+import { getCategoryOptions } from '@/services/categories'
 import { categories } from '@/data/categorias.json'
+import { countryOptions, genderOptions } from './commonOptions'
 import ModalLayout from '../Layouts/ModalLayout'
 import InputForm from '../InputForm'
 import Button from '../Button'
@@ -28,11 +29,6 @@ function StudentForm({ goBack }) {
     response.success && navigate('/login')
   }
 
-  const categoriesStructure = (categorias) =>
-    categorias.map((val) => {
-      return { label: val.name, value: val._id }
-    })
-
   return (
     <>
       <ModalLayout.Title withIcon={true}>
@@ -54,7 +50,7 @@ function StudentForm({ goBack }) {
         <div className="text-left">
           <label>Categorias de Preferencia</label>
           <MultiSelect
-            options={categoriesStructure(categories)}
+            options={getCategoryOptions(categories)}
             value={selected}
             onChange={setSelected}
             labelledBy="Seleccionar categorias de interés"

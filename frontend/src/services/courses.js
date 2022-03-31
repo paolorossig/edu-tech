@@ -1,12 +1,23 @@
-import axios from '@/utils/axios'
+import axios, { axiosPrivate } from '@/utils/axios'
 
-export async function createCourse(data) {
+export async function createCourse(formData) {
   try {
-    const response = await axios.post('/api/courses', data)
+    const { image } = formData
+    const data = new FormData()
+    image && data.append('imageURL', image[0], image[0].name)
+    data.append('name', formData.name)
+    data.append('description', formData.description)
+    data.append('category', formData.category)
+    data.append('keywords', formData.keywords.split(' '))
+    data.append('price', formData.price)
 
-    return response.status === 201
-      ? { success: true, ...response.data }
-      : { success: false, formErrors: response.data }
+    const response = await axiosPrivate.post('/api/courses', data, {
+      headers: {
+        'Content-Type': `multipart/form-data;`
+      }
+    })
+
+    return response.status === 201 && { success: true, ...response.data }
   } catch (error) {
     return { success: false, error }
   }
@@ -16,9 +27,7 @@ export async function getCourses() {
   try {
     const response = await axios.get('/api/courses')
 
-    return response.status === 200
-      ? { success: true, ...response.data }
-      : { success: false, formErrors: response.data }
+    return response.status === 200 && { success: true, ...response.data }
   } catch (error) {
     return { success: false, error }
   }
