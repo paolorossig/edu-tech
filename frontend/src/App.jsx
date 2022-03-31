@@ -14,7 +14,7 @@ import Mentor from './pages/dashboard/mentors/Mentor'
 import MentorCourses from './pages/dashboard/mentors/MentorCourses'
 import Chat from './pages/dashboard/mentors/Chat'
 import TeacherHome from './pages/teacher/TeacherHome'
-import CoursesTeacher from './pages/teacher/CoursesTeacher'
+import CreateCourse from './pages/teacher/CreateCourse'
 import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
@@ -60,8 +60,10 @@ function App() {
         element={<DashboardLayout navConfig={teacherNavConfig} />}
       >
         <Route index element={<TeacherHome />} />
-        <Route path="cursos" element={<CoursesList />} />
-        <Route path="createCourse" element={<CoursesTeacher />} />
+        <Route path="cursos">
+          <Route index element={<CoursesList />} />
+          <Route path="createCourse" element={<CreateCourse />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFound />} />
