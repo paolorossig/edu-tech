@@ -47,7 +47,9 @@ import {
 } from './controller/video.controller.js'
 
 function routes(app) {
-  app.get('/healthcheck', (req, res) => res.sendStatus(200))
+  app.get('/', (req, res) =>
+    res.status(200).send({ message: 'Welcome to the EduTECH API' })
+  )
 
   app.post('/api/users', signUp)
   app.put('/api/users/:userId', upload.single('photoURL'), updateUserHandler)
@@ -62,7 +64,7 @@ function routes(app) {
   app.get('/api/sessions', requireUser, getUserSession)
   app.delete('/api/sessions', requireUser, deleteUserSession)
 
-  app.post('/api/courses', createCourseHandler)
+  app.post('/api/courses', upload.single('imageURL'), createCourseHandler)
   app.get('/api/courses', getCourses)
 
   app.post('/upload', uploadVideoFile, uploadVideo)

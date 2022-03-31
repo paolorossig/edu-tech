@@ -43,13 +43,13 @@ export async function updateUser(query, update) {
     if (userFinded.photoCloudinaryId) {
       await cloudinary.uploader.destroy(userFinded.photoCloudinaryId)
     }
-    const { photoURL, photoCloudinaryId } = await uploader(update.file.path)
+    const { url, cloudinaryId } = await uploader(update.file.path)
     const user = await User.findByIdAndUpdate(
       query,
       {
         ...update.body,
-        photoURL,
-        photoCloudinaryId
+        photoURL: url,
+        photoCloudinaryId: cloudinaryId
       },
       { new: true }
     )
