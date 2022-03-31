@@ -50,7 +50,7 @@ function Header() {
           </ul>
         </nav>
         <div className="flex justify-center">
-          {!auth.user ? (
+          {!auth.user._id ? (
             <Link to="/login" className="btn_black">
               Iniciar sesión
             </Link>

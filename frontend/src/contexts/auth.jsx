@@ -4,7 +4,7 @@ import { deleteUserSession, login, signup } from '@/services/auth'
 const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({})
+  const [auth, setAuth] = useState({ user: {} })
   const [isLoading, setIsLoading] = useState(false)
 
   const userSignup = async (data) => {
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async (axiosPrivate) => {
     const response = await deleteUserSession(axiosPrivate)
-    if (response.success) return setAuth({})
+    if (response.success) return setAuth({ user: {} })
   }
 
   return (

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FcGoogle } from 'react-icons/fc'
 import { EyeIcon } from '@heroicons/react/outline'
@@ -16,6 +16,7 @@ function Login() {
     formState: { errors }
   } = useForm()
   const { isLoading, userLogin } = useAuth()
+  const { state } = useLocation()
   const navigate = useNavigate()
   const [responseError, setResponseError] = useState()
   const [viewPassword, toggleViewPassword] = useToggle()
@@ -25,9 +26,13 @@ function Login() {
     if (!response.success) {
       return setResponseError(response.error)
     }
-    return response.user.role === 'student'
-      ? navigate('/dashboard')
-      : navigate('/teacher')
+    return navigate(
+      state?.from?.pathname
+        ? state.from.pathname
+        : response.user.role === 'student'
+        ? '/dashboard'
+        : '/teacher'
+    )
   }
 
   return (

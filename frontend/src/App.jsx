@@ -29,39 +29,37 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/select-user-type" element={<SelectUserType />} />
-      <Route
-        path="/dashboard"
-        element={
-          <RequireAuth>
-            <DashboardLayout navConfig={alumnosNavConfig} />
-          </RequireAuth>
-        }
-      >
-        <Route index element={<Inicio />} />
-        <Route path="courses">
-          <Route index element={<Courses />} />
-          <Route path=":courseId" element={<Course />} />
-          <Route path=":courseId/:lessonId" element={<Lesson />} />
-        </Route>
-        <Route path="mentors">
-          <Route index element={<Mentors />} />
-          <Route path=":mentorId" element={<Mentor />}>
-            <Route index element={<Navigate to="courses" />} />
-            <Route path="courses" element={<MentorCourses />} />
-            <Route path="chat" element={<Chat />} />
+      <Route element={<RequireAuth />}>
+        <Route
+          path="/dashboard"
+          element={<DashboardLayout navConfig={alumnosNavConfig} />}
+        >
+          <Route index element={<Inicio />} />
+          <Route path="courses">
+            <Route index element={<Courses />} />
+            <Route path=":courseId" element={<Course />} />
+            <Route path=":courseId/:lessonId" element={<Lesson />} />
           </Route>
+          <Route path="mentors">
+            <Route index element={<Mentors />} />
+            <Route path=":mentorId" element={<Mentor />}>
+              <Route index element={<Navigate to="courses" />} />
+              <Route path="courses" element={<MentorCourses />} />
+              <Route path="chat" element={<Chat />} />
+            </Route>
+          </Route>
+          <Route path="sesiones" element={<Sessions />} />
+          <Route path="checkout" element={<Checkout />} />
         </Route>
-        <Route path="sesiones" element={<Sessions />} />
-        <Route path="checkout" element={<Checkout />} />
-      </Route>
 
-      <Route
-        path="/teacher"
-        element={<DashboardLayout navConfig={teacherNavConfig} />}
-      >
-        <Route index element={<TeacherHome />} />
-        <Route path="cursos" element={<CoursesList />} />
-        <Route path="createCourse" element={<CoursesTeacher />} />
+        <Route
+          path="/teacher"
+          element={<DashboardLayout navConfig={teacherNavConfig} />}
+        >
+          <Route index element={<TeacherHome />} />
+          <Route path="cursos" element={<CoursesList />} />
+          <Route path="createCourse" element={<CoursesTeacher />} />
+        </Route>
       </Route>
 
       <Route path="*" element={<NotFound />} />
