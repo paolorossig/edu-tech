@@ -22,7 +22,7 @@ function Landing() {
       <section className="flex flex-col justify-center">
         <h2 className="my-6 text-center uppercase">Categorías</h2>
         <ul className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {categories.options.map((category) => (
+          {categories.options?.map((category) => (
             <li
               key={category.value}
               className="hover:bg-primary-400 rounded-xl bg-black px-6 py-2 text-center text-sm text-white shadow-md"

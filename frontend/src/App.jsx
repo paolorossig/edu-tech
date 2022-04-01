@@ -59,9 +59,9 @@ function App() {
           element={<DashboardLayout navConfig={teacherNavConfig} />}
         >
           <Route index element={<TeacherHome />} />
-          <Route path="cursos">
+          <Route path="courses">
             <Route index element={<CoursesList />} />
-            <Route path="createCourse" element={<CreateCourse />} />
+            <Route path="create" element={<CreateCourse />} />
           </Route>
         </Route>
       </Route>
