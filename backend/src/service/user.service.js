@@ -1,6 +1,8 @@
 import User from '../model/user.model.js'
 import cloudinary, { uploads } from '../utils/cloudinary.js'
 import log from '../utils/logger.js'
+import { deleteStudent } from './student.service.js'
+import { deleteTeacher } from './teacher.service.js'
 
 const omitPassword = (user) => {
   // eslint-disable-next-line no-unused-vars
@@ -55,6 +57,17 @@ export async function updateUser(query, update) {
     )
     log.child({ user }).info('User updated')
     return user
+  } catch (error) {
+    throw new Error(error)
+  }
+}
+
+export async function deleteUser(userId) {
+  try {
+    deleteStudent({ user: userId })
+    deleteTeacher({ user: userId })
+    await User.findByIdAndDelete(userId)
+    return 'El usuario se eliminó correctamente'
   } catch (error) {
     throw new Error(error)
   }

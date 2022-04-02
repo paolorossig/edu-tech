@@ -5,7 +5,10 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 export const sendMail = async (message) => {
   try {
-    if (process.env.NODE_ENV === 'production' || process.env.TESTING_MAILER) {
+    if (
+      process.env.NODE_ENV === 'production' ||
+      process.env.TESTING_MAILER === 'true'
+    ) {
       await sgMail.send(message)
       log.info('Mail sent')
     }
