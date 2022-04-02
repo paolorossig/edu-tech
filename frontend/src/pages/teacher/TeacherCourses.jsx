@@ -1,20 +1,10 @@
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getCourses } from '@/services/courses'
+import { useGetCoursesQuery } from '@/features/courses/CourseSlice'
 import Button from '@/components/Button'
 
-function CoursesList() {
+function TeacherCourses() {
   const navigate = useNavigate()
-  const [courses, setCourses] = useState([])
-
-  const listCourses = async () => {
-    const response = await getCourses()
-    if (response.success) setCourses(response.courses)
-  }
-
-  useEffect(() => {
-    listCourses()
-  }, [])
+  const { data } = useGetCoursesQuery()
 
   return (
     <section>
@@ -30,7 +20,7 @@ function CoursesList() {
           </tr>
         </thead>
         <tbody className="table_body">
-          {courses.map((item, index) => (
+          {data?.courses?.map((item, index) => (
             <tr key={item._id}>
               <td className="table_row">{index + 1}</td>
               <td className="table_row text-left">{item.name}</td>
@@ -53,4 +43,4 @@ function CoursesList() {
     </section>
   )
 }
-export default CoursesList
+export default TeacherCourses

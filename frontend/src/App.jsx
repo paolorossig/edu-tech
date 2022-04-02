@@ -18,7 +18,7 @@ import CreateCourse from './pages/teacher/CreateCourse'
 import NotFound from './pages/NotFound'
 import RequireAuth from './components/RequireAuth'
 import DashboardLayout from './components/Layouts/DashboardLayout'
-import CoursesList from './components/Teacher/CoursesList'
+import TeacherCourses from './pages/teacher/TeacherCourses'
 import { alumnosNavConfig } from './pages/dashboard/layoutConfig'
 import { teacherNavConfig } from './pages/teacher/teacherConfig'
 
@@ -60,7 +60,7 @@ function App() {
         >
           <Route index element={<TeacherHome />} />
           <Route path="courses">
-            <Route index element={<CoursesList />} />
+            <Route index element={<TeacherCourses />} />
             <Route path="create" element={<CreateCourse />} />
           </Route>
         </Route>
