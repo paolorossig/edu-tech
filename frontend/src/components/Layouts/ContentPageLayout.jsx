@@ -3,7 +3,7 @@ function ContentPageLayout({ children }) {
 }
 
 function Title({ children }) {
-  return <h1 className="my-4">{children}</h1>
+  return <h1 className="mb-4">{children}</h1>
 }
 
 function Paper({ children }) {

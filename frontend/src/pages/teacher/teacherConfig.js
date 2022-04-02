@@ -2,10 +2,10 @@ export function teacherNavConfig() {
   return {
     links: [
       { path: '.', name: 'Inicio' },
-      { path: 'cursos', name: 'Cursos' },
-      { path: 'actividades', name: 'Actividades' },
-      { path: 'calendario', name: 'Calendario' },
-      { path: 'estadisticas', name: 'Estadisticas' }
+      { path: 'courses', name: 'Cursos' },
+      { path: 'activities', name: 'Actividades' },
+      { path: 'calendar', name: 'Calendario' },
+      { path: 'statistics', name: 'Estadisticas' }
     ],
     buttons: ['Configuración']
   }

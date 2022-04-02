@@ -1,21 +1,26 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FaCloudUploadAlt } from 'react-icons/fa'
+import useCategories from '@/hooks/useCategories'
 import { createCourse } from '@/services/courses'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
-import { categories } from '@/data/categorias.json'
-import { getCategoryOptions } from '@/services/categories'
+import { useGetCoursesQuery } from '@/features/courses/CourseSlice'
 
 function RegisterCourse() {
   const navigate = useNavigate()
+  const { options } = useCategories()
+  const { refetch } = useGetCoursesQuery()
   const { register, handleSubmit, formState } = useForm()
   const { errors, isSubmitting } = formState
 
   const onSubmit = async (data) => {
     const response = await createCourse(data)
-    if (response.success) return goBack()
+    if (response.success) {
+      refetch()
+      return goBack()
+    }
   }
 
   const goBack = () => navigate(-1)
@@ -38,7 +43,7 @@ function RegisterCourse() {
               id="category"
               label="Categoría:"
               select={true}
-              options={getCategoryOptions(categories)}
+              options={options}
               register={register}
               errors={errors}
             />

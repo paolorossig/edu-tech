@@ -12,24 +12,18 @@ function Select({ setActiveStep }) {
       </ModalLayout.Title>
       <div className="flex flex-col gap-4 md:flex-row">
         <Card
-          onClick={() => setActiveStep('teacher')}
+          title="Docente"
+          subtitle="Crear cuenta de docente"
+          imageUrl="https://conceptodefinicion.de/wp-content/uploads/2016/10/Docente2.jpg"
           className="cursor-pointer"
-          element={{
-            name: 'Docente',
-            tag: 'Crear cuenta de docente',
-            imageUrl:
-              'https://conceptodefinicion.de/wp-content/uploads/2016/10/Docente2.jpg'
-          }}
+          onClick={() => setActiveStep('teacher')}
         />
         <Card
-          onClick={() => setActiveStep('student')}
+          title="Estudiante"
+          subtitle="Crear cuenta de estudiante"
+          imageUrl="https://www.residenciasarria.com/blog/wp-content/uploads/2018/08/primeros-d%C3%ADas-residencia-estudiantes-1080x675.jpg"
           className="cursor-pointer"
-          element={{
-            name: 'Estudiante',
-            tag: 'Crear cuenta de estudiante',
-            imageUrl:
-              'https://www.residenciasarria.com/blog/wp-content/uploads/2018/08/primeros-d%C3%ADas-residencia-estudiantes-1080x675.jpg'
-          }}
+          onClick={() => setActiveStep('student')}
         />
       </div>
     </>

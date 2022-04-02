@@ -42,7 +42,12 @@ function Checkout() {
         <h1 className="mb-8">Tambien te puede interesar</h1>
         <div className="flex gap-8">
           {cursos.map((curso) => (
-            <Card element={curso} key={curso.id} />
+            <Card
+              title={curso.name}
+              subtitle={curso.category}
+              imageUrl={curso.imageUrl}
+              key={curso.id}
+            />
           ))}
         </div>
       </div>
