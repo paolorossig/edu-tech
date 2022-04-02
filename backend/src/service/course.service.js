@@ -11,7 +11,6 @@ export async function createCourse(input) {
       teacher: input.teacher,
       imageURL: url
     })
-    course.populate('category')
     log.child({ course }).info('Course created')
     return course
   } catch (error) {
@@ -19,7 +18,19 @@ export async function createCourse(input) {
   }
 }
 
-export async function findCourses() {
-  const courses = await Course.find({})
+export async function findCourses(query = {}) {
+  const courses = await Course.find(query).populate({
+    path: 'category',
+    select: 'name'
+  })
   return courses
+}
+
+export async function deleteCourse(courseId) {
+  try {
+    await Course.findByIdAndDelete(courseId)
+    return 'El curso se eliminó correctamente'
+  } catch (error) {
+    throw new Error(error)
+  }
 }

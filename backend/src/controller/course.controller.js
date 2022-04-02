@@ -1,4 +1,8 @@
-import { createCourse, findCourses } from '../service/course.service.js'
+import {
+  createCourse,
+  deleteCourse,
+  findCourses
+} from '../service/course.service.js'
 
 export async function createCourseHandler(req, res) {
   try {
@@ -15,6 +19,15 @@ export async function getCourses(req, res) {
   try {
     const courses = await findCourses()
     res.status(200).json({ message: 'Courses retrieved', courses })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+}
+
+export async function deleteCourseHandler(req, res) {
+  try {
+    const message = await deleteCourse(req.params.courseId)
+    res.status(200).json({ message })
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
