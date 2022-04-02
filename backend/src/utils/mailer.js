@@ -5,8 +5,11 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 export const sendMail = async (message) => {
   try {
-    await sgMail.send(message)
-    log.info('Mail sent')
+    if (process.env.NODE_ENV === 'production' || process.env.TESTING_MAILER) {
+      await sgMail.send(message)
+      log.info('Mail sent')
+    }
+    log.warn('Mailer deactivated in development mode')
   } catch (error) {
     log.child({ error }).error('Sendgrid error')
   }
