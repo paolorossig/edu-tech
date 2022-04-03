@@ -48,7 +48,11 @@ import {
 
 function routes(app) {
   app.get('/', (req, res) =>
-    res.status(200).send({ message: 'Welcome to the EduTECH API' })
+    res.status(200).send({
+      message: 'Welcome to the EduTECH API',
+      node_env: process.env.NODE_ENV,
+      client_url: process.env.CLIENT_URL
+    })
   )
 
   app.post('/api/users', signUp)
