@@ -1,15 +1,55 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi } from '@reduxjs/toolkit/query/react'
+import { axiosPrivate } from '@/utils/axios'
 
 const baseURL = import.meta.env.VITE_SERVER_URL
 
+const axiosBaseQuery =
+  ({ baseUrl } = { baseUrl: '' }) =>
+  async ({ url, method, data, headers }) => {
+    try {
+      const result = await axiosPrivate({
+        url: baseUrl + url,
+        method,
+        data,
+        headers
+      })
+      return { data: result.data }
+    } catch (err) {
+      return {
+        error: { status: err.response?.status, data: err.response?.data }
+      }
+    }
+  }
+
 export const courseApi = createApi({
   reducerPath: 'courseApi',
-  baseQuery: fetchBaseQuery({ baseUrl: `${baseURL}/api/courses` }),
+  baseQuery: axiosBaseQuery({ baseUrl: `${baseURL}/api/courses` }),
+  tagTypes: ['Course'],
   endpoints: (builder) => ({
-    getCourses: builder.query({
-      query: () => '/'
+    allCourses: builder.query({
+      query: () => ({ url: '/all', method: 'get' }),
+      providesTags: ['Course']
+    }),
+    userCourses: builder.query({
+      query: () => ({ url: '/', method: 'get' }),
+      providesTags: ['Course']
+    }),
+    createCourse: builder.mutation({
+      query: ({ data }) => ({
+        url: '/',
+        method: 'post',
+        data,
+        headers: {
+          'Content-Type': 'multipart/form-data;'
+        }
+      }),
+      invalidatesTags: ['Course']
     })
   })
 })
 
-export const { useGetCoursesQuery } = courseApi
+export const {
+  useAllCoursesQuery,
+  useUserCoursesQuery,
+  useCreateCourseMutation
+} = courseApi

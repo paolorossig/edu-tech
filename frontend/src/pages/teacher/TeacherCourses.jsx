@@ -1,10 +1,10 @@
 import { useNavigate } from 'react-router-dom'
-import { useGetCoursesQuery } from '@/features/courses/CourseSlice'
+import { useUserCoursesQuery } from '@/features/courses/CourseSlice'
 import Button from '@/components/Button'
 
 function TeacherCourses() {
   const navigate = useNavigate()
-  const { data } = useGetCoursesQuery()
+  const { data } = useUserCoursesQuery()
 
   return (
     <section>

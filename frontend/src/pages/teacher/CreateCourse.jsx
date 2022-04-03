@@ -2,28 +2,33 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FaCloudUploadAlt } from 'react-icons/fa'
 import useCategories from '@/hooks/useCategories'
-import { createCourse } from '@/services/courses'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
-import { useGetCoursesQuery } from '@/features/courses/CourseSlice'
+import { useCreateCourseMutation } from '@/features/courses/CourseSlice'
 
 function RegisterCourse() {
   const navigate = useNavigate()
   const { options } = useCategories()
-  const { refetch } = useGetCoursesQuery()
+  const [createCourse] = useCreateCourseMutation()
   const { register, handleSubmit, formState } = useForm()
   const { errors, isSubmitting } = formState
 
-  const onSubmit = async (data) => {
-    const response = await createCourse(data)
-    if (response.success) {
-      refetch()
-      return goBack()
-    }
-  }
-
   const goBack = () => navigate(-1)
+
+  const onSubmit = async (formData) => {
+    const data = new FormData()
+    const { image } = formData
+    image && data.append('imageURL', image[0], image[0].name)
+    data.append('name', formData.name)
+    data.append('description', formData.description)
+    data.append('category', formData.category)
+    data.append('keywords', formData.keywords.split(' '))
+    data.append('price', formData.price)
+
+    await createCourse({ data })
+    return goBack()
+  }
 
   return (
     <ContentPageLayout>

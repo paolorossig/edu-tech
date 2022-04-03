@@ -1,9 +1,9 @@
 import CoursesViewer from '@/features/courses/CoursesViewer'
 import TableTeacher from '@/components/Teacher/TableTeacher'
-import { useGetCoursesQuery } from '@/features/courses/CourseSlice'
+import { useUserCoursesQuery } from '@/features/courses/CourseSlice'
 
 function TeacherHome() {
-  const { data, isLoading } = useGetCoursesQuery()
+  const { data, isLoading } = useUserCoursesQuery()
 
   return (
     <div className="flex flex-col gap-12">

@@ -1,10 +1,10 @@
 import Badge from '@/components/Badge'
 import CoursesViewer from '@/features/courses/CoursesViewer'
-import { useGetCoursesQuery } from '@/features/courses/CourseSlice'
+import { useAllCoursesQuery } from '@/features/courses/CourseSlice'
 import { mentores } from '@/data/mentores.json'
 
 function Inicio() {
-  const { data, isLoading } = useGetCoursesQuery()
+  const { data, isLoading } = useAllCoursesQuery()
 
   return (
     <div className="flex flex-col gap-12">
