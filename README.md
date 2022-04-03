@@ -4,10 +4,20 @@
 
 ## Stack
 
-This project is structured in a monorepo with the following stack:
+This project is structured in a monorepo enabled by yarn workspaces with the following stack:
 
-- Frontend: React, Vite, Tailwindcss
-- Backend: Node.js, Express.js, MongoDB
+#### Frontend:
+
+![React](https://img.shields.io/badge/-React-black?style=flat-square&logo=react)
+![Vite](https://img.shields.io/badge/-Vite-black?style=flat-square&logo=vite)
+![Redux](https://img.shields.io/badge/-Redux-black?style=flat-square&logo=redux)
+![Tailwindcss](https://img.shields.io/badge/-Tailwindcss-black?style=flat-square&logo=Tailwindcss)
+
+#### Backend:
+
+![Nodejs](https://img.shields.io/badge/-Nodejs-black?style=flat-square&logo=Node.js)
+![Express](https://img.shields.io/badge/-Express-black?style=flat-square&logo=Express)
+![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=MongoDB)
 
 ## Requests Flow
 

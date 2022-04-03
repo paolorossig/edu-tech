@@ -1,4 +1,4 @@
-import axios, { axiosPrivate } from '@/utils/axios'
+import { axiosPrivate } from '@/utils/axios'
 
 export async function createCourse(formData) {
   try {
@@ -18,16 +18,6 @@ export async function createCourse(formData) {
     })
 
     return response.status === 201 && { success: true, ...response.data }
-  } catch (error) {
-    return { success: false, error }
-  }
-}
-
-export async function getCourses() {
-  try {
-    const response = await axios.get('/api/courses')
-
-    return response.status === 200 && { success: true, ...response.data }
   } catch (error) {
     return { success: false, error }
   }

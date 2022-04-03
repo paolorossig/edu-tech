@@ -16,3 +16,12 @@ export async function updateStudent(query, input) {
     throw new Error(error)
   }
 }
+
+export async function deleteStudent(query) {
+  try {
+    await Student.deleteOne(query)
+    return 'El estudiante se eliminó correctamente'
+  } catch (error) {
+    throw new Error(error)
+  }
+}

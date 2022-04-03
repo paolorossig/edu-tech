@@ -16,3 +16,12 @@ export async function updateTeacher(query, input) {
     throw new Error(error)
   }
 }
+
+export async function deleteTeacher(query) {
+  try {
+    await Teacher.deleteOne(query)
+    return 'El profesor se eliminó correctamente'
+  } catch (error) {
+    throw new Error(error)
+  }
+}

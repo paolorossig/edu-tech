@@ -1,23 +1,14 @@
-import { Link } from 'react-router-dom'
 import Badge from '@/components/Badge'
-import Card from '@/components/Card'
-
-import { cursos } from '@/data/cursos.json'
+import CoursesViewer from '@/features/courses/CoursesViewer'
+import { useGetCoursesQuery } from '@/features/courses/CourseSlice'
 import { mentores } from '@/data/mentores.json'
 
 function Inicio() {
+  const { data, isLoading } = useGetCoursesQuery()
+
   return (
     <div className="flex flex-col gap-12">
-      <section className="-mr-8">
-        <h1 className="mb-8">Mis cursos</h1>
-        <div className="scrollbar-hide flex gap-8 overflow-y-hidden overflow-x-scroll">
-          {cursos.map((curso) => (
-            <Link to={`courses/${encodeURIComponent(curso.id)}`} key={curso.id}>
-              <Card element={curso} />
-            </Link>
-          ))}
-        </div>
-      </section>
+      <CoursesViewer data={data} isLoading={isLoading} />
       <section>
         <h1 className="mb-8">Mentores Disponibles</h1>
         <div className="flex flex-wrap gap-8">
