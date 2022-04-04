@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import categoriesReducer from '@/features/categories/categorySlice'
-import { courseApi } from './features/courses/CourseSlice'
+import { courseApi } from './features/courses/CourseApi'
 
 const store = configureStore({
   reducer: {
@@ -8,7 +8,8 @@ const store = configureStore({
     [courseApi.reducerPath]: courseApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(courseApi.middleware)
+    getDefaultMiddleware().concat(courseApi.middleware),
+  devTools: process.env.NODE_ENV !== 'production'
 })
 
 export default store

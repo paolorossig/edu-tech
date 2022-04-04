@@ -8,6 +8,6 @@ export function alumnosNavConfig() {
       { path: 'actividades', name: 'Actividades' },
       { path: 'eventos', name: 'Eventos' }
     ],
-    buttons: ['Catálogo', 'Configuración']
+    buttons: [{ path: 'catalogue', name: 'Catálogo' }]
   }
 }

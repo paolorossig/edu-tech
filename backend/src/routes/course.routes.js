@@ -2,13 +2,15 @@ import { Router } from 'express'
 import {
   createCourseHandler,
   deleteCourseHandler,
-  getCourses
+  getCourses,
+  getUserCourses
 } from '../controller/course.controller.js'
 import { upload } from '../utils/multer.js'
 
 const courseRouter = Router()
 
-courseRouter.get('/api/courses', getCourses)
+courseRouter.get('/api/courses/all', getCourses)
+courseRouter.get('/api/courses', getUserCourses)
 
 courseRouter.post(
   '/api/courses',

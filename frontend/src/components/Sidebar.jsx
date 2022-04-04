@@ -16,11 +16,11 @@ function Sidebar({ links, buttons }) {
           ))}
         </ul>
       </nav>
-      <div className="flex h-40 flex-col justify-center gap-4">
-        {buttons.map((button, index) => (
-          <button className="btn" key={index}>
-            {button}
-          </button>
+      <div className="flex h-40 w-full flex-col justify-center gap-4 px-10">
+        {buttons?.map((button) => (
+          <Link to={button.path} className="btn" key={button.path}>
+            {button.name}
+          </Link>
         ))}
       </div>
     </aside>
