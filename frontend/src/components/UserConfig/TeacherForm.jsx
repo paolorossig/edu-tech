@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import useAuth from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/auth'
 import { updateUserData } from '@/services/users'
 import { countryOptions, genderOptions } from './commonOptions'
 import ModalLayout from '../Layouts/ModalLayout'

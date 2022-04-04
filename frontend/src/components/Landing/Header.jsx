@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Link as ScrollLink, animateScroll } from 'react-scroll'
-import useAuth from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/auth'
 import logo from '@/assets/svg/logo.svg'
 
 const scrollProps = {
