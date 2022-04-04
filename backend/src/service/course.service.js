@@ -16,9 +16,9 @@ export async function findCoursesByIdTeacher(teacherId) {
   return courses
 }
 
-export async function studentCourses(query) {
+export async function findCoursesByIdStudent(studentId) {
   try {
-    const student = await Student.findById(query)
+    const student = await Student.findById(studentId)
     if (student.membership === true) {
       const courses = await Course.find({})
       return courses

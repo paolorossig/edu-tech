@@ -5,7 +5,9 @@ import { deleteUserSession } from './controller/session.controller.js'
 import requireUser from './middleware/requireUser.js'
 import {
   createCourseHandler,
-  getCourses
+  getCourses,
+  getCoursesByTeacher,
+  getCoursesByStudent
 } from './controller/course.controller.js'
 import {
   createLessonHandler,
@@ -60,7 +62,8 @@ function routes(app) {
 
   app.post('/api/courses', createCourseHandler)
   app.get('/api/courses', getCourses)
-  app.get('/api/courses/teacher/:teacherId', getCourses)
+  app.get('/api/courses/teacher/:teacherId', getCoursesByTeacher)
+  app.get('/api/courses/student/:studentId', getCoursesByStudent)
 
   app.post('/api/categories', createCategoryHandler)
   app.get('/api/categories', getCategories)

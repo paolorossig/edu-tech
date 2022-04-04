@@ -1,7 +1,8 @@
 import {
   createCourse,
   findCourses,
-  findCoursesByIdTeacher
+  findCoursesByIdTeacher,
+  findCoursesByIdStudent
 } from '../service/course.service.js'
 
 export async function createCourseHandler(req, res) {
@@ -24,7 +25,16 @@ export async function getCourses(req, res) {
 
 export async function getCoursesByTeacher(req, res) {
   try {
-    const courses = await findCoursesByIdTeacher(req.params.idTeacher)
+    const courses = await findCoursesByIdTeacher(req.params.teacherId)
+    res.status(200).json({ message: 'Courses retrieved', courses })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+}
+
+export async function getCoursesByStudent(req, res) {
+  try {
+    const courses = await findCoursesByIdStudent(req.params.studentId)
     res.status(200).json({ message: 'Courses retrieved', courses })
   } catch (error) {
     res.status(400).json({ message: error.message })
