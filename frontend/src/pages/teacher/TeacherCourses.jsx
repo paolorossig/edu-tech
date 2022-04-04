@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useUserCoursesQuery } from '@/features/courses/CourseSlice'
+import { useUserCoursesQuery } from '@/features/courses/CourseApi'
 import Button from '@/components/Button'
 
 function TeacherCourses() {

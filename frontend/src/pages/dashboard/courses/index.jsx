@@ -1,5 +1,5 @@
 import CoursesViewer from '@/features/courses/CoursesViewer'
-import { useAllCoursesQuery } from '@/features/courses/CourseSlice'
+import { useAllCoursesQuery } from '@/features/courses/CourseApi'
 
 function Courses() {
   const { data, isLoading } = useAllCoursesQuery()

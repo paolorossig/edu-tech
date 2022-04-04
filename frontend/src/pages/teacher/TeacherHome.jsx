@@ -1,6 +1,6 @@
 import CoursesViewer from '@/features/courses/CoursesViewer'
 import TableTeacher from '@/components/Teacher/TableTeacher'
-import { useUserCoursesQuery } from '@/features/courses/CourseSlice'
+import { useUserCoursesQuery } from '@/features/courses/CourseApi'
 
 function TeacherHome() {
   const { data, isLoading } = useUserCoursesQuery()

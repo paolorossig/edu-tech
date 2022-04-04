@@ -5,7 +5,7 @@ import useCategories from '@/hooks/useCategories'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
-import { useCreateCourseMutation } from '@/features/courses/CourseSlice'
+import { useCreateCourseMutation } from '@/features/courses/CourseApi'
 
 function RegisterCourse() {
   const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import Badge from '@/components/Badge'
 import CoursesViewer from '@/features/courses/CoursesViewer'
-import { useAllCoursesQuery } from '@/features/courses/CourseSlice'
+import { useAllCoursesQuery } from '@/features/courses/CourseApi'
 import { mentores } from '@/data/mentores.json'
 
 function Inicio() {

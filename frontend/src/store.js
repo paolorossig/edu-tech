@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import categoriesReducer from '@/features/categories/categorySlice'
-import { courseApi } from './features/courses/CourseSlice'
+import { courseApi } from './features/courses/CourseApi'
 
 const store = configureStore({
   reducer: {
