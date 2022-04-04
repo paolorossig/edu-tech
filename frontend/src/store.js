@@ -8,7 +8,8 @@ const store = configureStore({
     [courseApi.reducerPath]: courseApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(courseApi.middleware)
+    getDefaultMiddleware().concat(courseApi.middleware),
+  devTools: process.env.NODE_ENV !== 'production'
 })
 
 export default store
