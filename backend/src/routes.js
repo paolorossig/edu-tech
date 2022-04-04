@@ -60,6 +60,7 @@ function routes(app) {
 
   app.post('/api/courses', createCourseHandler)
   app.get('/api/courses', getCourses)
+  app.get('/api/courses/teacher/:teacherId', getCourses)
 
   app.post('/api/categories', createCategoryHandler)
   app.get('/api/categories', getCategories)
