@@ -6,7 +6,6 @@ export function teacherNavConfig() {
       { path: 'activities', name: 'Actividades' },
       { path: 'calendar', name: 'Calendario' },
       { path: 'statistics', name: 'Estadisticas' }
-    ],
-    buttons: ['Configuración']
+    ]
   }
 }

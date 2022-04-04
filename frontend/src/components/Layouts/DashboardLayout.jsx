@@ -10,7 +10,7 @@ function DashboardLayout({ navConfig }) {
       <Sidebar links={links} buttons={buttons} />
       <main className="flex h-screen w-full flex-col md:ml-[280px] md:w-[calc(100%_-_280px)]">
         <Header />
-        <div className="mx-4 mt-4 h-full md:mx-8">
+        <div className="h-full px-4 pt-4 md:px-8">
           <Outlet />
         </div>
       </main>
