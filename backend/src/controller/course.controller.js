@@ -3,6 +3,7 @@ import {
   deleteCourse,
   findCourses
 } from '../service/course.service.js'
+import { findStudent } from '../service/student.service.js'
 
 export async function createCourseHandler(req, res) {
   try {
@@ -26,8 +27,14 @@ export async function getCourses(req, res) {
 
 export async function getUserCourses(req, res) {
   try {
-    const userId = res.locals.user._id
-    const courses = await findCourses({ teacher: userId })
+    const { _id: userId, role } = res.locals.user
+    let courses = []
+    if (role === 'teacher') {
+      courses = await findCourses({ teacher: userId })
+    } else if (role === 'student') {
+      const { coursesEnabled } = await findStudent({ user: userId })
+      courses = await findCourses({ _id: { $in: coursesEnabled } })
+    }
     res.status(200).json({ message: 'Courses retrieved', courses })
   } catch (error) {
     res.status(400).json({ message: error.message })

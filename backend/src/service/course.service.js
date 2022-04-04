@@ -19,10 +19,15 @@ export async function createCourse(input) {
 }
 
 export async function findCourses(query = {}) {
-  const courses = await Course.find(query).populate({
-    path: 'category',
-    select: 'name'
-  })
+  const courses = await Course.find(query)
+    .populate({
+      path: 'category',
+      select: 'name'
+    })
+    .populate({
+      path: 'teacher',
+      select: 'firstName'
+    })
   return courses
 }
 
