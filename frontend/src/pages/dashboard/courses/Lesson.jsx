@@ -64,7 +64,7 @@ function Lesson() {
                 )
               })}
             </ul>
-            {/* TO DO HANDLE BUTTON TO VALIDATE ANSWES */}
+            {/* TODO: HANDLE BUTTON TO VALIDATE ANSWES */}
             <Button type="submit" color="primary" className="mx-auto">
               Comprobar
             </Button>

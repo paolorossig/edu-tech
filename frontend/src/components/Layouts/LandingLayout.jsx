@@ -1,5 +1,5 @@
 import Header from '../Landing/Header'
-import Footer from '../Footer'
+import Footer from '../Landing/Footer'
 
 function LandingLayout({ children }) {
   return (
