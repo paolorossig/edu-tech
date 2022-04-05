@@ -25,7 +25,7 @@ export async function getCourses(req, res) {
 
 export async function getCoursesByTeacher(req, res) {
   try {
-    const courses = await findCoursesByIdTeacher(req.params.teacherId)
+    const courses = await findCoursesByIdTeacher(req.params.userId)
     res.status(200).json({ message: 'Courses retrieved', courses })
   } catch (error) {
     res.status(400).json({ message: error.message })
@@ -34,8 +34,8 @@ export async function getCoursesByTeacher(req, res) {
 
 export async function getCoursesByStudent(req, res) {
   try {
-    const courses = await findCoursesByIdStudent(req.params.studentId)
-    res.status(200).json({ message: 'Courses retrieved', courses })
+    const courses = await findCoursesByIdStudent(req.params.userId)
+    res.status(200).json({ message: 'Courses retrieved', ...courses })
   } catch (error) {
     res.status(400).json({ message: error.message })
   }

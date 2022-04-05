@@ -11,19 +11,20 @@ export async function findCourses() {
   return courses
 }
 
-export async function findCoursesByIdTeacher(teacherId) {
-  const courses = await Course.find({ teacher: teacherId })
+export async function findCoursesByIdTeacher(userId) {
+  const courses = await Course.find({ teacher: userId })
   return courses
 }
 
-export async function findCoursesByIdStudent(studentId) {
+export async function findCoursesByIdStudent(userId) {
   try {
-    const student = await Student.findById(studentId)
-    if (student.membership === true) {
+    const student = await Student.find({ user: userId })
+    if (student[0].membership === true) {
       const courses = await Course.find({})
-      return courses
+      return { courses }
     } else {
-      return student.populate('coursesEnabled').coursesEnabled
+      const coursesStudent = await student[0].populate('coursesEnabled')
+      return { courses: coursesStudent.coursesEnabled }
     }
   } catch (error) {
     throw new Error(error)

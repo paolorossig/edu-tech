@@ -29,7 +29,9 @@ import {
 } from './controller/answer.controller.js'
 import {
   createStudentHandler,
-  updateStudentHandler
+  updateStudentHandler,
+  getSuscriptionStudent,
+  buyCoursesStudentHandler
 } from './controller/student.controller.js'
 import {
   createTeacherHandler,
@@ -52,6 +54,8 @@ function routes(app) {
 
   app.post('/api/student', createStudentHandler)
   app.put('/api/student/:studentId', updateStudentHandler)
+  app.post('/api/student/membership/:userId', getSuscriptionStudent)
+  app.post('/api/student/buy/courses/:userId', buyCoursesStudentHandler)
 
   app.post('/api/teacher', createTeacherHandler)
   app.put('/api/teacher/:teacherId', updateTeacherHandler)
@@ -62,8 +66,8 @@ function routes(app) {
 
   app.post('/api/courses', createCourseHandler)
   app.get('/api/courses', getCourses)
-  app.get('/api/courses/teacher/:teacherId', getCoursesByTeacher)
-  app.get('/api/courses/student/:studentId', getCoursesByStudent)
+  app.get('/api/courses/teacher/:userId', getCoursesByTeacher)
+  app.get('/api/courses/student/:userId', getCoursesByStudent)
 
   app.post('/api/categories', createCategoryHandler)
   app.get('/api/categories', getCategories)
