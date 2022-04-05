@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-20 bg-gray-100 py-4 px-4 md:px-8">
-      <div className="flex items-center justify-end rounded-xl bg-white p-2 shadow-md">
+      <div className="flex items-center justify-end gap-1 rounded-xl bg-white p-2 shadow-md">
         <NotificationsDropdown />
         {auth.user.role === 'student' && <BasketCounter />}
         <UserDropdown />

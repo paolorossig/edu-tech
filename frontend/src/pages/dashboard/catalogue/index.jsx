@@ -1,38 +1,30 @@
-import { addToBasket } from '@/features/basket/BasketSlice'
+import { useSelector } from 'react-redux'
+import { selectBasketItems } from '@/features/basket/BasketSlice'
 import { useAllCoursesQuery } from '@/features/courses/CourseApi'
-import { PlusCircleIcon } from '@heroicons/react/solid'
-import { useDispatch } from 'react-redux'
+import CourseToBuyCard from '@/features/courses/CourseToBuyCard'
 
 function Catalogue() {
-  const dispatch = useDispatch()
   const { data } = useAllCoursesQuery()
-
-  const handleClick = (course) => dispatch(addToBasket(course))
+  const basketItems = useSelector(selectBasketItems)
 
   return (
-    <div>
-      <h1 className="mb-4">Catalogue</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Opciones</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data?.courses.map((course) => (
-            <tr key={course._id}>
-              <td>{course.name}</td>
-              <td className="flex justify-center">
-                <PlusCircleIcon
-                  onClick={() => handleClick(course)}
-                  className="h-7 w-7 cursor-pointer"
-                />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="w-full">
+      <h1 className="mb-4">Catálogo de cursos</h1>
+      <div className="flex flex-wrap justify-center gap-8">
+        {data?.courses.map((course) => {
+          const selected = basketItems.filter(
+            (el) => el._id === course._id
+          ).length
+
+          return (
+            <CourseToBuyCard
+              course={course}
+              selected={selected}
+              key={course._id}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

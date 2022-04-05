@@ -24,10 +24,7 @@ export async function findCourses(query = {}) {
       path: 'category',
       select: 'name'
     })
-    .populate({
-      path: 'teacher',
-      select: 'firstName'
-    })
+    .populate('teacher')
   return courses
 }
 

@@ -34,7 +34,7 @@ function BasketList() {
             <Button
               onClick={() => handleRemove(course._id)}
               color="gray"
-              className="text-sm"
+              className="text-sm hover:bg-red-500"
             >
               Eliminar
             </Button>
