@@ -3,9 +3,9 @@
   "version": "2.3.2",
   "private": true,
   "scripts": {
-    "front:dev": "vite frontend",
-    "front:build": "vite build frontend",
-    "front:preview": "vite preview frontend",
+    "front:dev": "cd frontend && vite",
+    "front:build": "cd frontend && vite build",
+    "front:preview": "cd frontend && vite preview",
     "back:dev": "nodemon backend/src/server.js",
     "lint": "eslint . --ext .js,.jsx --fix"
   },

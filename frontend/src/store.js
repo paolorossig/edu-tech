@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
-import categoriesReducer from '@/features/categories/categorySlice'
-import basketReducer from '@/features/basket/basketSlice'
-import { courseApi } from './features/courses/CourseApi'
+import categoriesReducer from '@/features/categories/CategorySlice'
+import basketReducer from '@/features/basket/BasketSlice'
+import { courseApi } from '@/features/courses/CourseApi'
 
 const store = configureStore({
   reducer: {
