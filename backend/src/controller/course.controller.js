@@ -3,7 +3,7 @@ import {
   deleteCourse,
   findCourses
 } from '../service/course.service.js'
-import { findStudent } from '../service/student.service.js'
+import { findStudent, updateStudent } from '../service/student.service.js'
 
 export async function createCourseHandler(req, res) {
   try {
@@ -45,6 +45,20 @@ export async function deleteCourseHandler(req, res) {
   try {
     const message = await deleteCourse(req.params.courseId)
     res.status(200).json({ message })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+}
+
+export async function createCoursesAccess(req, res) {
+  try {
+    const { courses } = req.body
+    const userId = res.locals.user._id
+    const student = await updateStudent(
+      { user: userId },
+      { $push: { coursesEnabled: { $each: courses } } }
+    )
+    res.status(200).json({ message: 'Student courses updated', student })
   } catch (error) {
     res.status(400).json({ message: error.message })
   }

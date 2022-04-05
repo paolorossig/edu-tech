@@ -27,6 +27,6 @@ export async function deleteStudent(query) {
 }
 
 export async function findStudent(query = {}) {
-  const courses = await Student.find(query)
+  const courses = await Student.findOne(query).lean()
   return courses
 }

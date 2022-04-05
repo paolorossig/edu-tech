@@ -9,11 +9,12 @@ export const BasketSlice = createSlice({
     },
     removeItem: (state, action) => {
       return state.filter((item) => item._id !== action.payload)
-    }
+    },
+    clearBasket: () => []
   }
 })
 
-export const { addToBasket, removeItem } = BasketSlice.actions
+export const { addToBasket, removeItem, clearBasket } = BasketSlice.actions
 
 export const selectBasketItems = (state) => state.basket
 export const selectTotalItems = (state) => state.basket.length
