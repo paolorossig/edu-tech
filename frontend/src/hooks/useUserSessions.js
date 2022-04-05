@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react'
 import { getUserSessions } from '@/services/auth'
 import useAxiosPrivate from '@/hooks/useAxiosPrivate'
+import useAuth from './useAuth'
 
 function useUserSessions() {
+  const { setAuth } = useAuth()
   const axiosPrivate = useAxiosPrivate()
   const [sessions, setSessions] = useState([])
 
   useEffect(() => {
     const getHandler = async () => {
-      const res = await getUserSessions(axiosPrivate) // It can not be done -> return a Promise
-      res.success && setSessions(res.sessions)
+      const response = await getUserSessions(axiosPrivate)
+      if (!response.success) return setSessions(['Unauthenticated'])
+
+      setAuth((prev) => ({ ...prev, user: response.user }))
+      setSessions(response.sessions)
     }
     getHandler()
   }, [])

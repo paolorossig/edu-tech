@@ -181,5 +181,31 @@
       "stars": "242",
       "nivel": "Todos los niveles"
     }
+  ],
+  "estadisticas": [
+    {
+      "id": 1,
+      "curso": "Javascript: async / await",
+      "matriculados": 50,
+      "enlinea": 2,
+      "conectadoshoy": 20,
+      "url": "https://devsdata.com/wp-content/uploads/2020/08/acync_await-1.png"
+    },
+    {
+      "id": 1,
+      "curso": "React: Hooks",
+      "matriculados": 35,
+      "enlinea": 5,
+      "conectadoshoy": 10,
+      "url": "https://user-images.githubusercontent.com/47307889/116921331-826bbe80-ac5c-11eb-9f48-d8fbde144b04.png"
+    },
+    {
+      "id": 1,
+      "curso": "Docker: Images",
+      "matriculados": 59,
+      "enlinea": 18,
+      "conectadoshoy": 15,
+      "url": "https://laravelnews.imgix.net/images/docker.png?ixlib=php-3.3.1"
+    }
   ]
 }

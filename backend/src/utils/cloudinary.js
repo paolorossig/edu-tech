@@ -14,8 +14,8 @@ export function uploads(file, folder) {
       file,
       (result) => {
         resolve({
-          photoURL: result.secure_url,
-          photoCloudinaryId: result.public_id
+          url: result.secure_url,
+          cloudinaryId: result.public_id
         })
       },
       {

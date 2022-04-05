@@ -25,9 +25,10 @@ function Login() {
     if (!response.success) {
       return setResponseError(response.error)
     }
-    return response.user.role === 'student'
-      ? navigate('/dashboard')
-      : navigate('/teacher')
+    // To Do: add state.from.pathname logic
+    return navigate(
+      response.user.role === 'student' ? '/dashboard' : '/teacher'
+    )
   }
 
   return (

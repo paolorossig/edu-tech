@@ -1,31 +1,19 @@
-import { Navigate, useLocation } from 'react-router-dom'
+import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import useAuth from '@/hooks/useAuth'
 import useUserSessions from '@/hooks/useUserSessions'
 import Loading from './Loading'
 
-function RequireAuth({ children }) {
+function RequireAuth() {
   const { auth } = useAuth()
   const location = useLocation()
-  const sessions = useUserSessions()
-  console.log('In RequireAuth-------------')
+  const sessions = useUserSessions() // !auth.user._id &&
 
-  if (!sessions.length) {
-    return <Loading />
-  }
+  if (!sessions.length) return <Loading />
 
-  if (!auth.user) {
-    console.log('No auth.user')
-    if (sessions.length) {
-      console.log(sessions)
-      console.log('Out RequireAuth-------------')
-      return children
-    }
-    console.log('Out RequireAuth-------------')
+  if (!auth.user._id)
     return <Navigate to="/login" state={{ from: location }} replace />
-  }
 
-  console.log('Out RequireAuth-------------')
-  return children
+  return <Outlet />
 }
 
 export default RequireAuth

@@ -21,7 +21,9 @@ export async function deleteCategory(categoryId) {
 
 export async function updateCategory(categoryId, data) {
   try {
-    const category = await Category.findByIdAndUpdate(categoryId, data)
+    const category = await Category.findByIdAndUpdate(categoryId, data, {
+      new: true
+    })
     return category
   } catch (error) {
     throw new Error(error)

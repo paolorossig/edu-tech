@@ -49,6 +49,10 @@ export async function buyCoursesStudent(userId, newCourses) {
       }
     )
     return updatedStudent
+export async function deleteStudent(query) {
+  try {
+    await Student.deleteOne(query)
+    return 'El estudiante se eliminó correctamente'
   } catch (error) {
     throw new Error(error)
   }

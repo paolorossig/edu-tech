@@ -3,7 +3,7 @@ import {
   findSessions,
   updateSession
 } from '../service/session.service.js'
-import { validatePassword } from '../service/user.service.js'
+import { findUser, validatePassword } from '../service/user.service.js'
 import { signJwt } from '../utils/jwt.js'
 
 export async function login(req, res) {
@@ -22,8 +22,7 @@ export async function login(req, res) {
     .cookie('jwt', refreshToken, {
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
-      sameSite: 'strict',
-      path: '/',
+      sameSite: process.env.NODE_ENV !== 'production' ? 'strict' : 'none',
       secure: process.env.NODE_ENV === 'production'
     })
     .send({ user, accessToken })
@@ -31,10 +30,11 @@ export async function login(req, res) {
 
 export async function getUserSession(req, res) {
   const userId = res.locals.user._id
+  const user = await findUser({ _id: userId })
 
   const sessions = await findSessions({ user: userId, loggedOut: false })
 
-  return res.send({ sessions })
+  return res.send({ user, sessions })
 }
 
 export async function deleteUserSession(req, res) {

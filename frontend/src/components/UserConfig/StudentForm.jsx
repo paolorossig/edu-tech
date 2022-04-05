@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { MultiSelect } from 'react-multi-select-component'
 import useAuth from '@/hooks/useAuth'
+import useCategories from '@/hooks/useCategories'
 import { updateUserData } from '@/services/users'
 import { countryOptions, genderOptions } from './commonOptions'
-import { categories } from '@/data/categorias.json'
 import ModalLayout from '../Layouts/ModalLayout'
 import InputForm from '../InputForm'
 import Button from '../Button'
@@ -13,6 +13,7 @@ import Button from '../Button'
 function StudentForm({ goBack }) {
   const { auth } = useAuth()
   const navigate = useNavigate()
+  const categories = useCategories()
   const { register, handleSubmit, formState } = useForm()
   const { errors, isSubmitting } = formState
 
@@ -27,11 +28,6 @@ function StudentForm({ goBack }) {
     )
     response.success && navigate('/login')
   }
-
-  const categoriesStructure = (categorias) =>
-    categorias.map((val) => {
-      return { label: val.name, value: val._id }
-    })
 
   return (
     <>
@@ -54,9 +50,10 @@ function StudentForm({ goBack }) {
         <div className="text-left">
           <label>Categorias de Preferencia</label>
           <MultiSelect
-            options={categoriesStructure(categories)}
+            options={categories.options}
             value={selected}
             onChange={setSelected}
+            isLoading={categories.status === 'loading'}
             labelledBy="Seleccionar categorias de interés"
             disableSearch
           />
