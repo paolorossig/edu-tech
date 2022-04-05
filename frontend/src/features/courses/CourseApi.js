@@ -24,6 +24,14 @@ export const courseApi = createApi({
         }
       }),
       invalidatesTags: ['Course']
+    }),
+    buyCourses: builder.mutation({
+      query: ({ data }) => ({
+        url: '/api/courses/buy',
+        method: 'post',
+        data
+      }),
+      invalidatesTags: ['Course']
     })
   })
 })
@@ -31,5 +39,6 @@ export const courseApi = createApi({
 export const {
   useAllCoursesQuery,
   useUserCoursesQuery,
-  useCreateCourseMutation
+  useCreateCourseMutation,
+  useBuyCoursesMutation
 } = courseApi

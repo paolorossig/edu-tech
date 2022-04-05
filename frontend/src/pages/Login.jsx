@@ -5,7 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { EyeIcon } from '@heroicons/react/outline'
 import ModalLayout from '@/components/Layouts/ModalLayout'
 import Button from '@/components/Button'
-import useAuth from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/auth'
 import useToggle from '@/hooks/useToggle'
 import loginSVG from '@/assets/svg/login.svg'
 
@@ -25,7 +25,7 @@ function Login() {
     if (!response.success) {
       return setResponseError(response.error)
     }
-    // To Do: add state.from.pathname logic
+    // TODO: add state.from.pathname logic
     return navigate(
       response.user.role === 'student' ? '/dashboard' : '/teacher'
     )

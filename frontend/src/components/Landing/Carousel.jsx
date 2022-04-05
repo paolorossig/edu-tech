@@ -6,7 +6,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-function Carousel({ cursos }) {
+function Carousel({ courses }) {
   return (
     <Swiper
       pagination={true}
@@ -15,19 +15,17 @@ function Carousel({ cursos }) {
       modules={[Autoplay, Navigation, Pagination]}
       className="h-full w-full md:max-w-4xl"
     >
-      {cursos.map((curso, index) => (
-        <SwiperSlide key={index} className="relative cursor-grab">
+      {courses.map((course) => (
+        <SwiperSlide key={course._id} className="relative cursor-grab">
           <img
-            src={curso.imageUrl}
+            src={course.imageURL}
             className="h-full w-full rounded-lg object-cover"
           />
           <div className="absolute left-0 bottom-0 w-full rounded-b-lg bg-gradient-to-b from-transparent to-[rgba(0,0,0,.75)] px-4 pt-24 pb-6">
-            <Link to={`/course/detail/${curso.id}`}>
-              <h1 className="text-white">{curso.name}</h1>
+            <Link to={`/course/detail/${course._id}`}>
+              <h1 className="text-white">{course.name}</h1>
               <p className="mt-2 hidden text-white opacity-70 md:block">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Delectus ad vitae doloremque quas earum velit modi! Cumque
-                reprehenderit animi odit?
+                {course.description}
               </p>
             </Link>
           </div>

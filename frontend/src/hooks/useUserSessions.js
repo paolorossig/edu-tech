@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getUserSessions } from '@/services/auth'
 import useAxiosPrivate from '@/hooks/useAxiosPrivate'
-import useAuth from './useAuth'
+import { useAuth } from '@/contexts/auth'
 
 function useUserSessions() {
   const { setAuth } = useAuth()

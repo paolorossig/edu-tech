@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { LogoutIcon, PencilAltIcon } from '@heroicons/react/outline'
-import useAuth from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/auth'
 import useAxiosPrivate from '@/hooks/useAxiosPrivate'
 
 function UserDropdown() {

@@ -1,10 +1,14 @@
 import CoursesViewer from '@/features/courses/CoursesViewer'
-import { useAllCoursesQuery } from '@/features/courses/CourseApi'
+import { useUserCoursesQuery } from '@/features/courses/CourseApi'
 
 function Courses() {
-  const { data, isLoading } = useAllCoursesQuery()
+  const { data, isLoading } = useUserCoursesQuery()
 
-  return <CoursesViewer data={data} isLoading={isLoading} />
+  return (
+    <>
+      <CoursesViewer data={data} isLoading={isLoading} />
+    </>
+  )
 }
 
 export default Courses
