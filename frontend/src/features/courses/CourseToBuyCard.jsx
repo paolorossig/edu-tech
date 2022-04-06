@@ -6,7 +6,7 @@ import {
   UserGroupIcon,
   CheckCircleIcon
 } from '@heroicons/react/outline'
-import { addToBasket } from '../basket/BasketSlice'
+import { addToBasket } from '../basket/basketSlice'
 
 function CourseToBuyCard({ course, selected }) {
   const dispatch = useDispatch()

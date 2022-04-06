@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'
-import categoriesReducer from '@/features/categories/CategorySlice'
-import basketReducer from '@/features/basket/BasketSlice'
+import basketReducer from '@/features/basket/basketSlice'
+import categoriesReducer from '@/features/categories/categorySlice'
+import teacherReducer from '@/features/teachers/teacherSlice'
 import { courseApi } from '@/features/courses/CourseApi'
 
 const store = configureStore({
   reducer: {
     basket: basketReducer,
     categories: categoriesReducer,
+    teachers: teacherReducer,
     [courseApi.reducerPath]: courseApi.reducer
   },
   middleware: (getDefaultMiddleware) =>

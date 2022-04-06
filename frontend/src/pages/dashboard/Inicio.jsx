@@ -1,7 +1,6 @@
-import Badge from '@/components/Badge'
 import CoursesViewer from '@/features/courses/CoursesViewer'
 import { useUserCoursesQuery } from '@/features/courses/CourseApi'
-import { mentores } from '@/data/mentores.json'
+import TeachersAvailableList from '@/features/teachers/TeachersAvailableList'
 
 function Inicio() {
   const { data, isLoading } = useUserCoursesQuery()
@@ -9,14 +8,7 @@ function Inicio() {
   return (
     <div className="flex flex-col gap-12">
       <CoursesViewer data={data} isLoading={isLoading} />
-      <section>
-        <h1 className="mb-8">Mentores Disponibles</h1>
-        <div className="flex flex-wrap gap-8">
-          {mentores.map((mentor) => (
-            <Badge element={mentor} key={mentor.id} />
-          ))}
-        </div>
-      </section>
+      <TeachersAvailableList />
     </div>
   )
 }

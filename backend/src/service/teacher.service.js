@@ -8,6 +8,7 @@ export async function createTeacher(input) {
     throw new Error(error)
   }
 }
+
 export async function updateTeacher(query, input) {
   try {
     const teacher = await Teacher.updateOne(query, input)

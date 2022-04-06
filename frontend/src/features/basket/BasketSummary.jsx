@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { selectTotalPrice } from './BasketSlice'
+import { selectTotalPrice } from './basketSlice'
 import Button from '@/components/Button'
 
 function AccountSummary({ toggleModal }) {

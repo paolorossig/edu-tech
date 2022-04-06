@@ -10,10 +10,10 @@ import Lesson from './pages/dashboard/courses/Lesson'
 import Catalogue from './pages/dashboard/catalogue'
 import Sessions from './pages/dashboard/Sessions'
 import Checkout from './pages/dashboard/Checkout'
-import Mentors from './pages/dashboard/mentors'
-import Mentor from './pages/dashboard/mentors/Mentor'
-import MentorCourses from './pages/dashboard/mentors/MentorCourses'
-import Chat from './pages/dashboard/mentors/Chat'
+import Teachers from './pages/dashboard/teachers'
+import Teacher from './pages/dashboard/teachers/Teacher'
+import TeacherCoursesList from './pages/dashboard/teachers/TeacherCoursesList'
+import Chat from './pages/dashboard/teachers/Chat'
 import TeacherHome from './pages/teacher/TeacherHome'
 import TeacherCourses from './pages/teacher/courses'
 import CreateCourse from './pages/teacher/courses/CreateCourse'
@@ -43,11 +43,11 @@ function App() {
             <Route path=":courseId" element={<Course />} />
             <Route path=":courseId/:lessonId" element={<Lesson />} />
           </Route>
-          <Route path="mentors">
-            <Route index element={<Mentors />} />
-            <Route path=":mentorId" element={<Mentor />}>
+          <Route path="teachers">
+            <Route index element={<Teachers />} />
+            <Route path=":teacherId" element={<Teacher />}>
               <Route index element={<Navigate to="courses" />} />
-              <Route path="courses" element={<MentorCourses />} />
+              <Route path="courses" element={<TeacherCoursesList />} />
               <Route path="chat" element={<Chat />} />
             </Route>
           </Route>

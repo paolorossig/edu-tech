@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { selectBasketItems } from '@/features/basket/BasketSlice'
+import { selectBasketItems } from '@/features/basket/basketSlice'
 import { useAllCoursesQuery } from '@/features/courses/CourseApi'
 import CourseToBuyCard from '@/features/courses/CourseToBuyCard'
 
