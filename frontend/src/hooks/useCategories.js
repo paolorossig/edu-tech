@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   getCategories,
   selectCategories
-} from '@/features/categories/CategorySlice'
+} from '@/features/categories/categorySlice'
 
 function useCategories() {
   const dispatch = useDispatch()
