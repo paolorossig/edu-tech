@@ -37,6 +37,10 @@ export async function findUser(query) {
   return User.findOne(query).lean()
 }
 
+export async function findUsers(query) {
+  return User.find(query).lean()
+}
+
 export async function updateUser(query, update) {
   const uploader = async (path) => await uploads(path, 'profile-images')
 
