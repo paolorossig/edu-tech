@@ -27,8 +27,7 @@ export async function validatePassword({ email, password }) {
   const isValid = await user.comparePassword(password)
   if (!isValid) return false
 
-  const child = log.child(omitPassword(user._doc))
-  child.info('User logged in')
+  log.info(`User logged in: ${email}`)
 
   return omitPassword(user._doc)
 }
