@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { BsCartPlusFill } from 'react-icons/bs'
-import { selectTotalItems } from '@/features/basket/BasketSlice'
+import { selectTotalItems } from '@/features/basket/basketSlice'
 
 function BasketCounter() {
   const totalItems = useSelector(selectTotalItems)

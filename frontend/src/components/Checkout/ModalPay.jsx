@@ -3,7 +3,7 @@ import {
   clearBasket,
   selectBasketItems,
   selectTotalPrice
-} from '@/features/basket/BasketSlice'
+} from '@/features/basket/basketSlice'
 import { useBuyCoursesMutation } from '@/features/courses/CourseApi'
 import CardSecurity from './CardSecurity'
 import CreditCards from './CreditCards'

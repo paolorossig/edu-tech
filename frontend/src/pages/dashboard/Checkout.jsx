@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import BasketList from '@/features/basket/BasketList'
 import BasketSummary from '@/features/basket/BasketSummary'
-import { selectBasketItems } from '@/features/basket/BasketSlice'
+import { selectBasketItems } from '@/features/basket/basketSlice'
 import useToggle from '@/hooks/useToggle'
 import ModalPay from '@/components/Checkout/ModalPay'
 import NoDataWarning from '@/components/NoDataWarning'

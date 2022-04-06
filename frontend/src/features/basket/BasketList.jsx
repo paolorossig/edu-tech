@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { removeItem, selectBasketItems } from './BasketSlice'
+import { removeItem, selectBasketItems } from './basketSlice'
 import Button from '@/components/Button'
 
 function BasketList() {
