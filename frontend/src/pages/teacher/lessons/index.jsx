@@ -7,8 +7,6 @@ function CourseLessons() {
   const navigate = useNavigate()
   const { data } = useAllLessonsQuery(courseId)
 
-  console.log(data)
-
   return (
     <section>
       <h1 className="mb-4">Lecciones creados</h1>
