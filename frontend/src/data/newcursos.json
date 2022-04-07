@@ -263,6 +263,270 @@
           ]
         }
       ]
+    },
+    {
+      "id": "webdev002",
+      "name": "React: Fundamentos",
+      "description": "Curso básico de React donde aprenderás los fundamentos para iniciar en el desarrollo web con React.",
+      "price": 49.99,
+      "category": {
+        "id": "webdev2",
+        "name": "Frontend"
+      },
+      "teacher": {
+        "id": "teacher002",
+        "email": "teacher002@hotmail.com"
+      },
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKja0lwgwMMD7S9fEjyfgffmqbkkc8A5md7h4MKxrAIVxnyK7jWgbVE-PR7PvWtzemWLg&usqp=CAU",
+      "keywords": ["javascript", "react", "basic","frontend"],
+      "language": "es",
+      "score": "4.8",
+      "lessons": [
+        {
+          "id": "lesson01R",
+          "title": "Primeros Pasos",
+          "description": "En esta parte aprenderás los primeros pasos para comenzar con React.",
+          "duration": 480000,
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question01R",
+              "description": "¿Qué es JSX?",
+              "answers": [
+                {
+                  "id": "answer01R",
+                  "text": "Es la sintaxis que se utiliza para construir el markup de los componentes de React. ",
+                  "correct": true
+                },
+                {
+                  "id": "answer02R",
+                  "text": "Es una nueva libreria.",
+                  "correct": false
+                },
+                {
+                  "id": "answer03R",
+                  "text": "Es parte de css.",
+                  "correct": false
+                },
+                {
+                  "id": "answer04R",
+                  "text": "No es parte de React.",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question02R",
+              "description": "¿Cual es el objetivo de un componente en React?",
+              "answers": [
+                {
+                  "id": "answer05R",
+                  "text": "El objetivo es que cada componente sea independiente y encapsule su markup (JSX), sus estilos (CSS) y su estado (JavaScript). De esa forma los componentes pueden ser reutilizables y la interfaz gráfica más fácil de mantener y evolucionar.",
+                  "correct": true
+                },
+                {
+                  "id": "answer06R",
+                  "text": "El objetivo es programar bonito.",
+                  "correct": false
+                },
+                {
+                  "id": "answer07R",
+                  "text": "El objetivo es hacer sistemas independientes.",
+                  "correct": false
+                },
+                {
+                  "id": "answer08R",
+                  "text": "El objetivo es hacer todo el codigo en un solo componente.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson02R",
+          "title": "Estado de un Componente",
+          "duration": 480000,
+          "description": "Cada componente que se defina como una clase cuenta con un objeto para almacenar información llamado state. ada vez que cambia el state, React vuelve a renderizar (pintar) el componente en la vista.",
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question03R",
+              "description": "¿Qué comando usamos para crear un proyecto de React, sabiendo que ya contamos con la instalación de node.js y podemos usar NPM(Node Package Manager)?",
+              "answers": [
+                {
+                  "id": "answer09R",
+                  "text": "N.A",
+                  "correct": false
+                },
+                {
+                  "id": "answer10R",
+                  "text": "npm create-react-app myapp",
+                  "correct": false
+                },
+                {
+                  "id": "answer11R",
+                  "text": "npx react-app myapp",
+                  "correct": false
+                },
+                {
+                  "id": "answer12R",
+                  "text": "npx create-react-app myapp",
+                  "correct": true
+                }
+              ]
+            },
+            {
+              "id": "question04R",
+              "description": "¿Las props, hacen referencia a?",
+              "answers": [
+                {
+                  "id": "answer13R",
+                  "text": "Atributos que nos envían desde un componente hijo a un componente padre",
+                  "correct": false
+                },
+                {
+                  "id": "answer14R",
+                  "text": "Atributos que no se envían desde un componente padre a un componente hijo",
+                  "correct": false
+                },
+                {
+                  "id": "answer15R",
+                  "text": "Parámetros que nos envían desde un componente padre a un componente hijo",
+                  "correct": false
+                },
+                {
+                  "id": "answer16R",
+                  "text": "Atributos que nos envían desde un componente padre a un componente hijo",
+                  "correct": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson03R",
+          "title": "Hooks",
+          "duration": 300000,
+          "description": "Los hooks, introducidos en React 16.8, nos permiten utilizar el estado y otras características de React sin necesidad de convertir nuestros componentes a clases. Algunas de las funcionalidades que podemos utilizar son: manejo del estado con useState, manejo de efectos secundarios como peticiones HTTP con useEffect, crear referencias con useRef, entre otras.",
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question05R",
+              "description": "¿Cual no es un hook?",
+              "answers": [
+                {
+                  "id": "answer17R",
+                  "text": "useState",
+                  "correct": false
+                },
+                {
+                  "id": "answer18R",
+                  "text": "hookUse",
+                  "correct": true
+                },
+                {
+                  "id": "answer19R",
+                  "text": "useRef",
+                  "correct": false
+                },
+                {
+                  "id": "answer20R",
+                  "text": "useContext",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question06R",
+              "description": "¿Se puede crear hooks propios?",
+              "answers": [
+                {
+                  "id": "answer21R",
+                  "text": "Sí",
+                  "correct": true
+                },
+                {
+                  "id": "answer22R",
+                  "text": "Solo si no trabajamos con los hooks propios de React.",
+                  "correct": false
+                },
+                {
+                  "id": "answer23R",
+                  "text": "No, crear hooks propios estan prohibidos.",
+                  "correct": false
+                },
+                {
+                  "id": "answer24R",
+                  "text": "No , se generan conflictos con los hooks predefinidos en React.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson04R",
+          "title": "React Router",
+          "duration": 180000,
+          "description": "Para crear aplicaciones en React que estén compuestas de varias pantallas necesitamos un enrutador. Un enrutador nos permite relacionar URL's con componentes.",
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question07R",
+              "description": "¿Para que sirve el enrutador?",
+              "answers": [
+                {
+                  "id": "answer25R",
+                  "text": "Nos permite relacionar URL's con componentes.",
+                  "correct": true
+                },
+                {
+                  "id": "answer26R",
+                  "text": "Para hacer testing.",
+                  "correct": false
+                },
+                {
+                  "id": "answer27R",
+                  "text": "Para realizar nuevos diseños en nuestras vistas.",
+                  "correct": false
+                },
+                {
+                  "id": "answer28R",
+                  "text": "Para hacer peticiones http.",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question08R",
+              "description": "¿Para que sirven los parametros dentro de una ruta?",
+              "answers": [
+                {
+                  "id": "answer29R",
+                  "text": "Los parámetros de ruta son numeros aleatorios autogenerados por el navegador.",
+                  "correct": false
+                },
+                {
+                  "id": "answer30R",
+                  "text": "Los parámetros de ruta son contadores que nos indican el numero de vista en la que estamos.",
+                  "correct": false
+                },
+                {
+                  "id": "answer31R",
+                  "text": "Los parámetros de ruta son variables que puedes utilizar dentro de la ruta",
+                  "correct": true
+                },
+                {
+                  "id": "answer32R",
+                  "text": "Los parámetros de ruta son codigos privados de las rutas.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 }
