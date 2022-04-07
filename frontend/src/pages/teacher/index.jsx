@@ -4,6 +4,7 @@ import TeacherHome from './TeacherHome'
 import TeacherCourses from './courses'
 import CreateCourse from './courses/CreateCourse'
 import { teacherNavConfig } from './teacherConfig'
+import CourseLessons from './lessons'
 
 function TeacherDashboard() {
   return (
@@ -16,6 +17,7 @@ function TeacherDashboard() {
         <Route path="courses">
           <Route index element={<TeacherCourses />} />
           <Route path="create" element={<CreateCourse />} />
+          <Route path=":courseId/lessons" element={<CourseLessons />} />
         </Route>
       </Route>
     </Routes>

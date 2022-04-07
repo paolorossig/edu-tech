@@ -17,6 +17,7 @@ function TeacherCourses() {
             <th className="table_head">Categoría</th>
             <th className="table_head">Precio</th>
             <th className="table_head">URL portada</th>
+            <th className="table_head">Lecciones</th>
           </tr>
         </thead>
         <tbody className="table_body">
@@ -32,6 +33,14 @@ function TeacherCourses() {
                   alt="course-image"
                   className="h-10 w-16 object-cover"
                 />
+              </td>
+              <td>
+                <Button
+                  type="button"
+                  onClick={() => navigate(item._id + '/lessons')}
+                >
+                  Ver más
+                </Button>
               </td>
             </tr>
           ))}
