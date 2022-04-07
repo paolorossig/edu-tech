@@ -1,10 +1,13 @@
-import { useNavigate } from 'react-router-dom'
-import { useUserCoursesQuery } from '@/features/courses/CourseApi'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useAllLessonsQuery } from '@/features/courses/CourseApi'
 import Button from '@/components/Button'
 
 function CourseLessons() {
+  const { courseId } = useParams()
   const navigate = useNavigate()
-  const { data } = useUserCoursesQuery()
+  const { data } = useAllLessonsQuery(courseId)
+
+  console.log(data)
 
   return (
     <section>
@@ -25,18 +28,11 @@ function CourseLessons() {
               <td className="table_row text-left">{item.description}</td>
               <td className="table_row">{item.category.duration}</td>
               <td className="table_row">{item.urlVideo}</td>
-              {/* <td className="table_row flex justify-center">
-                <img
-                  s rc={item.imageURL}
-                  alt="course-image"
-                  className="h-10 w-16 object-cover"
-                />
-              </td> */}
             </tr>
           ))}
         </tbody>
       </table>
-      <Button type="submit" onClick={() => navigate('create')}>
+      <Button type="submit" onClick={() => navigate('create-lesson')}>
         Crear Lección
       </Button>
     </section>
