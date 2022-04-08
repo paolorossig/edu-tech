@@ -23,6 +23,7 @@ export default function connectSocket(server, corsOptions) {
 
     socket.on('add-user', (userId) => {
       log.info(`User connected: ${userId}`)
+      socket.emit('new-users', Array.from(onlineUsers.keys()))
       onlineUsers.set(userId, socket.id)
     })
 
@@ -30,7 +31,7 @@ export default function connectSocket(server, corsOptions) {
       log.child({ data }).info('Message sent:')
       const sendUserSocket = onlineUsers.get(data.to)
       if (sendUserSocket) {
-        socket.to(sendUserSocket).emit('msg-recieve', data.message)
+        socket.to(sendUserSocket).emit('msg-recieve', data)
       }
     })
 
