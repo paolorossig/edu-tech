@@ -3,14 +3,23 @@ import { useParams } from 'react-router-dom'
 import { IoMdSend } from 'react-icons/io'
 import { useAuth } from '@/contexts/auth'
 import { useSocket } from '@/contexts/socket'
+import {
+  useSendMessageMutation,
+  useUserMessagesQuery
+} from '@/features/messages/messageApi'
 
 function Chat() {
   const { auth } = useAuth()
+  const userId = auth.user._id
   const { socket } = useSocket()
   const { teacherId } = useParams()
   const [messages, setMessages] = useState([])
 
-  const userId = auth.user._id
+  const { data } = useUserMessagesQuery(userId)
+  if (data?.messages && !messages.length) {
+    setMessages(data.messages)
+  }
+  const [sendMessage] = useSendMessageMutation()
 
   useEffect(() => {
     socket.on('msg-recieve', (message) => {
@@ -28,6 +37,7 @@ function Chat() {
     }
     setMessages((prev) => [...prev, message])
     socket.emit('send-msg', message)
+    sendMessage(message)
 
     e.target.input.value = ''
   }
@@ -60,6 +70,7 @@ function Chat() {
         <input
           id="input"
           type="text"
+          required
           autoComplete="off"
           placeholder="Escribe un mensaje"
         />

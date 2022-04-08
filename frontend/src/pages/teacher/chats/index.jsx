@@ -60,6 +60,7 @@ function TeacherChats() {
           <input
             id="input"
             type="text"
+            required
             autoComplete="off"
             placeholder="Escribe un mensaje"
           />
