@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import log from './logger.js'
 
-export function connectDb() {
+export default function connectDb() {
   const url = process.env.MONGO_URL
 
   mongoose.connect(url, {

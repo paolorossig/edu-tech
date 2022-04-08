@@ -2,11 +2,14 @@ import { useParams, NavLink, Outlet } from 'react-router-dom'
 import { ChatAlt2Icon, BookOpenIcon } from '@heroicons/react/outline'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import useTeachers from '@/hooks/useTeachers'
+import Loading from '@/components/Loading'
 
 function Teacher() {
   const teachers = useTeachers()
   const { teacherId } = useParams()
   const teacher = teachers.find((teacher) => teacher._id === teacherId)
+
+  if (!teacher) return <Loading />
 
   return (
     <ContentPageLayout>
@@ -42,7 +45,7 @@ function Teacher() {
         </div>
 
         <div className="col-span-7">
-          <section className="rounded-lg border bg-white px-8 py-4 shadow-sm">
+          <section className="flex min-h-full flex-col rounded-lg border bg-white p-4 shadow-sm md:px-8">
             <Outlet />
           </section>
         </div>
