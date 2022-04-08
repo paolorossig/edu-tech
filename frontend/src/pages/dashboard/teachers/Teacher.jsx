@@ -1,8 +1,8 @@
 import { useParams, NavLink, Outlet } from 'react-router-dom'
 import { ChatAlt2Icon, BookOpenIcon } from '@heroicons/react/outline'
-import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import useTeachers from '@/hooks/useTeachers'
 import Loading from '@/components/Loading'
+import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
 function Teacher() {
   const teachers = useTeachers()
@@ -44,10 +44,10 @@ function Teacher() {
           </aside>
         </div>
 
-        <div className="col-span-7">
-          <section className="flex min-h-full flex-col rounded-lg border bg-white p-4 shadow-sm md:px-8">
+        <div className="col-span-7 flex">
+          <ContentPageLayout.Paper>
             <Outlet />
-          </section>
+          </ContentPageLayout.Paper>
         </div>
 
         <div className="col-span-2 flex flex-col gap-4">
