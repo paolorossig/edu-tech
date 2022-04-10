@@ -24,20 +24,23 @@ function TeacherCourses() {
           {data?.courses?.map((item, index) => (
             <tr key={item._id}>
               <td className="table_row">{index + 1}</td>
-              <td className="table_row text-left">{item.name}</td>
+              <td className="table_row">
+                <div className="flex">{item.name}</div>
+              </td>
               <td className="table_row">{item.category.name}</td>
               <td className="table_row">{item.price}</td>
-              <td className="table_row flex justify-center">
+              <td className="table_row">
                 <img
                   src={item.imageURL}
                   alt="course-image"
-                  className="h-10 w-16 object-cover"
+                  className="mx-auto h-10 w-16 object-cover"
                 />
               </td>
-              <td>
+              <td className="table_row">
                 <Button
                   type="button"
                   onClick={() => navigate(item._id + '/lessons')}
+                  className="mx-auto"
                 >
                   Ver más
                 </Button>

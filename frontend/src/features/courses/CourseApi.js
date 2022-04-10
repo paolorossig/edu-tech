@@ -4,7 +4,7 @@ import { axiosBaseQuery } from '@/utils/axios'
 export const courseApi = createApi({
   reducerPath: 'courseApi',
   baseQuery: axiosBaseQuery,
-  tagTypes: ['Course'],
+  tagTypes: ['Course', 'Lesson'],
   endpoints: (builder) => ({
     allCourses: builder.query({
       query: () => ({ url: '/api/courses/all', method: 'get' }),
@@ -13,13 +13,6 @@ export const courseApi = createApi({
     userCourses: builder.query({
       query: () => ({ url: '/api/courses', method: 'get' }),
       providesTags: ['Course']
-    }),
-    allLessons: builder.query({
-      query: (courseId) => ({
-        url: `/api/lesson/${courseId}`,
-        method: 'get'
-      }),
-      providesTags: ['Lesson']
     }),
     createCourse: builder.mutation({
       query: ({ data }) => ({
@@ -32,17 +25,6 @@ export const courseApi = createApi({
       }),
       invalidatesTags: ['Course']
     }),
-    createLesson: builder.mutation({
-      query: ({ data }) => ({
-        url: '/api/lesson',
-        method: 'post',
-        data,
-        headers: {
-          'Content-Type': 'multipart/form-data;'
-        }
-      }),
-      invalidatesTags: ['Lesson']
-    }),
     buyCourses: builder.mutation({
       query: ({ data }) => ({
         url: '/api/courses/buy',
@@ -50,6 +32,24 @@ export const courseApi = createApi({
         data
       }),
       invalidatesTags: ['Course']
+    }),
+    courseLessons: builder.query({
+      query: (courseId) => ({
+        url: `/api/lessons/${courseId}`,
+        method: 'get'
+      }),
+      providesTags: ['Lesson']
+    }),
+    createLesson: builder.mutation({
+      query: ({ data }) => ({
+        url: '/api/lessons',
+        method: 'post',
+        data,
+        headers: {
+          'Content-Type': 'multipart/form-data;'
+        }
+      }),
+      invalidatesTags: ['Lesson']
     })
   })
 })
@@ -57,8 +57,8 @@ export const courseApi = createApi({
 export const {
   useAllCoursesQuery,
   useUserCoursesQuery,
-  useAllLessonsQuery,
   useCreateCourseMutation,
   useBuyCoursesMutation,
+  useCourseLessonsQuery,
   useCreateLessonMutation
 } = courseApi

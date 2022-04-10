@@ -15,7 +15,7 @@
 }
 
 .table {
-  @apply w-full divide-y divide-gray-200 overflow-hidden rounded-2xl bg-gray-50;
+  @apply w-full divide-y divide-gray-200 overflow-hidden whitespace-nowrap rounded-2xl bg-gray-50;
 }
 
 .table_body {
@@ -27,5 +27,5 @@
 }
 
 .table_row {
-  @apply whitespace-nowrap px-6 py-4 text-sm;
+  @apply whitespace-nowrap px-6 py-4 text-center text-sm;
 }

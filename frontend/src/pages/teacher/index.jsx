@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import DashboardLayout from '@/components/Layouts/DashboardLayout'
 import TeacherHome from './TeacherHome'
 import TeacherCourses from './courses'
@@ -18,11 +18,13 @@ function TeacherDashboard() {
         <Route path="courses">
           <Route index element={<TeacherCourses />} />
           <Route path="create" element={<CreateCourse />} />
-          <Route path=":courseId/lessons" element={<CourseLessons />} />
-          <Route
-            path=":courseId/lessons/create-lesson"
-            element={<RegisterLesson />}
-          />
+          <Route path=":courseId">
+            <Route index element={<Navigate to="lessons" />} />
+            <Route path="lessons">
+              <Route index element={<CourseLessons />} />
+              <Route path="create" element={<RegisterLesson />} />
+            </Route>
+          </Route>
         </Route>
       </Route>
     </Routes>
