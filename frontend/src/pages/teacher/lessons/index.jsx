@@ -15,17 +15,17 @@ function CourseLessons() {
           <tr>
             <th className="table_head">#</th>
             <th className="table_head text-left">Título</th>
-            <th className="table_head">Duración</th>
+            <th className="table_head">Descripción</th>
             <th className="table_head">Vídeo</th>
           </tr>
         </thead>
         <tbody className="table_body">
-          {data?.courses?.map((item, index) => (
+          {data?.lesson?.map((item, index) => (
             <tr key={item._id}>
               <td className="table_row">{index + 1}</td>
-              <td className="table_row text-left">{item.description}</td>
-              <td className="table_row">{item.category.duration}</td>
-              <td className="table_row">{item.urlVideo}</td>
+              <td className="table_row text-left">{item.title}</td>
+              <td className="table_row">{item.description}</td>
+              <td className="table_row">{item.urlVideo ?? ''}</td>
             </tr>
           ))}
         </tbody>

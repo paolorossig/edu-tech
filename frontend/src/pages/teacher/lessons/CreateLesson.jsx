@@ -21,7 +21,7 @@ function RegisterLesson() {
     video && data.append('videoURL', video[0], video[0].name)
     data.append('title', formData.title)
     data.append('description', formData.description)
-    data.append('courseId', courseId)
+    data.append('course', courseId)
     await createLesson({ data })
     return goBack()
   }

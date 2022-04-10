@@ -6,11 +6,12 @@ import {
   getLessonsByCourseId
 } from '../controller/lesson.controller.js'
 import requireUser from '../middleware/requireUser.js'
+import { upload } from '../utils/multer.js'
 
 const lessonRouter = Router()
 
 lessonRouter.get('/api/lesson', getLessons)
-lessonRouter.post('/api/lesson', requireUser, createLessonHandler)
+lessonRouter.post('/api/lesson', upload.single('videoURL'), createLessonHandler)
 
 lessonRouter
   .route('/api/lesson/:lessonId')

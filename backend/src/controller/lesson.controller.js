@@ -7,7 +7,7 @@ import {
 
 export async function createLessonHandler(req, res) {
   try {
-    const lesson = await createLesson(req.body)
+    const lesson = await createLesson(req)
     res.status(201).json({ message: 'Lesson created', lesson })
   } catch (error) {
     res.status(400).json({ message: error.message })
