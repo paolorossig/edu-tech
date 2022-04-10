@@ -15,11 +15,12 @@ export function uploads(file, folder) {
       (result) => {
         resolve({
           url: result.secure_url,
-          cloudinaryId: result.public_id
+          cloudinaryId: result.public_id,
+          duration: result?.duration
         })
       },
       {
-        resourse_type: 'auto',
+        resource_type: 'auto',
         folder: process.env.NODE_ENV === 'production' ? folder : `${folder}-dev`
       }
     )

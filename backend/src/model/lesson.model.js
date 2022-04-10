@@ -10,8 +10,7 @@ const lessonSchema = new mongoose.Schema(
       required: true
     },
     duration: { type: Number },
-    urlVideo: { type: String },
-    questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }]
+    videoURL: { type: String }
   },
   { timestamps: true }
 )
