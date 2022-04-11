@@ -1,21 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { IoMdSend } from 'react-icons/io'
-import { useAuth } from '@/contexts/auth'
 import { useSocket } from '@/contexts/socket'
-import {
-  useSendMessageMutation,
-  useUserMessagesQuery
-} from '@/features/messages/messageApi'
+import { useSendMessageMutation, useUserMessagesQuery } from './messageApi'
 
-function Chat() {
-  const { auth } = useAuth()
-  const userId = auth.user._id
+function Chat({ from, to }) {
   const { socket } = useSocket()
-  const { teacherId } = useParams()
   const [messages, setMessages] = useState([])
 
-  const { data } = useUserMessagesQuery(userId)
+  const { data } = useUserMessagesQuery(from)
   if (data?.messages && !messages.length) {
     setMessages(data.messages)
   }
@@ -31,8 +23,8 @@ function Chat() {
     e.preventDefault()
 
     const message = {
-      from: userId,
-      to: teacherId,
+      from,
+      to,
       message: e.target.input.value
     }
     setMessages((prev) => [...prev, message])
@@ -43,11 +35,11 @@ function Chat() {
   }
 
   return (
-    <>
-      <h2 className="pb-4 text-2xl text-slate-600">{`Chat`}</h2>
-      <div className="mb-3 flex flex-auto flex-col gap-3">
+    <div className="flex h-full flex-col">
+      <h2 className="pb-4 text-2xl text-slate-600">Chat</h2>
+      <div className="scrollbar-hide mb-3 flex flex-auto flex-col gap-3 overflow-y-scroll">
         {messages.map((message, index) => {
-          const isCurrentUser = message.from === userId
+          const isCurrentUser = message.from === from
 
           return (
             <p
@@ -81,7 +73,7 @@ function Chat() {
           <IoMdSend className="text-xl text-white" />
         </button>
       </form>
-    </>
+    </div>
   )
 }
 
