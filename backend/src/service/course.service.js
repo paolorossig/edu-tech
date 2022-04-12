@@ -28,6 +28,16 @@ export async function findCourses(query = {}) {
   return courses
 }
 
+export async function findCoursesById(query = {}) {
+  const course = await Course.findById(query)
+    .populate({
+      path: 'category',
+      select: 'name'
+    })
+    .populate('teacher')
+  return course
+}
+
 export async function deleteCourse(courseId) {
   try {
     await Course.findByIdAndDelete(courseId)

@@ -1,7 +1,8 @@
 import {
   createCourse,
   deleteCourse,
-  findCourses
+  findCourses,
+  findCoursesById
 } from '../service/course.service.js'
 import { findStudent, updateStudent } from '../service/student.service.js'
 
@@ -20,6 +21,14 @@ export async function getCourses(req, res) {
   try {
     const courses = await findCourses()
     res.status(200).json({ message: 'Courses retrieved', courses })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+}
+export async function getCourse(req, res) {
+  try {
+    const course = await findCoursesById(req.params.courseId)
+    res.status(200).json({ message: 'Course retrieved', course })
   } catch (error) {
     res.status(400).json({ message: error.message })
   }

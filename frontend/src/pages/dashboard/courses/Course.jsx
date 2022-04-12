@@ -1,28 +1,42 @@
 import { useParams, Link } from 'react-router-dom'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
-import { cursos } from '@/data/cursos.json'
+// import { cursos } from '@/data/cursos.json'
 import { getTimeString } from '@/utils/time'
+import {
+  useCourseLessonsQuery,
+  useGetCourseQuery
+} from '@/features/courses/CourseApi'
+import Spinner from '@/components/Spinner'
 
 function Course() {
   const { courseId } = useParams()
-  const { name, lessons } = cursos.find((course) => course.id === courseId)
+  console.log('Si entre')
+  // const { name } = cursos.find((course) => course.id === courseId)
+  const { data: lessons, isLoading: isLoadingCourse } =
+    useCourseLessonsQuery(courseId)
+  const { data: course, isLoading: isLoadingLesson } =
+    useGetCourseQuery(courseId)
 
-  return (
+  return isLoadingCourse && isLoadingLesson ? (
+    <div className="mx-auto">
+      <Spinner size="medium" />
+    </div>
+  ) : (
     <ContentPageLayout>
       <ContentPageLayout.Title>
-        <Link to="/dashboard/courses">Cursos</Link> / {name}
+        <Link to="/dashboard/courses">Cursos</Link> / {course?.course?.name}
       </ContentPageLayout.Title>
       <ContentPageLayout.Paper>
         <h2 className="text-gray-500">Contenido:</h2>
         <ul className="m-8 flex flex-col gap-8">
-          {lessons.map((lesson) => {
+          {lessons.lessons.map((lesson, index) => {
             const {
-              id: lessonId,
+              _id: lessonId,
               title,
               duration,
-              completed,
-              exercises
+              completed = 2,
+              exercises = 2
             } = lesson
 
             const bgColor =
@@ -38,7 +52,7 @@ function Course() {
                   <div
                     className={`${bgColor} flex h-14 w-14 items-center justify-center rounded-full text-3xl text-white md:h-20 md:w-20`}
                   >
-                    {lessonId}
+                    {index + 1}
                   </div>
                   <div className="flex-1">
                     <h3>{title}</h3>
