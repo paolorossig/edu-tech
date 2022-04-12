@@ -1,19 +1,16 @@
-import { Link } from 'react-router-dom'
-import { BsCartPlusFill } from 'react-icons/bs'
-import NotificationsDropdown from './NotificationsDropdown'
 import UserDropdown from './UserDropdown'
+import BasketCounter from './BasketCounter'
+import NotificationsDropdown from './NotificationsDropdown'
+import { useAuth } from '@/contexts/auth'
 
 function Header() {
+  const { auth } = useAuth()
+
   return (
     <header className="sticky top-0 z-20 bg-gray-100 py-4 px-4 md:px-8">
-      <div className="flex items-center justify-end rounded-xl bg-white p-2 shadow-md">
+      <div className="flex items-center justify-end gap-1 rounded-xl bg-white p-2 shadow-md">
         <NotificationsDropdown />
-        <Link
-          to="checkout"
-          className="p-2 text-2xl text-gray-500 hover:text-black"
-        >
-          <BsCartPlusFill />
-        </Link>
+        {auth.user.role === 'student' && <BasketCounter />}
         <UserDropdown />
       </div>
     </header>

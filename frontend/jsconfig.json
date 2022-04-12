@@ -4,14 +4,7 @@
     "baseUrl": "./src",
     "sourceMap": true,
     "paths": {
-      "@/assets/*": ["./assets/*"],
-      "@/components/*": ["./components/*"],
-      "@/data/*": ["./data/*"],
-      "@/features/*": ["./features/*"],
-      "@/hooks/*": ["./hooks/*"],
-      "@/pages/*": ["./pages/*"],
-      "@/services/*": ["./services/*"],
-      "@/utils/*": ["./utils/*"]
+      "@/*": ["./*"]
     }
   },
   "exclude": ["node_modules", "dist"]

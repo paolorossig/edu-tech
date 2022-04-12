@@ -1,13 +1,17 @@
+import useCategories from '@/hooks/useCategories'
+import { useAllCoursesQuery } from '@/features/courses/CourseApi'
 import LandingLayout from '@/components/Layouts/LandingLayout'
 import Hero from '@/components/Landing/Hero'
 import Carousel from '@/components/Landing/Carousel'
 import LateralCard from '@/components/Landing/LateralCard'
 import ContactForm from '@/components/Landing/ContactForm'
-import { cursos } from '@/data/cursos.json'
-import useCategories from '@/hooks/useCategories'
+import Loading from '@/components/Loading'
 
 function Landing() {
   const categories = useCategories()
+  const { data } = useAllCoursesQuery()
+
+  if (!data?.courses.length) return <Loading />
 
   return (
     <LandingLayout>
@@ -16,7 +20,7 @@ function Landing() {
       {/* Best rated Section */}
       <section className="flex w-full flex-col">
         <h2 className="my-6 text-center uppercase">Los mejores puntuados</h2>
-        <Carousel cursos={cursos} />
+        <Carousel courses={data.courses} />
       </section>
       {/* Course categories Section */}
       <section className="flex flex-col justify-center">
@@ -36,8 +40,13 @@ function Landing() {
       <section id="cursos" className="flex flex-col justify-center">
         <h2 className="my-6 text-center uppercase">Lo más reciente</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {cursos.map((curso, index) => (
-            <LateralCard element={curso} key={index} />
+          {data.courses.map((course) => (
+            <LateralCard
+              title={course.name}
+              subtitle={course.category.name}
+              imageURL={course.imageURL}
+              key={course._id}
+            />
           ))}
         </div>
       </section>

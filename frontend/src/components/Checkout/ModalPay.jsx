@@ -1,8 +1,28 @@
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  clearBasket,
+  selectBasketItems,
+  selectTotalPrice
+} from '@/features/basket/basketSlice'
+import { useBuyCoursesMutation } from '@/features/courses/CourseApi'
 import CardSecurity from './CardSecurity'
 import CreditCards from './CreditCards'
 import DetailPay from './DetailPay'
 
 function ModalPay({ creditInfo, toggleModal }) {
+  const dispatch = useDispatch()
+  const totalPrice = useSelector(selectTotalPrice)
+  const basketItems = useSelector(selectBasketItems)
+  const [buyCourses] = useBuyCoursesMutation()
+
+  const courses = basketItems?.map((el) => el._id)
+
+  const handleSubmit = async () => {
+    await buyCourses({ data: { courses } })
+    dispatch(clearBasket())
+    return toggleModal()
+  }
+
   return (
     <>
       <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
@@ -34,12 +54,15 @@ function ModalPay({ creditInfo, toggleModal }) {
                 <span className=" text-white">×</span>
               </button>
               <DetailPay
-                subtotal={'109.98'}
-                descuento={'20.00'}
-                total={'89.98'}
-              ></DetailPay>
+                subtotal={totalPrice}
+                descuento={totalPrice * 0.2}
+                total={totalPrice * 0.8}
+              />
               <div className="h-[350px]" />
-              <button className=" w-full bg-slate-800 p-4 font-semibold text-white">
+              <button
+                onClick={handleSubmit}
+                className="w-full bg-slate-800 p-4 font-semibold text-white"
+              >
                 Pagar
               </button>
             </div>
@@ -47,7 +70,7 @@ function ModalPay({ creditInfo, toggleModal }) {
           <div className="relative flex w-full flex-col rounded-lg border-0 bg-white shadow-lg outline-none focus:outline-none"></div>
         </div>
       </div>
-      <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
+      <div className="fixed inset-0 z-40 bg-black opacity-25" />
     </>
   )
 }

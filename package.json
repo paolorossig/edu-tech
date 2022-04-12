@@ -1,11 +1,11 @@
 {
   "name": "edu-tech",
-  "version": "2.3.2",
+  "version": "2.4.0",
   "private": true,
   "scripts": {
-    "front:dev": "vite frontend",
-    "front:build": "vite build frontend",
-    "front:preview": "vite preview frontend",
+    "front:dev": "cd frontend && vite",
+    "front:build": "cd frontend && vite build",
+    "front:preview": "cd frontend && vite preview",
     "back:dev": "nodemon backend/src/server.js",
     "lint": "eslint . --ext .js,.jsx --fix"
   },
@@ -14,10 +14,10 @@
     "backend"
   ],
   "devDependencies": {
-    "eslint": "8.12.0",
+    "eslint": "8.13.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-react": "7.29.4",
-    "prettier": "2.6.1"
+    "prettier": "2.6.2"
   }
 }

@@ -1,17 +1,25 @@
 import Lesson from '../model/lesson.model.js'
+import { uploads } from '../utils/cloudinary.js'
+import log from '../utils/logger.js'
 
 export async function createLesson(input) {
-  const lesson = await Lesson.create(input)
-  return lesson
+  const uploader = async (path) => await uploads(path, 'lesson-videos')
+  try {
+    const { url, duration } = await uploader(input.file.path)
+    const lesson = await Lesson.create({
+      ...input.body,
+      videoURL: url,
+      duration
+    })
+    log.child({ lesson }).info('Lesson created')
+    return lesson
+  } catch (error) {
+    throw new Error(`error: ${error}`)
+  }
 }
 
-export async function findLesson() {
-  const lessons = await Lesson.find({})
-  return lessons
-}
-
-export async function findLessonsByCourseId(courseId) {
-  const lessons = await Lesson.find({ courseId })
+export async function findLesson(query = {}) {
+  const lessons = await Lesson.find(query)
   return lessons
 }
 

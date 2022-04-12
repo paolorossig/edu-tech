@@ -27,14 +27,17 @@ export async function validatePassword({ email, password }) {
   const isValid = await user.comparePassword(password)
   if (!isValid) return false
 
-  const child = log.child(omitPassword(user._doc))
-  child.info('User logged in')
+  log.info(`User logged in: ${email}`)
 
   return omitPassword(user._doc)
 }
 
 export async function findUser(query) {
   return User.findOne(query).lean()
+}
+
+export async function findUsers(query) {
+  return User.find(query).lean()
 }
 
 export async function updateUser(query, update) {

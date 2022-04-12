@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { deleteUserSession, login, signup } from '@/services/auth'
 
 const AuthContext = createContext()
@@ -35,6 +35,10 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   )
+}
+
+export const useAuth = () => {
+  return useContext(AuthContext)
 }
 
 export default AuthContext
