@@ -1,6 +1,9 @@
 # EduTECH
 
-[EduTech](https://edutech.vercel.app) is a MERN Full Stack project developed in the Make it Real Bootcamp.
+![version](https://img.shields.io/github/package-json/v/paolorossig/edu-tech)
+![contributors](https://img.shields.io/github/contributors/paolorossig/edu-tech)
+
+[EduTech](https://edutech.vercel.app) is a MERN Full Stack project developed in the Make It Real Bootcamp.
 
 ## Stack
 
@@ -17,7 +20,15 @@ This project is structured in a monorepo enabled by yarn workspaces with the fol
 
 ![Nodejs](https://img.shields.io/badge/-Nodejs-black?style=flat-square&logo=Node.js)
 ![Express](https://img.shields.io/badge/-Express-black?style=flat-square&logo=Express)
+![SocketIo](https://img.shields.io/badge/-Socket.IO-black?style=flat-square&logo=Socket.IO)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=flat-square&logo=MongoDB)
+
+## Deployment
+
+- Client: Vercel
+- Server: Heroku
+- Email API: SendGrid
+- Image and Video Hosting: Cloudinary
 
 ## Requests Flow
 
@@ -27,11 +38,6 @@ A[HTTP Endpoint] -- Middleware --> B[Controller]
 B[Controller] --> C[Service]
 C[Service] --> D[(Database)]
 ```
-
-## Deployment
-
-- Client: Vercel
-- Server: Heroku
 
 ## Development
 
