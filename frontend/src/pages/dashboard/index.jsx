@@ -10,7 +10,7 @@ import Checkout from './Checkout'
 import Teachers from './teachers'
 import Teacher from './teachers/Teacher'
 import TeacherCoursesList from './teachers/TeacherCoursesList'
-import Chat from './teachers/Chat'
+import ChatWithTeacher from './teachers/ChatWithTeacher'
 import { alumnosNavConfig } from './layoutConfig'
 
 function Dashboard() {
@@ -31,7 +31,7 @@ function Dashboard() {
           <Route path=":teacherId" element={<Teacher />}>
             <Route index element={<Navigate to="courses" />} />
             <Route path="courses" element={<TeacherCoursesList />} />
-            <Route path="chat" element={<Chat />} />
+            <Route path="chat" element={<ChatWithTeacher />} />
           </Route>
         </Route>
         <Route path="catalogue" element={<Catalogue />} />

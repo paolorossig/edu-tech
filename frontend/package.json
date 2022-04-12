@@ -23,6 +23,7 @@
     "react-redux": "7.2.8",
     "react-router-dom": "6.2.2",
     "react-scroll": "1.8.6",
+    "socket.io-client": "4.4.1",
     "swiper": "8.0.7",
     "vite-plugin-svgr": "1.1.0"
   },
