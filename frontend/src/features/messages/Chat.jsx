@@ -8,7 +8,7 @@ function Chat({ from, to }) {
   const [messages, setMessages] = useState([])
 
   const { data } = useUserMessagesQuery(from)
-  if (data?.messages && !messages.length) {
+  if (data?.messages?.length && !messages.length) {
     setMessages(data.messages)
   }
   const [sendMessage] = useSendMessageMutation()
