@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import useTeachers from '@/hooks/useTeachers'
+import useUsersByType from '@/hooks/useUsersByType'
 
 function Teachers() {
-  const teachers = useTeachers()
+  const { teachers } = useUsersByType()
 
   return (
     <section className="flex flex-col gap-x-6 gap-y-4 md:flex-row md:flex-wrap">

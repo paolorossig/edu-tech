@@ -30,7 +30,7 @@ function TeacherCoursesList() {
             </Link>
           </li>
         ))}
-        {!courses.length &&
+        {!courses &&
           Array.from({ length: 15 }, (v, i) => i).map((e, index) => (
             <li key={index}>
               <Link to="/dashboard/courses">

@@ -1,6 +1,6 @@
 import { useParams, NavLink, Outlet } from 'react-router-dom'
 import { ChatAlt2Icon, BookOpenIcon } from '@heroicons/react/outline'
-import useTeachers from '@/hooks/useTeachers'
+import useUsersByType from '@/hooks/useUsersByType'
 import Loading from '@/components/Loading'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
@@ -34,7 +34,7 @@ function TeacherNav({ className }) {
 }
 
 function Teacher() {
-  const teachers = useTeachers()
+  const { teachers } = useUsersByType()
   const { teacherId } = useParams()
   const teacher = teachers.find((teacher) => teacher._id === teacherId)
 

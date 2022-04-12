@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
-import useTeachers from '@/hooks/useTeachers'
+import useUsersByType from '@/hooks/useUsersByType'
 import Badge from '@/components/Badge'
 
 function TeachersAvailableList() {
-  const teachers = useTeachers()
+  const { teachers } = useUsersByType()
 
   return (
     <section>

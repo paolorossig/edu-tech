@@ -3,7 +3,8 @@ import axios from '@/utils/axios'
 
 const initialState = {
   users: [],
-  courses: {}
+  courses: {},
+  students: []
 }
 
 export const getTeachers = createAsyncThunk(
@@ -22,6 +23,14 @@ export const getTeacherCourses = createAsyncThunk(
   }
 )
 
+export const getStudents = createAsyncThunk(
+  'teachers/getStudents',
+  async () => {
+    const response = await axios.get('/api/students')
+    return response?.data.students
+  }
+)
+
 export const TeacherSlice = createSlice({
   name: 'teachers',
   initialState,
@@ -33,10 +42,14 @@ export const TeacherSlice = createSlice({
       .addCase(getTeacherCourses.fulfilled, (state, action) => {
         state.courses[action.payload.teacherId] = action.payload.courses
       })
+      .addCase(getStudents.fulfilled, (state, action) => {
+        state.students = action.payload
+      })
   }
 })
 
 export const selectTeachers = (state) => state.teachers.users
 export const selectTeacherCourses = (state) => state.teachers.courses
+export const selectStudents = (state) => state.teachers.students
 
 export default TeacherSlice.reducer
