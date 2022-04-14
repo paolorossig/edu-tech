@@ -9,7 +9,7 @@ import NoDataWarning from '@/components/NoDataWarning'
 import { teacherNavConfig } from './teacherConfig'
 import CourseLessons from './lessons'
 import RegisterLesson from './lessons/CreateLesson'
-
+import CreateQuestion from './courses/CreateQuestion'
 function TeacherDashboard() {
   return (
     <Routes>
@@ -21,6 +21,7 @@ function TeacherDashboard() {
         <Route path="courses">
           <Route index element={<TeacherCourses />} />
           <Route path="create" element={<CreateCourse />} />
+          <Route path="createquestion" element={<CreateQuestion />} />
           <Route path=":courseId">
             <Route index element={<Navigate to="lessons" />} />
             <Route path="lessons">

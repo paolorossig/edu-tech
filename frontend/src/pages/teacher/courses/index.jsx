@@ -52,6 +52,10 @@ function TeacherCourses() {
       <Button type="submit" onClick={() => navigate('create')}>
         Crear curso
       </Button>
+      <br></br>
+      <Button type="submit" onClick={() => navigate('createquestion')}>
+        Crear cuestionario
+      </Button>
     </section>
   )
 }

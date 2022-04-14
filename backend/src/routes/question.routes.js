@@ -10,7 +10,10 @@ import requireUser from '../middleware/requireUser.js'
 const questionRouter = Router()
 
 questionRouter.get('/api/question', getQuestion)
-questionRouter.post('/api/question', requireUser, createQuestionHandler)
+questionRouter.post('/api/question', createQuestionHandler)
+lessonRouter.post(
+  '/api/question', createQuestionHandler
+)
 
 questionRouter
   .route('/api/question/:questionId')

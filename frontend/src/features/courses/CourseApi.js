@@ -50,6 +50,17 @@ export const courseApi = createApi({
         }
       }),
       invalidatesTags: ['Lesson']
+    }),
+    createQuestion: builder.mutation({
+      query: ({ data }) => ({
+        url: '/api/question',
+        method: 'post',
+        data,
+        headers: {
+          'Content-Type': 'multipart/form-data;'
+        }
+      }),
+      invalidatesTags: ['Question']
     })
   })
 })
@@ -60,5 +71,6 @@ export const {
   useCreateCourseMutation,
   useBuyCoursesMutation,
   useCourseLessonsQuery,
-  useCreateLessonMutation
+  useCreateLessonMutation,
+  useCreateQuestionMutation
 } = courseApi
