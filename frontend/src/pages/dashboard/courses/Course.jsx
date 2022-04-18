@@ -11,7 +11,6 @@ import Spinner from '@/components/Spinner'
 
 function Course() {
   const { courseId } = useParams()
-  console.log('Si entre')
   // const { name } = cursos.find((course) => course.id === courseId)
   const { data: lessons, isLoading: isLoadingCourse } =
     useCourseLessonsQuery(courseId)

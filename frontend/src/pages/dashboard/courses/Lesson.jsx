@@ -1,19 +1,57 @@
 import { useParams, Link } from 'react-router-dom'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import Button from '@/components/Button'
+import {
+  useGetCourseQuery,
+  useLessonQuestionsQuery,
+  useQuestionAnswersQuery,
+  useGetLessonQuery
+} from '@/features/courses/CourseApi'
+import Spinner from '@/components/Spinner'
 
-import { cursos } from '@/data/cursos.json'
+function Answers({ questionId }) {
+  const { data: answers, isLoading: isLoadingAnswers } =
+    useQuestionAnswersQuery(questionId)
+  return isLoadingAnswers ? (
+    <div className="mx-auto">
+      <Spinner size="medium" />
+    </div>
+  ) : (
+    <div className="ml-3 flex flex-col gap-2">
+      {answers.answer.map((option) => {
+        const { _id: id, text } = option
+
+        return (
+          <div key={id} className="flex items-center gap-4">
+            <input type="radio" name="option" id={id} value={id} />
+            <label htmlFor={id}>{text}</label>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
 
 function Lesson() {
   const { courseId, lessonId } = useParams()
-  const { name, lessons } = cursos.find((curso) => curso.id === courseId)
-  const { title, questions } = lessons.find((leccion) => leccion.id == lessonId)
+  const { data: lesson, isLoading: isLoadingLesson } =
+    useGetLessonQuery(lessonId)
+  const { data: course, isLoading: isLoadingCourse } =
+    useGetCourseQuery(courseId)
+  const { data: questions, isLoading: isLoadingQuestion } =
+    useLessonQuestionsQuery(lessonId)
 
-  return (
+  return isLoadingCourse && isLoadingLesson && isLoadingQuestion ? (
+    <div className="mx-auto">
+      <Spinner size="medium" />
+    </div>
+  ) : (
     <ContentPageLayout>
       <ContentPageLayout.Title>
-        <Link to={`/dashboard/courses/${courseId}`}>Cursos / {name}</Link> /
-        Lección {lessonId}
+        <Link to={`/dashboard/courses/${courseId}`}>
+          Cursos / {course?.course?.name}
+        </Link>{' '}
+        / {lesson.lessons.title}
       </ContentPageLayout.Title>
       <ContentPageLayout.Paper>
         <div className="flex justify-center">
@@ -24,13 +62,13 @@ function Lesson() {
             width={'80%'}
           />
         </div>
-        <h1 className="my-6">{title}</h1>
+        <h1 className="my-6">{lesson.lessons.title}</h1>
         {questions && (
           <form className="flex flex-col gap-6">
             <h2 className="text-gray-500">Preguntas:</h2>
             <ul className="flex w-full flex-col gap-6 md:m-8">
-              {questions.map((item, index) => {
-                const { id, description, answers } = item
+              {questions.questions.map((item, index) => {
+                const { _id: id, description } = item
 
                 return (
                   <li key={id}>
@@ -43,23 +81,7 @@ function Lesson() {
                       </h3>
                     </div>
                     {/* List answers with radio btn */}
-                    <div className="ml-3 flex flex-col gap-2">
-                      {answers.map((option) => {
-                        const { id, text } = option
-
-                        return (
-                          <div key={id} className="flex items-center gap-4">
-                            <input
-                              type="radio"
-                              name="option"
-                              id={id}
-                              value={id}
-                            />
-                            <label htmlFor={id}>{text}</label>
-                          </div>
-                        )
-                      })}
-                    </div>
+                    <Answers questionId={id} />
                   </li>
                 )
               })}

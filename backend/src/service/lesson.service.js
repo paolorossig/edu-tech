@@ -19,8 +19,13 @@ export async function createLesson(input) {
 }
 
 export async function findLesson(query = {}) {
-  const lessons = await Lesson.find(query)
+  const lessons = await Lesson.find({ course: query.course })
   return lessons
+}
+
+export async function findLessonById(query) {
+  const lesson = await Lesson.findById(query)
+  return lesson
 }
 
 export async function deleteLesson(lessonId) {

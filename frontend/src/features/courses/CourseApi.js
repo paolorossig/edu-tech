@@ -44,6 +44,13 @@ export const courseApi = createApi({
       }),
       providesTags: ['Lesson']
     }),
+    getLesson: builder.query({
+      query: (lessonId) => ({
+        url: `/api/lesson/${lessonId}`,
+        method: 'get'
+      }),
+      providesTags: ['Lesson']
+    }),
     createLesson: builder.mutation({
       query: ({ data }) => ({
         url: '/api/lessons',
@@ -54,6 +61,20 @@ export const courseApi = createApi({
         }
       }),
       invalidatesTags: ['Lesson']
+    }),
+    lessonQuestions: builder.query({
+      query: (lessonId) => ({
+        url: `/api/questions/${lessonId}`,
+        method: 'get'
+      }),
+      providesTags: ['Question']
+    }),
+    questionAnswers: builder.query({
+      query: (questionId) => ({
+        url: `/api/answers/${questionId}`,
+        method: 'get'
+      }),
+      providesTags: ['Answers']
     })
   })
 })
@@ -65,5 +86,8 @@ export const {
   useCreateCourseMutation,
   useBuyCoursesMutation,
   useCourseLessonsQuery,
-  useCreateLessonMutation
+  useCreateLessonMutation,
+  useLessonQuestionsQuery,
+  useQuestionAnswersQuery,
+  useGetLessonQuery
 } = courseApi

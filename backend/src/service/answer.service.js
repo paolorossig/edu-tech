@@ -15,7 +15,7 @@ export async function findAnswer() {
 }
 
 export async function findAnswerByQuestionId(questionId) {
-  const answers = await Answer.find({ questionId })
+  const answers = await Answer.find({ question: questionId })
   return answers
 }
 
