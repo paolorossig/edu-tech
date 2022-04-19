@@ -1,12 +1,13 @@
 import { useParams, Link } from 'react-router-dom'
-import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
-import Button from '@/components/Button'
+import ReactPlayer from 'react-player'
 import {
   useGetCourseQuery,
   useLessonQuestionsQuery,
   useQuestionAnswersQuery,
   useGetLessonQuery
 } from '@/features/courses/CourseApi'
+import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
+import Button from '@/components/Button'
 import Spinner from '@/components/Spinner'
 
 function Answers({ questionId }) {
@@ -34,14 +35,11 @@ function Answers({ questionId }) {
 
 function Lesson() {
   const { courseId, lessonId } = useParams()
-  const { data: lesson, isLoading: isLoadingLesson } =
-    useGetLessonQuery(lessonId)
-  const { data: course, isLoading: isLoadingCourse } =
-    useGetCourseQuery(courseId)
-  const { data: questions, isLoading: isLoadingQuestion } =
-    useLessonQuestionsQuery(lessonId)
+  const { data: lesson } = useGetLessonQuery(lessonId)
+  const { data: course } = useGetCourseQuery(courseId)
+  const { data: questions } = useLessonQuestionsQuery(lessonId)
 
-  return isLoadingCourse && isLoadingLesson && isLoadingQuestion ? (
+  return !lesson && !course && !questions ? (
     <div className="mx-auto">
       <Spinner size="medium" />
     </div>
@@ -54,12 +52,12 @@ function Lesson() {
         / {lesson.lessons.title}
       </ContentPageLayout.Title>
       <ContentPageLayout.Paper>
-        <div className="flex justify-center">
-          {/* VIDEO PLACE */}
-          <img
-            src="https://images.wondershare.com/recoverit/article/video-repair/fix-black-screen-while-playing-video.jpg"
-            alt=""
-            width={'80%'}
+        <div className="mx-auto max-w-3xl overflow-hidden rounded-xl">
+          <ReactPlayer
+            url={lesson.lessons.videoURL}
+            controls
+            width={'100%'}
+            height={'100%'}
           />
         </div>
         <h1 className="my-6">{lesson.lessons.title}</h1>
