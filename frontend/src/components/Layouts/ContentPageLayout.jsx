@@ -8,7 +8,8 @@ function Title({ children }) {
 
 function Paper({ children }) {
   return (
-    <section className="flex flex-auto flex-col overflow-hidden rounded-t-3xl bg-white p-4 md:rounded-t-[50px] md:px-[50px] md:pt-[50px]">
+    //overflow-hidden
+    <section className="flex flex-auto flex-col  rounded-t-3xl bg-white p-4 md:rounded-t-[50px] md:px-[50px] md:pt-[50px]">
       {children}
     </section>
   )
