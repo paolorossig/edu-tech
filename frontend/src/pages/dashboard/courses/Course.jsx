@@ -34,22 +34,21 @@ function Course() {
               _id: lessonId,
               title,
               duration,
-              completed = 2,
+              completed = 0,
               exercises = 2
             } = lesson
-
-            const bgColor =
-              completed === exercises
-                ? 'bg-green-400'
-                : completed === 0
-                ? 'bg-gray-300'
-                : 'bg-black'
 
             return (
               <Link to={`${lessonId}`} key={lessonId}>
                 <li className="flex items-center gap-4 md:gap-8">
                   <div
-                    className={`${bgColor} flex h-14 w-14 items-center justify-center rounded-full text-3xl text-white md:h-20 md:w-20`}
+                    className={`${
+                      completed === exercises
+                        ? 'bg-green-400'
+                        : completed === 0
+                        ? 'bg-gray-300'
+                        : 'bg-black'
+                    } flex h-14 w-14 items-center justify-center rounded-full text-3xl text-white md:h-20 md:w-20`}
                   >
                     {index + 1}
                   </div>
