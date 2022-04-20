@@ -27,6 +27,7 @@ This project is structured in a monorepo enabled by yarn workspaces with the fol
 
 - Client: Vercel
 - Server: Heroku
+- Database: MongoDB Atlas
 - Email API: SendGrid
 - Image and Video Hosting: Cloudinary
 
