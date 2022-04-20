@@ -5,7 +5,6 @@ import {
 
 export async function createComment(req, res) {
   try {
-    console.log('REq', req.body)
     const comment = await createComments(req.body)
     res.status(201).json({ message: 'Comment created', comment })
   } catch (error) {

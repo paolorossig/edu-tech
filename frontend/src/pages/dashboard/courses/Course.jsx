@@ -1,7 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 
-// import { cursos } from '@/data/cursos.json'
 import { getTimeString } from '@/utils/time'
 import {
   useCourseLessonsQuery,
@@ -11,13 +10,10 @@ import Spinner from '@/components/Spinner'
 
 function Course() {
   const { courseId } = useParams()
-  // const { name } = cursos.find((course) => course.id === courseId)
-  const { data: lessons, isLoading: isLoadingCourse } =
-    useCourseLessonsQuery(courseId)
-  const { data: course, isLoading: isLoadingLesson } =
-    useGetCourseQuery(courseId)
+  const { data: lessons } = useCourseLessonsQuery(courseId)
+  const { data: course } = useGetCourseQuery(courseId)
 
-  return isLoadingCourse && isLoadingLesson ? (
+  return !lessons && !course ? (
     <div className="mx-auto">
       <Spinner size="medium" />
     </div>
