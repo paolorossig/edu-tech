@@ -3,6 +3,7 @@ import {
   createLessonHandler,
   deletelesson,
   getAllLessons,
+  getLesson,
   getLessonsByCourseId
 } from '../controller/lesson.controller.js'
 import requireUser from '../middleware/requireUser.js'
@@ -21,7 +22,7 @@ lessonRouter.post(
 lessonRouter
   .route('/api/lesson/:lessonId')
   .all(requireUser)
-  .get(getLessonsByCourseId)
+  .get(getLesson)
   .delete(deletelesson)
 
 export default lessonRouter

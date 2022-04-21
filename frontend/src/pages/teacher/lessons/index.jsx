@@ -10,13 +10,14 @@ function CourseLessons() {
 
   return (
     <section>
-      <h1 className="mb-4">Lecciones creados</h1>
+      <h1 className="mb-4">Lecciones creadas</h1>
       <table className="mb-6 table">
         <thead>
           <tr>
             <th className="table_head">#</th>
             <th className="table_head text-left">Título</th>
             <th className="table_head">Descripción</th>
+            <th className="table_head">Opciones</th>
             <th className="table_head">Video</th>
           </tr>
         </thead>
@@ -27,7 +28,14 @@ function CourseLessons() {
               <td className="table_row">
                 <div className="flex">{item.title}</div>
               </td>
-              <td className="table_row">{item.description}</td>
+              <td width="10" className="table_row">
+                {item.description.substring(0, 80) + ' ...'}
+              </td>
+              <td className="table_row flex justify-center">
+                <Button onClick={() => navigate(`${item._id}`)}>
+                  Ver preguntas
+                </Button>
+              </td>
               <td className="table_row">
                 <a
                   href={item.videoURL}

@@ -10,6 +10,7 @@ import requireUser from '../middleware/requireUser.js'
 const answerRouter = Router()
 
 answerRouter.get('/api/answer', getAnswer)
+answerRouter.get('/api/answers/:questionId', getAnswesByQuestionId)
 answerRouter.post('/api/answer', requireUser, createanswer)
 
 answerRouter
