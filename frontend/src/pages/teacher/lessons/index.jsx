@@ -17,6 +17,7 @@ function CourseLessons() {
             <th className="table_head">#</th>
             <th className="table_head text-left">Título</th>
             <th className="table_head">Descripción</th>
+            <th className="table_head">Opciones</th>
             <th className="table_head">Video</th>
           </tr>
         </thead>
@@ -28,6 +29,11 @@ function CourseLessons() {
                 <div className="flex">{item.title}</div>
               </td>
               <td className="table_row">{item.description}</td>
+              <td className="table_row">
+                <Button type="submit" onClick={() => navigate(`${item._id}`)}>
+                  Ver preguntas
+                </Button>
+              </td>
               <td className="table_row">
                 <a
                   href={item.videoURL}

@@ -4,7 +4,7 @@ import { axiosBaseQuery } from '@/utils/axios'
 export const courseApi = createApi({
   reducerPath: 'courseApi',
   baseQuery: axiosBaseQuery,
-  tagTypes: ['Course', 'Lesson'],
+  tagTypes: ['Course', 'Lesson', 'Question', 'Answers'],
   endpoints: (builder) => ({
     allCourses: builder.query({
       query: () => ({ url: '/api/courses/all', method: 'get' }),
@@ -69,12 +69,28 @@ export const courseApi = createApi({
       }),
       providesTags: ['Question']
     }),
+    createQuestions: builder.mutation({
+      query: (data) => ({
+        url: `/api/question`,
+        method: 'post',
+        data
+      }),
+      invalidatesTags: ['Question']
+    }),
     questionAnswers: builder.query({
       query: (questionId) => ({
         url: `/api/answers/${questionId}`,
         method: 'get'
       }),
       providesTags: ['Answers']
+    }),
+    createAnswers: builder.mutation({
+      query: (data) => ({
+        url: `/api/answer`,
+        method: 'post',
+        data
+      }),
+      invalidatesTags: ['Answers']
     })
   })
 })
@@ -88,6 +104,8 @@ export const {
   useCourseLessonsQuery,
   useCreateLessonMutation,
   useLessonQuestionsQuery,
+  useCreateQuestionsMutation,
   useQuestionAnswersQuery,
+  useCreateAnswersMutation,
   useGetLessonQuery
 } = courseApi
