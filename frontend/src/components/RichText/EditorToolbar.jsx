@@ -90,81 +90,79 @@ export const formats = [
 ]
 
 // Quill Toolbar component
-export const QuillToolbar = (props) => {
+export const QuillToolbar = ({ toolbarId }) => {
+  if (!toolbarId) return null
+
   return (
-    <>
-      {props.toolbarId !== undefined && (
-        <div id={props.toolbarId}>
-          <span className="ql-formats">
-            <button className="ql-bold" />
-            <button className="ql-italic" />
-            <button className="ql-underline" />
-            <button className="ql-strike" />
-          </span>
-          <span className="ql-formats">
-            <select defaultValue="Inter" className="ql-font">
-              <option value="arial"> Arial </option>
-              <option value="comic-sans">Comic Sans</option>
-              <option value="courier-new">Courier New</option>
-              <option value="georgia">Georgia</option>
-              <option value="helvetica">Helvetica</option>
-              <option value="Inter">Inter</option>
-              <option value="lucida">Lucida</option>
-            </select>
-            <select defaultValue="medium" className="ql-size">
-              <option value="extra-small">Extra Small</option>
-              <option value="small">Small</option>
-              <option value="medium">Medium</option>
-              <option value="large">Large</option>
-            </select>
-            <select defaultValue="" className="ql-header">
-              <option value="1">Heading 1</option>
-              <option value="2">Heading 2</option>
-              <option value="3">Heading 3</option>
-              <option value="4">Heading 4</option>
-              <option value="5">Heading 5</option>
-              <option value="6">Heading 6</option>
-              <option value="">Normal</option>
-            </select>
-          </span>
-          <span className="ql-formats">
-            <button className="ql-list" value="ordered" />
-            <button className="ql-list" value="bullet" />
-            <button className="ql-indent" value="-1" />
-            <button className="ql-indent" value="+1" />
-          </span>
-          <span className="ql-formats">
-            <button className="ql-script" value="super" />
-            <button className="ql-script" value="sub" />
-            <button className="ql-blockquote" />
-            <button className="ql-direction" />
-          </span>
-          <span className="ql-formats">
-            <select className="ql-align" />
-            <select className="ql-color" />
-            <select className="ql-background" />
-          </span>
-          <span className="ql-formats">
-            <button className="ql-link" />
-            <button className="ql-image" />
-            <button className="ql-video" />
-          </span>
-          <span className="ql-formats">
-            <button className="ql-formula" />
-            <button className="ql-code-block" />
-            <button className="ql-clean" />
-          </span>
-          <span className="ql-formats">
-            <button className="ql-undo">
-              <CustomUndo />
-            </button>
-            <button className="ql-redo">
-              <CustomRedo />
-            </button>
-          </span>
-        </div>
-      )}
-    </>
+    <div id={toolbarId}>
+      <span className="ql-formats">
+        <button className="ql-bold" />
+        <button className="ql-italic" />
+        <button className="ql-underline" />
+        <button className="ql-strike" />
+      </span>
+      <span className="ql-formats">
+        <select defaultValue="Inter" className="ql-font">
+          <option value="arial"> Arial </option>
+          <option value="comic-sans">Comic Sans</option>
+          <option value="courier-new">Courier New</option>
+          <option value="georgia">Georgia</option>
+          <option value="helvetica">Helvetica</option>
+          <option value="Inter">Inter</option>
+          <option value="lucida">Lucida</option>
+        </select>
+        <select defaultValue="medium" className="ql-size">
+          <option value="extra-small">Extra Small</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+        <select defaultValue="" className="ql-header">
+          <option value="1">Heading 1</option>
+          <option value="2">Heading 2</option>
+          <option value="3">Heading 3</option>
+          <option value="4">Heading 4</option>
+          <option value="5">Heading 5</option>
+          <option value="6">Heading 6</option>
+          <option value="">Normal</option>
+        </select>
+      </span>
+      <span className="ql-formats">
+        <button className="ql-list" value="ordered" />
+        <button className="ql-list" value="bullet" />
+        <button className="ql-indent" value="-1" />
+        <button className="ql-indent" value="+1" />
+      </span>
+      <span className="ql-formats">
+        <button className="ql-script" value="super" />
+        <button className="ql-script" value="sub" />
+        <button className="ql-blockquote" />
+        <button className="ql-direction" />
+      </span>
+      <span className="ql-formats">
+        <select className="ql-align" />
+        <select className="ql-color" />
+        <select className="ql-background" />
+      </span>
+      <span className="ql-formats">
+        <button className="ql-link" />
+        <button className="ql-image" />
+        <button className="ql-video" />
+      </span>
+      <span className="ql-formats">
+        <button className="ql-formula" />
+        <button className="ql-code-block" />
+        <button className="ql-clean" />
+      </span>
+      <span className="ql-formats">
+        <button className="ql-undo">
+          <CustomUndo />
+        </button>
+        <button className="ql-redo">
+          <CustomRedo />
+        </button>
+      </span>
+    </div>
   )
 }
 export default QuillToolbar

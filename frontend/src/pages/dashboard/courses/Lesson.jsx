@@ -173,27 +173,21 @@ function Lesson() {
         {comments?.comments?.map((comment, index) => (
           <div
             key={index}
-            className="mb-4 flex flex-col  items-center justify-center rounded-lg bg-white p-3 shadow-lg md:items-start"
+            className="mb-4 flex flex-col items-start justify-center gap-4 rounded-lg bg-gray-50 p-3 shadow-md"
           >
-            <div className="mr-2 flex flex-row justify-center">
+            <div className="flex items-center gap-4">
               <img
-                alt="avatar"
-                width="48"
-                height="48"
-                className="mr-4 mb-4 h-10 w-10 rounded-full shadow-lg"
                 src={comment.user.photoURL}
+                alt="avatar"
+                className="h-10 w-10 rounded-full"
               />
-              <h3 className="text-center text-lg font-semibold text-purple-600 md:text-left ">
-                {comment.user.firstName} {comment.user.lastName}{' '}
-                {comment.user.surName}
+              <h3 className="text-lg font-semibold text-gray-700">
+                {comment.user.firstName} {comment.user.lastName}
               </h3>
               <p
-                className={`mr-1 mb-2 ml-5 rounded-full ${
+                className={`rounded-full ${
                   comment.type === 'aporte' ? 'bg-orange-500' : 'bg-indigo-600'
-                } flex-end 
-                    h-6 px-2 py-1
-                    text-xs font-bold text-white opacity-90 duration-300
-                    md:mr-2 md:px-4`}
+                } px-2 py-1 text-xs font-semibold text-white opacity-90 md:px-4`}
               >
                 {comment.type.toUpperCase()}
               </p>
