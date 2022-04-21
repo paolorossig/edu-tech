@@ -28,8 +28,8 @@ function CourseLessons() {
               <td className="table_row">
                 <div className="flex">{item.title}</div>
               </td>
-              <td className="table_row max-w-[300px] overflow-clip">
-                {item.description}
+              <td width="10" className="table_row">
+                {item.description.substring(0, 80) + ' ...'}
               </td>
               <td className="table_row flex justify-center">
                 <Button onClick={() => navigate(`${item._id}`)}>
