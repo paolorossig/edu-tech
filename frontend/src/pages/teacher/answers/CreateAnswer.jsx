@@ -15,7 +15,6 @@ function RegisterAnswer() {
   const goBack = () => navigate(-1)
 
   const onSubmit = async (formData) => {
-    console.log('Data,', formData)
     const data = {
       ...formData,
       correct: formData.correct === 'true',

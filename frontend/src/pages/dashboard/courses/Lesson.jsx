@@ -5,14 +5,10 @@ import { useForm } from 'react-hook-form'
 import { IoMdSend } from 'react-icons/io'
 import {
   useGetCourseQuery,
-  useLessonQuestionsQuery,
-  useQuestionAnswersQuery,
-  useGetLessonQuery
+  useQuestionAnswersQuery
 } from '@/features/courses/CourseApi'
-import {
-  useCreateCommentsMutation,
-  useGetCommentsLessonsQuery
-} from '@/features/comments/CommentsApi'
+import { useCreateCommentsMutation } from '@/features/comments/CommentsApi'
+import useCompleteLessonData from '@/hooks/useCompleteLessonData'
 import { useAuth } from '@/contexts/auth'
 import ContentPageLayout from '@/components/Layouts/ContentPageLayout'
 import Button from '@/components/Button'
@@ -20,10 +16,10 @@ import Spinner from '@/components/Spinner'
 import 'react-quill/dist/quill.snow.css'
 import InputRichText from '@/components/RichText/RichTextInput'
 
-function Answers({ questionId }) {
-  const { data: answers, isLoading: isLoadingAnswers } =
-    useQuestionAnswersQuery(questionId)
-  return isLoadingAnswers ? (
+function Answers({ questionId, register }) {
+  const { data: answers } = useQuestionAnswersQuery(questionId)
+
+  return !answers ? (
     <div className="mx-auto">
       <Spinner size="medium" />
     </div>
@@ -34,7 +30,13 @@ function Answers({ questionId }) {
 
         return (
           <div key={id} className="flex items-center gap-4">
-            <input type="radio" name="option" id={id} value={id} />
+            <input
+              type="radio"
+              name={`question_${questionId}`}
+              id={id}
+              value={id}
+              {...register(`question_${questionId}`)}
+            />
             <label htmlFor={id}>{text}</label>
           </div>
         )
@@ -42,6 +44,7 @@ function Answers({ questionId }) {
     </div>
   )
 }
+
 function FormularioComentarios({ lessonId }) {
   const [textComment, setTextComment] = useState('')
   const { register, handleSubmit, reset, formState } = useForm()
@@ -111,13 +114,16 @@ function FormularioComentarios({ lessonId }) {
 
 function Lesson() {
   const { courseId, lessonId } = useParams()
+  const { register, handleSubmit } = useForm()
 
-  const { data: lesson } = useGetLessonQuery(lessonId)
   const { data: course } = useGetCourseQuery(courseId)
-  const { data: questions } = useLessonQuestionsQuery(lessonId)
-  const { data: comments } = useGetCommentsLessonsQuery(lessonId)
+  const lessonData = useCompleteLessonData(lessonId)
 
-  return !lesson && !course && !questions && !comments ? (
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+
+  return !lessonData || !course ? (
     <div className="mx-auto w-full">
       <Spinner size="medium" />
     </div>
@@ -127,23 +133,26 @@ function Lesson() {
         <Link to={`/dashboard/courses/${courseId}`}>
           Cursos / {course?.course?.name}
         </Link>{' '}
-        / {lesson?.lessons.title}
+        / {lessonData.title}
       </ContentPageLayout.Title>
       <ContentPageLayout.Paper>
         <div className="mx-auto max-w-3xl overflow-hidden rounded-xl">
           <ReactPlayer
-            url={lesson?.lessons.videoURL}
+            url={lessonData.videoURL}
             controls
             width={'100%'}
             height={'100%'}
           />
         </div>
-        <h1 className="my-6">{lesson?.lessons.title}</h1>
-        {questions?.questions.length > 0 && (
-          <form className="flex flex-col gap-6">
+        <h1 className="my-6">{lessonData.title}</h1>
+        {lessonData.questions.length > 0 && (
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-6"
+          >
             <h2 className="text-gray-500">Cuestionario:</h2>
             <ul className="flex w-full flex-col gap-6 md:m-8">
-              {questions.questions.map((item, index) => {
+              {lessonData.questions.map((item, index) => {
                 const { _id: id, description } = item
 
                 return (
@@ -157,7 +166,7 @@ function Lesson() {
                       </h3>
                     </div>
                     {/* List answers with radio btn */}
-                    <Answers questionId={id} />
+                    <Answers questionId={id} register={register} />
                   </li>
                 )
               })}
@@ -170,7 +179,7 @@ function Lesson() {
         )}
         <h2 className="mt-5 text-gray-500">Comentarios:</h2>
         <FormularioComentarios lessonId={lessonId} />
-        {comments?.comments?.map((comment, index) => (
+        {lessonData.comments.map((comment, index) => (
           <div
             key={index}
             className="mb-4 flex flex-col items-start justify-center gap-4 rounded-lg bg-gray-50 p-3 shadow-md"

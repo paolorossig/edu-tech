@@ -28,9 +28,11 @@ function CourseLessons() {
               <td className="table_row">
                 <div className="flex">{item.title}</div>
               </td>
-              <td className="table_row">{item.description}</td>
-              <td className="table_row">
-                <Button type="submit" onClick={() => navigate(`${item._id}`)}>
+              <td className="table_row max-w-[300px] overflow-clip">
+                {item.description}
+              </td>
+              <td className="table_row flex justify-center">
+                <Button onClick={() => navigate(`${item._id}`)}>
                   Ver preguntas
                 </Button>
               </td>
