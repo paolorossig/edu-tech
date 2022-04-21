@@ -1,7 +1,8 @@
 import {
   createLesson,
   findLesson,
-  deleteLesson
+  deleteLesson,
+  findLessonById
 } from '../service/lesson.service.js'
 
 export async function createLessonHandler(req, res) {
@@ -25,6 +26,14 @@ export async function getAllLessons(req, res) {
 export async function getLessonsByCourseId(req, res) {
   try {
     const lessons = await findLesson({ course: req.params.courseId })
+    res.status(200).json({ message: 'Lessons retrieved', lessons })
+  } catch (error) {
+    res.status(400).json({ message: error.message })
+  }
+}
+export async function getLesson(req, res) {
+  try {
+    const lessons = await findLessonById(req.params.lessonId)
     res.status(200).json({ message: 'Lessons retrieved', lessons })
   } catch (error) {
     res.status(400).json({ message: error.message })

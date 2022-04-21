@@ -9,6 +9,7 @@ import lessonRouter from './lesson.routes.js'
 import questionRouter from './question.routes.js'
 import answerRouter from './answer.routes.js'
 import messageRouter from './message.routes.js'
+import commentsRouter from './comments.routes.js'
 import {
   oauth2callback,
   uploadVideo,
@@ -34,6 +35,7 @@ function routes(app) {
   app.use(questionRouter)
   app.use(answerRouter)
   app.use(messageRouter)
+  app.use(commentsRouter)
 
   app.post('/upload', uploadVideoFile, uploadVideo)
   app.get('/oauth2callback', oauth2callback)

@@ -4,7 +4,8 @@ import {
   createCoursesAccess,
   deleteCourseHandler,
   getCourses,
-  getUserCourses
+  getUserCourses,
+  getCourse
 } from '../controller/course.controller.js'
 import { upload } from '../utils/multer.js'
 import requireUser from '../middleware/requireUser.js'
@@ -13,7 +14,7 @@ const courseRouter = Router()
 
 courseRouter.get('/api/courses/all', getCourses)
 courseRouter.get('/api/courses', requireUser, getUserCourses)
-
+courseRouter.get('/api/course/:courseId', getCourse)
 courseRouter.post(
   '/api/courses',
   upload.single('imageURL'),

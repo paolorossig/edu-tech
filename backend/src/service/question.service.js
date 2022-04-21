@@ -11,7 +11,7 @@ export async function findQuestion() {
 }
 
 export async function findQuestionByLessonId(lessonId) {
-  const questions = await Question.find({ lessonId })
+  const questions = await Question.find({ lessonId: lessonId })
   return questions
 }
 
