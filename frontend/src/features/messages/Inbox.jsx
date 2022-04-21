@@ -14,6 +14,7 @@ function Inbox({ userId, users }) {
       {uniqueSenders?.length
         ? uniqueSenders.map((id) => {
             const user = users.find((user) => user._id === id)
+            if (!user) return null
 
             return (
               <li
