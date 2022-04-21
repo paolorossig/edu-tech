@@ -6,10 +6,11 @@ const SocketContext = createContext()
 
 export const SocketProvider = ({ children }) => {
   const { auth } = useAuth()
+  console.log(auth)
   const [socket, setSocket] = useState()
 
   useEffect(() => {
-    const userId = auth.user._id
+    const userId = auth?.user?._id
 
     if (userId) {
       const socket = io(import.meta.env.VITE_SERVER_URL, {
