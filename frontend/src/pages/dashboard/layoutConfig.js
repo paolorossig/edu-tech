@@ -3,8 +3,7 @@ export function alumnosNavConfig() {
     links: [
       { path: '.', name: 'Inicio' },
       { path: 'courses', name: 'Cursos' },
-      { path: 'teachers', name: 'Profesores' },
-      { path: 'sesiones', name: 'Sesiones' }
+      { path: 'teachers', name: 'Profesores' }
     ],
     buttons: [{ path: 'catalogue', name: 'Catálogo' }]
   }

@@ -121,6 +121,7 @@ function Lesson() {
 
   const onSubmit = (data) => {
     console.log(data)
+    alert('Las respuestas fueron enviadas para su revisión')
   }
 
   return !lessonData || !course ? (
