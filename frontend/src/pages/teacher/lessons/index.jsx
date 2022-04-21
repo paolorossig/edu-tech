@@ -10,7 +10,7 @@ function CourseLessons() {
 
   return (
     <section>
-      <h1 className="mb-4">Lecciones creados</h1>
+      <h1 className="mb-4">Lecciones creadas</h1>
       <table className="mb-6 table">
         <thead>
           <tr>
