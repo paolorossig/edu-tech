@@ -1,0 +1,532 @@
+{
+  "cursos": [
+    {
+      "id": "webdev001",
+      "name": "Javascript: async - await",
+      "description": "Curso básico de Javascript donde aprenderás sobre asyncronismo",
+      "price": 19.99,
+      "category": {
+        "id": "webdev",
+        "name": "Web Development"
+      },
+      "teacher": {
+        "id": "teacher001",
+        "email": "teacher001@hotmail.com"
+      },
+      "imageUrl": "https://devsdata.com/wp-content/uploads/2020/08/acync_await-1.png",
+      "keywords": ["javascript", "asynchronism", "basic"],
+      "language": "es",
+      "score": "4.5",
+      "lessons": [
+        {
+          "id": "lesson01",
+          "title": "Introducción",
+          "description": "En esta parte aprenderás los conceptos básicos del asincronismo en JavaScript",
+          "duration": 480000,
+          "urlVideo": "https://www.youtube.com/watch?v=rKK1q7nFt7M",
+          "questions": [
+            {
+              "id": "question01",
+              "description": "¿Qué es una promesa?",
+              "answers": [
+                {
+                  "id": "answer01",
+                  "text": "Es aquella función que es pasada como argumento a otra función para que sea llamada de nuevo en un momento posterior.",
+                  "correct": false
+                },
+                {
+                  "id": "answer02",
+                  "text": "Es un objeto que representa la eventual finalización, o fallo de una operación asíncrona, y su valor resultante.",
+                  "correct": true
+                },
+                {
+                  "id": "answer03",
+                  "text": "Es un lenguaje de secuencias de comandos que te permite crear contenido de actualización dinámica, controlar multimedia",
+                  "correct": false
+                },
+                {
+                  "id": "answer04",
+                  "text": "Es un lenguaje de programación interpretado, dialecto del estándar ECMAScript.",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question02",
+              "description": "¿Qué es un call back en JavaScript?",
+              "answers": [
+                {
+                  "id": "answer05",
+                  "text": "Es aquella función que es pasada como argumento a otra función para que sea llamada de nuevo en un momento posterior.",
+                  "correct": true
+                },
+                {
+                  "id": "answer06",
+                  "text": "Es un objeto que representa la eventual finalización, o fallo de una operación asíncrona, y su valor resultante.",
+                  "correct": false
+                },
+                {
+                  "id": "answer07",
+                  "text": "Es un proceso o una función que ejecuta una tarea en segundo plano y no espera a que se complete.",
+                  "correct": false
+                },
+                {
+                  "id": "answer08",
+                  "text": "Es un lenguaje de programación interpretado, dialecto del estándar ECMAScript.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson02",
+          "title": "Callback Hell",
+          "duration": 480000,
+          "description": "JavaScript y su concepto de Asíncrono y Callbacks, son difíciles de entender de manera intuitiva. Así que empecemos con un ejemplo real: Imagina que tienes que calcular las ventas mensuales durante el ultimo trimestre de todos tus vendedores, tu código puede terminar pareciéndose a una pirámide horizoral. La causa del callback hell es cuando las personas intentan escribir JavaScript de forma tal que la ejecución se realiza visualmente de arriba a abajo. ¡Mucha gente comete este error! En otros lenguajes como C, Java o Python, existe la expectativa de que todo lo que sucede en la línea 1 finalizará antes de que el código en la línea 2 comience a ejecutarse, y así sucesivamente en el archivo. Como lo sabrás, JavaScript es diferente.",
+          "urlVideo": "https://www.youtube.com/watch?v=AQ5fdO6-iAM",
+          "questions": [
+            {
+              "id": "question03",
+              "description": "¿Con que otro nombre se le conoce a un Callback Hell?",
+              "answers": [
+                {
+                  "id": "answer09",
+                  "text": "N.A",
+                  "correct": false
+                },
+                {
+                  "id": "answer10",
+                  "text": "Promise",
+                  "correct": false
+                },
+                {
+                  "id": "answer11",
+                  "text": "Async/Await",
+                  "correct": false
+                },
+                {
+                  "id": "answer12",
+                  "text": "Pirámide de Doom",
+                  "correct": true
+                }
+              ]
+            },
+            {
+              "id": "question04",
+              "description": "¿Cómo evitar o arreglar el Callback Hell?, Selecciona lo incorrecto.",
+              "answers": [
+                {
+                  "id": "answer13",
+                  "text": "Diseño Modular",
+                  "correct": false
+                },
+                {
+                  "id": "answer14",
+                  "text": "Declaración de las funciones al principio",
+                  "correct": false
+                },
+                {
+                  "id": "answer15",
+                  "text": "Usar Promises",
+                  "correct": false
+                },
+                {
+                  "id": "answer16",
+                  "text": "Evitar el Async/Await",
+                  "correct": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson03",
+          "title": "Aync-await implementation",
+          "duration": 300000,
+          "description": " Async y Await es una sintaxis mucho más limpia para trabajar con las promesas de JS que nos permite dejar de utilizar el método .then(). Veremos cómo convertir una función asíncrona con .then() a utilizar async / await y aprenderemos como funciona esto en general. En definitiva compararemos el trabajo con promises de Javascript cuando usamos then y cuando usamos await y te daré algunos trucos y consejos.",
+          "urlVideo": "https://www.youtube.com/watch?v=_1LK3dz2XsM",
+          "questions": [
+            {
+              "id": "question05",
+              "description": "¿Que retorna el método then()?",
+              "answers": [
+                {
+                  "id": "answer17",
+                  "text": "Un Error",
+                  "correct": false
+                },
+                {
+                  "id": "answer18",
+                  "text": "Una Promise",
+                  "correct": true
+                },
+                {
+                  "id": "answer19",
+                  "text": "Un Object",
+                  "correct": false
+                },
+                {
+                  "id": "answer20",
+                  "text": "Un Array",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question06",
+              "description": "¿Se puede usar el await sin asyn?",
+              "answers": [
+                {
+                  "id": "answer21",
+                  "text": "Sí",
+                  "correct": false
+                },
+                {
+                  "id": "answer22",
+                  "text": "Solo si se usa arrow functions",
+                  "correct": false
+                },
+                {
+                  "id": "answer23",
+                  "text": "No, siempre se debe usar el async",
+                  "correct": true
+                },
+                {
+                  "id": "answer24",
+                  "text": "Si en algunas excepciones",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson04",
+          "title": "Repaso",
+          "duration": 180000,
+          "description": "Repaso de como utilizar una de las ultimas caracteristicas de Javascript Ecmascript6+ para el manejo de código asíncrono. En este vídeo entenderemos como este lenguaje de programación utiliza los callbacks, y las promesas para luego pasar a la nueva caracteristica de async/await.",
+          "urlVideo": "https://www.youtube.com/watch?v=Q3HtXuDEy5s",
+          "questions": [
+            {
+              "id": "question07",
+              "description": "¿Para que sirve el método Promise.all()?",
+              "answers": [
+                {
+                  "id": "answer25",
+                  "text": "Un metodo que devuelve una promesa que termina correctamente cuando todas las promesas en el argumento iterable han sido concluídas con éxito, o bien rechaza la petición con el motivo pasado por la primera promesa que es rechazada.",
+                  "correct": true
+                },
+                {
+                  "id": "answer26",
+                  "text": "Es un tipo especial de bucle que permite recorrer estructuras que contienen varios elementos (como matrices, recursos u objetos) sin necesidad de preocuparse por el número de elementos.",
+                  "correct": false
+                },
+                {
+                  "id": "answer27",
+                  "text": "Es una manejar de manejar errores en una sola línea de código.",
+                  "correct": false
+                },
+                {
+                  "id": "answer28",
+                  "text": "Usado cuando hay mucho codigo que se puede ejecutar en paralelo.",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question08",
+              "description": "¿Qué retorna el método Promise.reject()?",
+              "answers": [
+                {
+                  "id": "answer29",
+                  "text": "Retorna un objeto Promise que es resuelto con el valor dado. Si el valor es una promise, esa promise es devuelta; si el valor es un thenable (si tiene un método then), el valor devuelto le seguirá a ese thenable, adoptando su estado; de otro modo la promise devuelta estará completada con el valor.",
+                  "correct": false
+                },
+                {
+                  "id": "answer30",
+                  "text": "Retorna una Promise que se comporta como tal. Se cumple o se rechaza, lo que suceda antes en alguno de sus argumentos (iterable).",
+                  "correct": false
+                },
+                {
+                  "id": "answer31",
+                  "text": "Retorna un objecto Promise que es rechazado. Para fines de depuración y captura selectiva de error, se suele pasar por el parámetro reason un  instanceof Error",
+                  "correct": true
+                },
+                {
+                  "id": "answer32",
+                  "text": "Retorna una promesa que termina correctamente cuando todas las promesas en el argumento iterable han sido concluídas con éxito, o bien rechaza la petición con el motivo pasado por la primera promesa que es rechazada.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "webdev002",
+      "name": "React: Fundamentos",
+      "description": "Curso básico de React donde aprenderás los fundamentos para iniciar en el desarrollo web con React.",
+      "price": 49.99,
+      "category": {
+        "id": "webdev2",
+        "name": "Frontend"
+      },
+      "teacher": {
+        "id": "teacher002",
+        "email": "teacher002@hotmail.com"
+      },
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKja0lwgwMMD7S9fEjyfgffmqbkkc8A5md7h4MKxrAIVxnyK7jWgbVE-PR7PvWtzemWLg&usqp=CAU",
+      "keywords": ["javascript", "react", "basic","frontend"],
+      "language": "es",
+      "score": "4.8",
+      "lessons": [
+        {
+          "id": "lesson01R",
+          "title": "Primeros Pasos",
+          "description": "En esta parte aprenderás los primeros pasos para comenzar con React.",
+          "duration": 480000,
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question01R",
+              "description": "¿Qué es JSX?",
+              "answers": [
+                {
+                  "id": "answer01R",
+                  "text": "Es la sintaxis que se utiliza para construir el markup de los componentes de React. ",
+                  "correct": true
+                },
+                {
+                  "id": "answer02R",
+                  "text": "Es una nueva libreria.",
+                  "correct": false
+                },
+                {
+                  "id": "answer03R",
+                  "text": "Es parte de css.",
+                  "correct": false
+                },
+                {
+                  "id": "answer04R",
+                  "text": "No es parte de React.",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question02R",
+              "description": "¿Cual es el objetivo de un componente en React?",
+              "answers": [
+                {
+                  "id": "answer05R",
+                  "text": "El objetivo es que cada componente sea independiente y encapsule su markup (JSX), sus estilos (CSS) y su estado (JavaScript). De esa forma los componentes pueden ser reutilizables y la interfaz gráfica más fácil de mantener y evolucionar.",
+                  "correct": true
+                },
+                {
+                  "id": "answer06R",
+                  "text": "El objetivo es programar bonito.",
+                  "correct": false
+                },
+                {
+                  "id": "answer07R",
+                  "text": "El objetivo es hacer sistemas independientes.",
+                  "correct": false
+                },
+                {
+                  "id": "answer08R",
+                  "text": "El objetivo es hacer todo el codigo en un solo componente.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson02R",
+          "title": "Estado de un Componente",
+          "duration": 480000,
+          "description": "Cada componente que se defina como una clase cuenta con un objeto para almacenar información llamado state. ada vez que cambia el state, React vuelve a renderizar (pintar) el componente en la vista.",
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question03R",
+              "description": "¿Qué comando usamos para crear un proyecto de React, sabiendo que ya contamos con la instalación de node.js y podemos usar NPM(Node Package Manager)?",
+              "answers": [
+                {
+                  "id": "answer09R",
+                  "text": "N.A",
+                  "correct": false
+                },
+                {
+                  "id": "answer10R",
+                  "text": "npm create-react-app myapp",
+                  "correct": false
+                },
+                {
+                  "id": "answer11R",
+                  "text": "npx react-app myapp",
+                  "correct": false
+                },
+                {
+                  "id": "answer12R",
+                  "text": "npx create-react-app myapp",
+                  "correct": true
+                }
+              ]
+            },
+            {
+              "id": "question04R",
+              "description": "¿Las props, hacen referencia a?",
+              "answers": [
+                {
+                  "id": "answer13R",
+                  "text": "Atributos que nos envían desde un componente hijo a un componente padre",
+                  "correct": false
+                },
+                {
+                  "id": "answer14R",
+                  "text": "Atributos que no se envían desde un componente padre a un componente hijo",
+                  "correct": false
+                },
+                {
+                  "id": "answer15R",
+                  "text": "Parámetros que nos envían desde un componente padre a un componente hijo",
+                  "correct": false
+                },
+                {
+                  "id": "answer16R",
+                  "text": "Atributos que nos envían desde un componente padre a un componente hijo",
+                  "correct": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson03R",
+          "title": "Hooks",
+          "duration": 300000,
+          "description": "Los hooks, introducidos en React 16.8, nos permiten utilizar el estado y otras características de React sin necesidad de convertir nuestros componentes a clases. Algunas de las funcionalidades que podemos utilizar son: manejo del estado con useState, manejo de efectos secundarios como peticiones HTTP con useEffect, crear referencias con useRef, entre otras.",
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question05R",
+              "description": "¿Cual no es un hook?",
+              "answers": [
+                {
+                  "id": "answer17R",
+                  "text": "useState",
+                  "correct": false
+                },
+                {
+                  "id": "answer18R",
+                  "text": "hookUse",
+                  "correct": true
+                },
+                {
+                  "id": "answer19R",
+                  "text": "useRef",
+                  "correct": false
+                },
+                {
+                  "id": "answer20R",
+                  "text": "useContext",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question06R",
+              "description": "¿Se puede crear hooks propios?",
+              "answers": [
+                {
+                  "id": "answer21R",
+                  "text": "Sí",
+                  "correct": true
+                },
+                {
+                  "id": "answer22R",
+                  "text": "Solo si no trabajamos con los hooks propios de React.",
+                  "correct": false
+                },
+                {
+                  "id": "answer23R",
+                  "text": "No, crear hooks propios estan prohibidos.",
+                  "correct": false
+                },
+                {
+                  "id": "answer24R",
+                  "text": "No , se generan conflictos con los hooks predefinidos en React.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "lesson04R",
+          "title": "React Router",
+          "duration": 180000,
+          "description": "Para crear aplicaciones en React que estén compuestas de varias pantallas necesitamos un enrutador. Un enrutador nos permite relacionar URL's con componentes.",
+          "urlVideo": "https://youtu.be/5KvlQDYDZwY?list=RDCMUC8LeXCWOalN8SxlrPcG-PaQ",
+          "questions": [
+            {
+              "id": "question07R",
+              "description": "¿Para que sirve el enrutador?",
+              "answers": [
+                {
+                  "id": "answer25R",
+                  "text": "Nos permite relacionar URL's con componentes.",
+                  "correct": true
+                },
+                {
+                  "id": "answer26R",
+                  "text": "Para hacer testing.",
+                  "correct": false
+                },
+                {
+                  "id": "answer27R",
+                  "text": "Para realizar nuevos diseños en nuestras vistas.",
+                  "correct": false
+                },
+                {
+                  "id": "answer28R",
+                  "text": "Para hacer peticiones http.",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "id": "question08R",
+              "description": "¿Para que sirven los parametros dentro de una ruta?",
+              "answers": [
+                {
+                  "id": "answer29R",
+                  "text": "Los parámetros de ruta son numeros aleatorios autogenerados por el navegador.",
+                  "correct": false
+                },
+                {
+                  "id": "answer30R",
+                  "text": "Los parámetros de ruta son contadores que nos indican el numero de vista en la que estamos.",
+                  "correct": false
+                },
+                {
+                  "id": "answer31R",
+                  "text": "Los parámetros de ruta son variables que puedes utilizar dentro de la ruta",
+                  "correct": true
+                },
+                {
+                  "id": "answer32R",
+                  "text": "Los parámetros de ruta son codigos privados de las rutas.",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
